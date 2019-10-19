@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.uni.learningchess">
+    <uses-sdk tools:overrideLibrary="com.scand.svg" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <activity
+            android:name=".Seccion5"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ProgresoPuntajeUsuarios"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Seccion5Practica1"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Seccion5Practica2"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Ayuda"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".MovimientosCoronacion"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Seccion4Ahogado"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".MovimientosCapturas"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Seccion3Ejerc1"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Seccion3Ejerc2"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Seccion3Ejerc3"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Seccion3Ejerc4"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Seccion3Ejerc5"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".EjercicioBaseActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".TareaA1Activity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ColocarPiezasActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".MoverDamaActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".VerVideo"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".AcercaDeActivity"
+            android:label="@string/acercadeLabel"
+            android:theme="@style/DialogCustom" />
+        <activity
+            android:name=".ManejarUsuarios"
+            android:screenOrientation="landscape"
+            android:label="@string/ManejarUsuarios"/>
+        <activity
+            android:name=".ValoresPiezasActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Preferencias"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Seccion1"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Seccion2"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Seccion3"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Seccion4"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".MoverAlfilActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".MoverTorreActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".MoverReyActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".MoverCaballoActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".MoverPeonActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".SenalarCasillas"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Seccion4SalvarReyDelJaque"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Seccion4JaqueMateReyActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".MovimientosEnroque"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".MovimientoPeonAlPaso"
+            android:screenOrientation="landscape" />
+    </application>
+</manifest>

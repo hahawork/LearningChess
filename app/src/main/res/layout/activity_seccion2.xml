@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/capitulo1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondoPrincipal"
+    android:orientation="horizontal"
+    tools:context=".Seccion2">
+
+    <com.uni.learningchess.VistaAvatar
+        android:id="@+id/vistaAvatar1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="2dp">
+
+        <TextView
+            android:id="@+id/textoCapitulo12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start|center_vertical"
+            android:text="@string/seccion2"
+            android:textAllCaps="true"
+            android:textColor="@color/tituloCapitulo1"
+            android:textSize="@dimen/textSizeTituloCapitulos"
+            android:textStyle="normal|bold" />
+
+
+        <TextView
+            android:id="@+id/textoLeccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start|center_vertical"
+            android:text="@string/leccion"
+            android:textAllCaps="false"
+            android:textColor="@color/tituloCapitulo2"
+            android:textSize="@dimen/textSizeSubTituloCapitulos"
+            android:textStyle="italic" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/botonVerVideo"
+                style="@style/boton.1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="botonVerVideo"
+                android:text="@string/verVideo" />
+
+            <Button
+                android:id="@+id/botonValorPiezas"
+                style="@style/boton.2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="botonValorPiezas"
+                android:text="@string/ej1Capitulo2Parte1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/botonMovimientos"
+                style="@style/boton.1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="botonMovimientos"
+                android:text="@string/movimientos" />
+
+            <Button
+                android:id="@+id/botonCaptura"
+                style="@style/boton.2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="botonCaptura"
+                android:text="@string/capturas" />
+
+            <Button
+                android:id="@+id/botonJugadasEspeciales"
+                style="@style/boton.1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="botonJugadasEspeciales"
+                android:text="@string/jugadasEspeciales" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textoEjercicios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start|center_vertical"
+            android:text="Ejercicios: Movimientos."
+            android:textAllCaps="false"
+            android:textColor="@color/tituloCapitulo2"
+            android:textSize="@dimen/textSizeSubTituloCapitulos"
+            android:textStyle="italic" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fillViewport="true"
+            android:orientation="vertical"
+            android:scrollbarStyle="outsideOverlay">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TableLayout
+                    android:id="@+id/tlMovimientos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:visibility="visible">
+
+                    <TableRow
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <Button
+                            android:id="@+id/boton13"
+                            style="@style/boton.1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="botonMoverPeon"
+                            android:text="@string/ej5Capitulo1Parte2" />
+
+                        <Button
+                            android:id="@+id/boton12"
+                            style="@style/boton.1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="botonMoverCaballo"
+                            android:text="@string/ej4Capitulo1Parte2" />
+
+                        <Button
+                            android:id="@+id/boton9"
+                            style="@style/boton.1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="botonMoverTorre"
+                            android:text="@string/ej1Capitulo1Parte2" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <Button
+                            android:id="@+id/boton10"
+                            style="@style/boton.1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="botonMoverAlfil"
+                            android:text="@string/ej2Capitulo1Parte2" />
+
+                        <Button
+                            android:id="@+id/boton11"
+                            style="@style/boton.1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="botonMoverDama"
+                            android:text="@string/ej3Capitulo1Parte2" />
+
+                        <Button
+                            android:id="@+id/boton14"
+                            style="@style/boton.1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="botonMoverRey"
+                            android:text="@string/ej6Capitulo1Parte2" />
+
+                    </TableRow>
+                </TableLayout>
+
+                <TableLayout
+                    android:id="@+id/tlCapturas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <TableRow
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <Button
+                            android:id="@+id/botonCapturaPeon"
+                            style="@style/boton.2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="botonCapturar"
+                            android:text="@string/eje1Seccion2Captura1" />
+
+                        <Button
+                            android:id="@+id/botonCapturaCaballo"
+                            style="@style/boton.2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="botonCapturar"
+                            android:text="@string/eje2Seccion2Captura2" />
+
+
+                        <Button
+                            android:id="@+id/botonCapturaTorre"
+                            style="@style/boton.2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="botonCapturar"
+                            android:text="@string/eje3Seccion2Captura3" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <Button
+                            android:id="@+id/botonCapturaAlfil"
+                            style="@style/boton.2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="botonCapturar"
+                            android:text="@string/eje1Seccion2Captura4" />
+
+                        <Button
+                            android:id="@+id/botonCapturaDama"
+                            style="@style/boton.2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="botonCapturar"
+                            android:text="@string/eje2Seccion2Captura5" />
+
+
+                        <Button
+                            android:id="@+id/botonCapturaRey"
+                            style="@style/boton.2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="botonCapturar"
+                            android:text="@string/eje3Seccion2Captura6" />
+
+                    </TableRow>
+
+                </TableLayout>
+
+                <TableLayout
+                    android:id="@+id/tlJugadasEspeciales"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:visibility="gone">
+
+                    <TableRow
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                        <Button
+                            android:id="@+id/botonjugEspec1"
+                            style="@style/boton.1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="botonjugEspec1"
+                            android:text="@string/eje1Seccion2JugEspec1" />
+
+                        <Button
+                            android:id="@+id/botonjugEspec2"
+                            style="@style/boton.1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="botonjugEspec2"
+                            android:text="@string/eje2Seccion2JugEspec2" />
+
+                        <Button
+                            android:id="@+id/botonjugEspec3"
+                            style="@style/boton.1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onClick="botonjugEspec3"
+                            android:text="@string/eje3Seccion2JugEspec3" />
+
+                    </TableRow>
+
+                </TableLayout>
+
+                <TableLayout
+                    android:id="@+id/tlValorPiezas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:visibility="visible">
+
+                    <TableRow
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center">
+
+                    </TableRow>
+                </TableLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>

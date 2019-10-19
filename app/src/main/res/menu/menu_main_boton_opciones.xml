@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/action_Usuarios"
+        android:icon="@android:drawable/ic_menu_myplaces"
+        android:orderInCategory="100"
+        android:title="Usuarios" />
+    <item
+        android:id="@+id/action_Progreso"
+        android:icon="@android:drawable/btn_star_big_off"
+        android:orderInCategory="101"
+        android:title="Progreso" />
+
+    <item
+        android:id="@+id/action_Preferencias"
+        android:icon="@android:drawable/ic_menu_preferences"
+        android:orderInCategory="102"
+        android:title="Preferencias" />
+
+    <item
+        android:id="@+id/action_Ayuda"
+        android:icon="@android:drawable/ic_menu_help"
+        android:orderInCategory="103"
+        android:title="Ayuda" />
+
+    <item
+        android:id="@+id/action_Sobre"
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:orderInCategory="104"
+        android:title="Sobre" />
+</menu>

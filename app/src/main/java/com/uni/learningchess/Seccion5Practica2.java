@@ -1,0 +1,376 @@
+package com.uni.learningchess;
+
+import android.graphics.Typeface;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import java.util.Random;
+import java.util.Vector;
+
+import static com.uni.learningchess.Pieza.Color.NEGRO;
+
+
+public class Seccion5Practica2 extends MoverPiezaActivity {
+
+    private enum MODO {VALORPIEZAS, MOVPIEZAS, CAPTURAS}
+
+    private Random random;
+    private VistaAvatar avatar;
+    TextView tvTituloEjercicio;
+    int columnaAleatoria, filaAleatoria;
+    Pieza.Tipo piezaSeleccionada;
+    String coordenadaSolicitada;
+    MODO tipoJuego;
+    MetodosGenerales MG;
+    Vector<Pieza> vectorPiezasBlancas;
+    Vector<Pieza> vectorPiezasNegras;
+    String[] letrasColumnas = {"A", "B", "C", "D", "E", "F", "G", "H"};
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        random = new Random(System.currentTimeMillis());
+        MG = new MetodosGenerales(this);
+        vectorPiezasBlancas = new Vector<>();
+        vectorPiezasNegras = new Vector<>();
+
+        tvTituloEjercicio = findViewById(R.id.tvTituloEjerciciosPracticas);
+        Typeface fuente = Typeface.createFromAsset(getAssets(), "fonts/BalooPaaji-Regular.ttf");
+        tvTituloEjercicio.setTypeface(fuente);
+
+        avatar = getAvatar();
+        avatar.habla(R.raw.senyala_casilla_presentacion, new VistaAvatar.OnAvatarHabla() {
+            @Override
+            public void onTerminaHabla() {
+                seleccionaCoordenada();
+            }
+        });
+    }
+
+    @Override
+    protected int getLayoutResourceId() {
+        return R.layout.tablero;
+    }
+
+    public void seleccionaCoordenada() {
+        columnaAleatoria = random.nextInt(7);
+        filaAleatoria = random.nextInt(7);
+        String columna = letrasColumnas[columnaAleatoria];
+
+        tvTituloEjercicio.setVisibility(View.VISIBLE);
+
+        int fila = 1 + filaAleatoria;
+        coordenadaSolicitada = columna + fila;
+
+        seleccionaTipoJuego();
+    }
+
+    public void seleccionaTipoJuego() {
+
+        vectorPiezasBlancas.removeAllElements();
+        vectorPiezasNegras.removeAllElements();
+        retiraPiezas();
+
+        tipoJuego = MODO.values()[random.nextInt(MODO.values().length)];
+        AlternarDisenyo(tipoJuego);
+
+        switch (tipoJuego) {
+            case VALORPIEZAS:
+                ModoValorPiezas();
+                break;
+            case MOVPIEZAS:
+                ModoMoverPiezas();
+                break;
+            case CAPTURAS:
+                ModoCapturarPiezas();
+                break;
+        }
+    }
+
+    //********  VALOR DE LAS PIEZAS ****************************
+    //region Modo valor de las piezas
+
+    String piezaIzquierda, piezaDerecha;
+    ImageView imagenPiezaIzquierda, imagenPiezaDerecha;
+
+    public void ModoValorPiezas() {
+
+        Pieza.Tipo pieza1 = Pieza.Tipo.values()[random.nextInt(Pieza.Tipo.values().length)];
+        while (pieza1 == Pieza.Tipo.REY) // mientras no sea un rey
+            pieza1 = Pieza.Tipo.values()[random.nextInt(Pieza.Tipo.values().length)];
+
+        Pieza.Tipo pieza2;
+        // la pieza dos debe cumplir las siguientes condiciones
+        /*  1- Pieza1 y pieza2 deben ser diferentes.
+            2- El rey no tiene valor
+            3- Piezas como caballo y alfil tienen mismo valor entonces
+            no deben salir juntas las dos.*/
+        do {
+            pieza2 = Pieza.Tipo.values()[random.nextInt(Pieza.Tipo.values().length)];
+        } while ((pieza1 == pieza2) ||
+                (pieza2 == Pieza.Tipo.REY) ||
+                (pieza1 == Pieza.Tipo.CABALLO && pieza2 == Pieza.Tipo.ALFIL) ||
+                (pieza1 == Pieza.Tipo.ALFIL && pieza2 == Pieza.Tipo.CABALLO)
+        );
+
+        piezaIzquierda = pieza1.toString();
+        piezaDerecha = pieza2.toString();
+        mostrarPiezas();
+    }
+
+    private void mostrarPiezas() {
+
+        piezaIzquierda = piezaIzquierda.toLowerCase();
+        piezaDerecha = piezaDerecha.toLowerCase();
+
+        tvTituloEjercicio.setText(String.format("Que vale más %s o %s?", piezaIzquierda, piezaDerecha));
+
+        imagenPiezaDerecha = findViewById(R.id.piezaDerecha);
+        imagenPiezaIzquierda = findViewById(R.id.piezaIzquierda);
+
+        imagenPiezaIzquierda.setImageResource(getResources().getIdentifier(piezaIzquierda.toLowerCase() + "_blanco", "drawable", this.getPackageName()));
+        imagenPiezaDerecha.setImageResource(getResources().getIdentifier(piezaDerecha.toLowerCase() + "_blanco", "drawable", this.getPackageName()));
+        new ValoresPiezasActivity().crearTagValorPieza(piezaIzquierda, imagenPiezaIzquierda);
+        new ValoresPiezasActivity().crearTagValorPieza(piezaDerecha, imagenPiezaDerecha);
+
+        imagenPiezaIzquierda.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LinearLayout marco = findViewById(R.id.marcoIzquierda);
+                if (new ValoresPiezasActivity().MetodoPracticaSeccion5(v, marco, avatar, imagenPiezaIzquierda, imagenPiezaDerecha)) {
+                    seleccionaCoordenada();
+                }
+            }
+        });
+        imagenPiezaDerecha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LinearLayout marco = findViewById(R.id.marcoDerecha);
+                if (new ValoresPiezasActivity().MetodoPracticaSeccion5(v, marco, avatar, imagenPiezaIzquierda, imagenPiezaDerecha)) {
+                    seleccionaCoordenada();
+                }
+            }
+        });
+    }
+
+    //endregion
+    //*** FIN VALOR PIEZAS *************************************
+
+    //********  MOVER PIEZAS ****************************
+    //region Modo mover piezas
+    public void ModoMoverPiezas() {
+
+        // se encierra en un ciclo mientras la fila sea 7 (8) y la pieza sea Peon
+        // no puede haber peon blanco fila 8.
+        do {
+            piezaSeleccionada = Pieza.Tipo.values()[random.nextInt(Pieza.Tipo.values().length)];
+        } while (filaAleatoria == 7 && piezaSeleccionada == Pieza.Tipo.PEON);
+
+        Pieza pieza = new Pieza(piezaSeleccionada, Pieza.Color.BLANCO, coordenadaSolicitada);
+        vectorPiezasBlancas.add(pieza);
+        colocaPiezas();
+        tvTituloEjercicio.setText("La pieza " + pieza.getTipo() + " está en " + coordenadaSolicitada + ", realiza un movimiento válido.");
+    }
+    //endregion
+
+    //********  CAPTURAR PIEZAS ****************************
+    //region Modo capturar piezas
+    public void ModoCapturarPiezas() {
+        // se encierra en un ciclo mientras la fila sea 7 (8) y la pieza sea Peon
+        // no puede haber peon blanco fila 8.
+        do {
+            piezaSeleccionada = Pieza.Tipo.values()[random.nextInt(Pieza.Tipo.values().length)];
+        } while (filaAleatoria == 7 && piezaSeleccionada == Pieza.Tipo.PEON);
+
+        Pieza pieza = new Pieza(piezaSeleccionada, Pieza.Color.BLANCO, coordenadaSolicitada);
+        tvTituloEjercicio.setText(pieza.getTipo() + " en " + coordenadaSolicitada + ", CAPTURA una pieza negra.");
+        vectorPiezasBlancas.add(pieza);
+        colocaPiezas();
+
+        Vector<String> vectorMovValidos = obtenerCasillasMovValido(pieza.getColumna(), pieza.getFila(), validadorResaltarCasillas);
+        Vector<String> casillasOcupadas = new Vector<>();
+        casillasOcupadas.add(coordenadaSolicitada);
+        casillasOcupadas.add(vectorMovValidos.get(random.nextInt(vectorMovValidos.size())));
+        ColocarPiezasNegraCapturas(vectorMovValidos, casillasOcupadas);
+    }
+
+    public void ColocarPiezasNegraCapturas(Vector<String> vectorMovValidos, Vector<String> casillasOcupadas) {
+        Log.w("MovValidos", vectorMovValidos.toString());
+        // colocar 5 piezas negras
+        for (int i = 0; i < 5; i++) {
+            Pieza.Tipo tipo = Pieza.Tipo.values()[random.nextInt(Pieza.Tipo.values().length)];
+            if (i == 0) {
+                //ya viene una coordenada de pieza negra
+                vectorPiezasNegras.add(new Pieza(tipo, NEGRO, casillasOcupadas.get(1)));
+                continue;
+            }
+
+            String casilla = letrasColumnas[random.nextInt(7)] + (1 + random.nextInt(7));
+            while (vectorMovValidos.contains(casilla) || casillasOcupadas.contains(casilla)) {
+                casilla = letrasColumnas[random.nextInt(7)] + (1 + random.nextInt(7));
+            }
+
+            vectorPiezasNegras.add(new Pieza(tipo, NEGRO, casilla));
+            casillasOcupadas.add(casilla);
+        }
+
+        colocaPiezas();
+    }
+    //endregion
+
+    private Validador validador = new Validador() {
+        @Override
+        public boolean movimientoValido(int colOrigen, int filaOrigen, int colDestino, int filaDestino) {
+            boolean validador = false;
+            Pieza pieza = MG.getPieza(colOrigen, filaOrigen);
+
+            if (pieza != null) {
+                boolean movimientoValidoBlancas = false;
+                if (tipoJuego == MODO.MOVPIEZAS) {
+                    movimientoValidoBlancas = MG.validadorGenerico.movimientoValido(colOrigen, filaOrigen, colDestino, filaDestino);
+                }
+                if (tipoJuego == MODO.CAPTURAS) {
+                    new MovimientosCapturas().MetodoPracticaSeccion5(MG);
+                    boolean capturaPieza = (MG.capturaPieza(colOrigen, filaOrigen, colDestino, filaDestino));
+                    movimientoValidoBlancas = new MovimientosCapturas().validadorGenerico.movimientoValido(colOrigen, filaOrigen, colDestino, filaDestino);
+
+                    movimientoValidoBlancas = (capturaPieza && movimientoValidoBlancas);
+                }
+
+                Log.d("Ajedrez ", "***movimientoValidoBlancas=" + movimientoValidoBlancas);
+                Pieza piezaDestino = MG.getPieza(colDestino, filaDestino);
+
+
+                validador = movimientoValidoBlancas;
+
+                pieza.setCoordenada(colDestino, filaDestino);
+                pieza.setCoordenada(colOrigen, filaOrigen);
+                if (piezaDestino != null && piezaDestino.getColor() == NEGRO) {
+                    vectorPiezasNegras.add(piezaDestino);
+                }
+            }
+            return (validador);
+        }
+    };
+
+    protected void retiraPiezas() {
+        LinearLayout tabla = findViewById(R.id.tabla);
+        for (int f = 1, iMax = tabla.getChildCount() - 1; f < iMax; f++) {
+            View vista = tabla.getChildAt(f);
+            if (vista instanceof LinearLayout) {
+                LinearLayout linea = (LinearLayout) vista;
+                for (int c = 1, jMax = linea.getChildCount() - 1; c < jMax; c++) {
+                    ImageView imagen = (ImageView) linea.getChildAt(c);
+                    imagen.setImageDrawable(null);
+                    if (esCuadriculaNegra(imagen)) {
+                        imagen.setBackgroundResource(R.color.cuadriculaNegra);
+                    } else {
+                        imagen.setBackgroundResource(R.color.cuadriculaBlanca);
+                    }
+                }
+            }
+        }
+    }
+
+    private void colocaPiezas() {
+
+        Vector<Pieza> vectorPiezas = new Vector<>();
+        vectorPiezas.addAll(vectorPiezasBlancas);
+        vectorPiezas.addAll(vectorPiezasNegras);
+        MG.setVectorPiezas(vectorPiezas);
+
+        for (Pieza pieza : vectorPiezasBlancas) {
+            MG.colocaPieza(pieza);
+        }
+        for (Pieza pieza : vectorPiezasNegras) {
+            MG.colocaPieza(pieza);
+        }
+    }
+
+    public void AlternarDisenyo(MODO modo) {
+
+        if (modo == MODO.VALORPIEZAS) {
+            (findViewById(R.id.include_tablero)).setVisibility(View.GONE);
+            (findViewById(R.id.include_valorpiezas)).setVisibility(View.VISIBLE);
+        } else {
+            (findViewById(R.id.include_tablero)).setVisibility(View.VISIBLE);
+            (findViewById(R.id.include_valorpiezas)).setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    protected boolean onMovimiento(int colOrigen, int filaOrigen, int colDestino,
+                                   int filaDestino) {
+
+        cancelaCuentaAtras();
+        if (tipoJuego == MODO.MOVPIEZAS) {
+            boolean movimientoValido = validador.movimientoValido(colOrigen, filaOrigen, colDestino, filaDestino);
+            return movimientoValido;
+        }
+        if (tipoJuego == MODO.CAPTURAS) {
+            boolean movimientoValido = validador.movimientoValido(colOrigen, filaOrigen, colDestino, filaDestino);
+            return movimientoValido;
+        }
+        return false;
+    }
+
+    @Override
+    protected void onMovimiento(boolean movimientoValido, int colOrigen, int filaOrigen,
+                                int colDestino, int filaDestino) {
+        Log.d("Ajedrez", "onMovimiento movimientoValido=" + movimientoValido + " colOrigen=" + colOrigen + " filaOrigen=" + filaOrigen + " colDestino=" + colDestino + " filaDestino=" + filaDestino);
+        avatar.mueveOjos(VistaAvatar.MovimientoOjos.DERECHA);
+        if (movimientoValido) {
+            avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_CORRECTO);
+            avatar.mueveCejas(VistaAvatar.MovimientoCejas.ARQUEAR);
+            avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_CORRECTO);
+            avatar.habla(R.raw.ok_muy_bien, new VistaAvatar.OnAvatarHabla() {
+                @Override
+                public void onTerminaHabla() {
+                    avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.TIC_TAC);
+                    seleccionaCoordenada();
+                }
+            });
+
+        } else {
+            avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_INCORRECTO);
+            avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_INCORRECTO);
+            avatar.mueveCejas(VistaAvatar.MovimientoCejas.FRUNCIR);
+            avatar.habla(R.raw.mover_rey_en_jaque_mal, new VistaAvatar.OnAvatarHabla() {
+                @Override
+                public void onTerminaHabla() {
+                    avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.TIC_TAC);
+                }
+            });
+            resaltarCasilla(colDestino, filaDestino, Movimiento.INCORRECTO);
+            resaltarCasilla(colOrigen, filaOrigen, Movimiento.ORIGEN);
+            if (tipoJuego == MODO.CAPTURAS) {
+                Pieza p = vectorPiezasNegras.get(0);
+                resaltarCasilla(p.getColumna(), p.getFila(), Movimiento.CORRECTO);
+            } else
+                resaltarCasilla(colOrigen, filaOrigen, validadorResaltarCasillas);
+        }
+    }
+
+    private Validador validadorResaltarCasillas = new Validador() {
+        @Override
+        public boolean movimientoValido(int colOrigen, int filaOrigen, int colDestino, int filaDestino) {
+            boolean movimientoValido = false;
+            if (MG.getPieza(colOrigen, filaOrigen) != null) {
+                if (tipoJuego == MODO.MOVPIEZAS) {
+                    movimientoValido = MG.validadorGenerico.movimientoValido(colOrigen, filaOrigen, colDestino, filaDestino);
+                }
+                if (tipoJuego == MODO.CAPTURAS) {
+                    new MovimientosCapturas().MetodoPracticaSeccion5(MG);
+                    movimientoValido = new MovimientosCapturas().validadorGenerico.movimientoValido(colOrigen, filaOrigen, colDestino, filaDestino);
+                }
+            }
+            return (movimientoValido);
+        }
+    };
+
+}

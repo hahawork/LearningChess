@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondoPrincipal"
+    tools:context=".Ayuda">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/piezas"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <Button
+                android:id="@+id/botonAyudaIntro"
+                style="@style/boton.2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="verPdfPagina"
+                android:text="Prólogo" />
+
+            <Button
+                android:id="@+id/botonAyudaSecc1"
+                style="@style/boton.2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="verPdfPagina"
+                android:text="Sección 1" />
+
+
+            <Button
+                android:id="@+id/botonAyudaSecc2"
+                style="@style/boton.2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="verPdfPagina"
+                android:text="Sección 2" />
+
+
+            <Button
+                android:id="@+id/botonAyudaSecc3"
+                style="@style/boton.1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="verPdfPagina"
+                android:text="Sección 3" />
+
+
+            <Button
+                android:id="@+id/botonAyudaSecc4"
+                style="@style/boton.1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="verPdfPagina"
+                android:text="Sección 4" />
+
+            <Button
+                android:id="@+id/botonAyudaSecc5"
+                style="@style/boton.1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="verPdfPagina"
+                android:text="Sección 5" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/textoTituloAyuda"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Ayuda: prólogo"
+                    android:textAllCaps="true"
+                    android:elevation="8dp"
+                    android:background="@android:color/white"
+                    android:textColor="@color/tituloCapitulo1"
+                    android:textSize="@dimen/textSizeTituloCapitulos"
+                    android:textStyle="normal|bold" />
+
+            <com.github.barteksc.pdfviewer.PDFView
+                android:id="@+id/pdfView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

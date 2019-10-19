@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/capitulo1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondoPrincipal"
+    android:orientation="horizontal"
+    tools:context=".MainActivity">
+
+    <com.uni.learningchess.VistaAvatar
+        android:id="@+id/vistaAvatar1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/textoCapitulo1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start|center_vertical"
+            android:text="@string/seccion1"
+            android:textAllCaps="true"
+            android:textColor="@color/tituloCapitulo1"
+            android:textSize="@dimen/textSizeTituloCapitulos"
+            android:textStyle="normal|bold" />
+
+        <TextView
+            android:id="@+id/textoLeccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start|center_vertical"
+            android:text="@string/leccion"
+            android:textAllCaps="false"
+            android:textColor="@color/tituloCapitulo2"
+            android:textSize="@dimen/textSizeSubTituloCapitulos"
+            android:textStyle="italic" />
+
+        <Button
+            android:id="@+id/boton5"
+            style="@style/boton.2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="boton1"
+            android:text="@string/verVideo" />
+
+        <TextView
+            android:id="@+id/textoEjercicios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start|center_vertical"
+            android:text="@string/ejercicios"
+            android:textAllCaps="false"
+            android:textColor="@color/tituloCapitulo2"
+            android:textSize="@dimen/textSizeSubTituloCapitulos"
+            android:textStyle="italic" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            android:orientation="vertical"
+            android:scrollbarStyle="outsideOverlay">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical|center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/boton6"
+                    style="@style/boton.1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="boton2"
+                    android:text="@string/ej1Capitulo1Parte1" />
+
+                <Button
+                    android:id="@+id/boton7"
+                    style="@style/boton.1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="boton3"
+                    android:text="@string/ej2Capitulo1Parte1" />
+
+            </LinearLayout>
+        </ScrollView>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+</LinearLayout>

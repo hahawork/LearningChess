@@ -1,0 +1,108 @@
+<resources>
+    <string name="app_name">LearningChess</string>
+    <string name="seccion1">1. Tablero</string>
+    <string name="seccion2">2. Piezas</string>
+    <string name="seccion3">3. Notación</string>
+    <string name="seccion4">4. Jaque, Jaque Mate, Ahogado</string>
+    <string name="seccion5">5. Prácticas</string>
+    <string name="acercadeLabel"> Acerca de...</string>
+    <string name="ManejarUsuarios"> Manejar Usuarios</string>
+    <string name="Estadisticas"> Estadisticas</string>
+    <string name="acercade">Esta Aplicación ha sido desarrollada por Maria Esther Granados Diaz</string>
+    <string name="acercade2">Como proyecto para optar al titulo universitario de Ing. En Computación.</string>
+    <string name="linkCanal"><a href="https://www.youtube.com/channel/UCanJ4GFmSQTnaD3z_95rQFg">https://www.youtube.com/channel/UCanJ4GFmSQTnaD3z_95rQFg\n</a></string>
+    <string name="tituloCreditosApp">Aplicación</string>
+    <string name="tituloCreditosAppProgramacion">Programación</string>
+    <string name="tituloCreditosAppDiseño"> Diseño Gráfico</string>
+    <string name="tituloCreditosAppIdea">Idea Original</string>
+    <string name="tituloCreditosAppGuion">Guión</string>
+    <string name="tituloCreditosAppDireccion">Dirección</string>
+    <string name="textoCreditosAppDireccion">Maria Esther Granados Diaz\n</string>
+
+    <string name="tituloCreditosVideo">Videos</string>
+    <string name="tituloCreditosVideoGuion">Guión</string>
+    <string name="tituloCreditosVideoIdea">Idea Original</string>
+    <string name="tituloCreditosVideoDiseño">Diseño</string>
+    <string name="tituloCreditosVideoAnimacion">Animación</string>
+    <string name="tituloCreditosVideoVoces">Voces</string>
+    <string name="tituloCreditosVideoSuperVision">SuperVisión</string>
+    <string name="textoCreditosVideoSupervision">Maria Esther Granados Diaz\n</string>
+
+    <string name="textoTituloApp">Aprende Ajedrez</string>
+    <string name="verVideo">Ver video</string>
+
+    <string name="ej1Capitulo1Parte1">Coordenadas del tablero</string>
+    <string name="ej2Capitulo1Parte1">Colocar piezas</string>
+
+
+    <string name="ej1Capitulo1Parte2">Mover torre</string>
+    <string name="ej2Capitulo1Parte2">Mover alfil</string>
+    <string name="ej3Capitulo1Parte2">Mover dama</string>
+    <string name="ej4Capitulo1Parte2">Mover caballo</string>
+    <string name="ej5Capitulo1Parte2">Mover peón</string>
+    <string name="ej6Capitulo1Parte2">Mover rey</string>
+    <string name="eje1Seccion2Captura1">Del Peon</string>
+    <string name="eje2Seccion2Captura2">Del caballo</string>
+    <string name="eje3Seccion2Captura3">De la torre</string>
+    <string name="eje1Seccion2Captura4">Del Alfil</string>
+    <string name="eje2Seccion2Captura5">De la dama</string>
+    <string name="eje3Seccion2Captura6">Del rey</string>
+
+    <string name="eje1Seccion2JugEspec1">Enroque</string>
+    <string name="eje2Seccion2JugEspec2">Peón al paso</string>
+    <string name="eje3Seccion2JugEspec3">Coronación</string>
+
+    <string name="seccion4Jaque">Jaque</string>
+    <string name="seccion4JaqueMate">Jaque Mate</string>
+    <string name="seccion4Ahogado">Ahogado</string>
+
+    <string name="ej1Capitulo2Parte1">Valor piezas</string>
+    <string name="ej2Capitulo2Parte1">Colocar piezas</string>
+    <string name="ej3Capitulo2Parte1">Mover rey en jaque</string>
+
+    <string name="preguntaAlfiles">¿Cuántos alfiles tiene cada jugador?</string>
+    <string name="respOpc1Alfiles">1 alfil</string>
+    <string name="respOpc2Alfiles">2 alfiles</string>
+    <string name="respOpc3Alfiles">8 alfiles</string>
+
+    <string name="preguntaPeones">¿Cuántos peones tiene cada jugador?</string>
+    <string name="respOpc1Peones">4 peones</string>
+    <string name="respOpc2Peones">2 peones</string>
+    <string name="respOpc3Peones">8 peones</string>
+
+    <string name="preguntaReyes">¿Cuántos reyes tiene cada jugador?</string>
+    <string name="respOpc1Reyes">1 rey</string>
+    <string name="respOpc2Reyes">2 reyes</string>
+    <string name="respOpc3Reyes">8 reyes</string>
+
+    <string name="secciones">Secciones:</string>
+    <string name="leccion">Lección:</string>
+    <string name="ejercicios">Ejercicios:</string>
+    <string name="movimientos">Movimientos:</string>
+    <string name="capturas">Capturas:</string>
+    <string name="jugadasEspeciales">Jugadas Especiales:</string>
+    <string name="valorPiezas">Los valores de las piezas</string>
+
+    <string name="seccion3Ejerc1Titulo">Seleciciona la notación correcta</string>
+
+    <string name="seccion3Ejerc2Titulo">Marque qué significa la notación abreviada \"0–0–0\"</string>
+    <string name="seccion3Ejerc2Opcion1">Enroque corto</string>
+    <string name="seccion3Ejerc2Opcion2">Captura del peón al paso</string>
+    <string name="seccion3Ejerc2Opcion3">Enroque largo</string>
+
+    <string name="seccion3Ejerc3Titulo">¿De qué color es la casilla %s?</string>
+    <string name="seccion3Ejerc3Opcion1">Blanca</string>
+    <string name="seccion3Ejerc3Opcion2">Negra</string>
+
+    <string name="seccion3Ejerc4Titulo">Mueve la pieza a la casilla %s</string>
+    <string name="seccion3Ejerc5Titulo">Ingrese las cordenadas de la pieza</string>
+    <string name="title_activity_movimientos_coronacion">MovimientosCoronacion</string>
+
+    <string name="botonNuevoUsuario">Nuevo Usuario</string>
+    <string name="botonEditarUsuario">Editar Usuario</string>
+    <string name="botonBorrarUsuario">Borrar Usuario</string>
+    <string name="idUsuario">Id</string>
+    <string name="nombreUsuario">Nombre</string>
+    <string name="fechaInicio">Fecha inicio</string>
+
+</resources>

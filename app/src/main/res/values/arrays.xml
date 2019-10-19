@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="lecciones">
+        <item>"Presentación"</item>
+        <item>"Lección 1"</item>
+        <item>"Lección 2"</item>
+        <item>"Lección 3"</item>
+    </string-array>
+    <string-array name="leccionesValores">
+        <item>presentacion.mp3</item>
+        <item>leccion1.mp3</item>
+        <item>leccion2.mp3</item>
+        <item>leccion3.mp3</item>
+    </string-array>
+    <string-array name="miradas">
+        <item>"centro"</item>
+        <item>"izquierda"</item>
+        <item>"derecha"</item>
+    </string-array>
+    <string-array name="miradasValores">
+        <item>CENTER</item>
+        <item>LEFT_CENTER</item>
+        <item>RIGHT_CENTER</item>
+    </string-array>
+    <string-array name="efectosSonido">
+        <item>"incorrecto"</item>
+        <item>"correcto"</item>
+        <item>"aplausos"</item>
+    </string-array>
+    <string-array name="efectosSonidoValores">
+        <item>CORRECTO</item>
+        <item>INCORRECTO</item>
+        <item>APLAUSOS</item>
+    </string-array>
+
+    <string-array name="Columnas">
+        <item></item>
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>D</item>
+        <item>E</item>
+        <item>F</item>
+        <item>G</item>
+        <item>H</item>
+    </string-array>
+    <string-array name="Filas">
+        <item></item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+</resources>

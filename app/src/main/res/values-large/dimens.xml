@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="borde_exterior">2dp</dimen>
+    <dimen name="borde_interior">1dp</dimen>
+    <dimen name="tamaño_textoBorde">18dp</dimen>
+    <item name="grosor_marco" format="float" type="dimen">0.5</item>
+    <dimen name="textsize_botones">36sp</dimen>
+    <dimen name="botonPaddingTop">0sp</dimen>
+    <dimen name="botonPaddingBottom">0sp</dimen>
+    <dimen name="botonPaddingRight">30sp</dimen>
+    <dimen name="botonPaddingLeft">30sp</dimen>
+    <dimen name="botonLayoutMargin">8dp</dimen>
+    <dimen name="grosor_marco_botones">6dp</dimen>
+    <dimen name="radio_marco_botones">45dp</dimen>
+    <dimen name="tamañoIconos">36dp</dimen>
+    <dimen name="textSizeTituloCapitulos">48sp</dimen>
+    <dimen name="textSizeSubTituloCapitulos">42sp</dimen>
+    <dimen name="grosor_marco_pizarra">15dp</dimen>
+    <dimen name="marco_pieza_valoresPiezas">3dp</dimen>
+    <dimen name="separacion_pieza_pizarra">15dp</dimen>
+    <dimen name="separacion_texto_valoresPiezas">40dp</dimen>
+    <dimen name="padding_valoresPiezas">20dp</dimen>
+    <dimen name="grosor_separador">3dp</dimen>
+
+
+</resources>
