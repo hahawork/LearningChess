@@ -61,6 +61,7 @@ public class Seccion5 extends AppCompatActivity {
         startActivity(new Intent(this, Seccion5Practica2.class));
     }
     public void botonPractica3(View view) {
+        startActivity(new Intent(this, Seccion5Practica3.class));
     }
     public void botonPractica4(View view) {
     }

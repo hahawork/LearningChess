@@ -39,10 +39,11 @@ public class Seccion4Ahogado extends EjercicioBaseActivity {
         MG = new MetodosGenerales(this);
 
         vectorPiezasBlancas = new Vector<>();
-        vectorPiezasNegras = new Vector<>();
         vectorPiezasBlancasDefensoras = new Vector<>();
-        vectorPiezasNegasDefensoras = new Vector<>();
         vectorPiezasBlancasAtacantes = new Vector<>();
+
+        vectorPiezasNegras = new Vector<>();
+        vectorPiezasNegasDefensoras = new Vector<>();
         vectorPiezasNegrasAtacantes = new Vector<>();
 
         inicializaJugada(contadorMovimientos);
@@ -366,7 +367,7 @@ public class Seccion4Ahogado extends EjercicioBaseActivity {
     }
 
     protected void retiraPiezas() {
-        LinearLayout tabla = (LinearLayout) findViewById(R.id.tabla);
+        LinearLayout tabla = findViewById(R.id.tabla);
         for (int f = 1, iMax = tabla.getChildCount() - 1; f < iMax; f++) {
             View vista = tabla.getChildAt(f);
             if (vista instanceof LinearLayout) {
