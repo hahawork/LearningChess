@@ -427,7 +427,7 @@ public class Seccion4Ahogado extends EjercicioBaseActivity {
     private void inicializaJugada1() {
         vectorPiezasBlancas.removeAllElements();
         vectorPiezasNegras.removeAllElements();
-        int variante = random.nextInt(2);
+        int variante = random.nextInt(1);
         switch (variante) {
             case 0:
 

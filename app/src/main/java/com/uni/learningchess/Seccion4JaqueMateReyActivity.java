@@ -390,9 +390,9 @@ public class Seccion4JaqueMateReyActivity extends EjercicioBaseActivity implemen
         switch (variante) {
             case 0://tablero 8
                 vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "G1"));
-                vectorPiezasBlancas.add(new Pieza(DAMA, BLANCO, "A1",true));
+                vectorPiezasBlancas.add(new Pieza(DAMA, BLANCO, "A1"));
                 vectorPiezasBlancas.add(new Pieza(TORRE, BLANCO, "D1"));
-                vectorPiezasBlancas.add(new Pieza(CABALLO, BLANCO, "D4"));
+                vectorPiezasBlancas.add(new Pieza(CABALLO, BLANCO, "D4",true));
                 vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "E2"));
                 vectorPiezasBlancas.add(new Pieza(ALFIL, BLANCO, "F7"));
 
