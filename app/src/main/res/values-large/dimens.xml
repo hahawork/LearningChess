@@ -7,7 +7,7 @@
     <dimen name="borde_interior">1dp</dimen>
     <dimen name="tamaño_textoBorde">18dp</dimen>
     <item name="grosor_marco" format="float" type="dimen">0.5</item>
-    <dimen name="textsize_botones">36sp</dimen>
+    <dimen name="textsize_botones">24sp</dimen>
     <dimen name="botonPaddingTop">0sp</dimen>
     <dimen name="botonPaddingBottom">0sp</dimen>
     <dimen name="botonPaddingRight">30sp</dimen>

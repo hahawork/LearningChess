@@ -53,37 +53,31 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:gravity="left"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/cuadriculaMarco"
-                android:gravity="center"
+                android:gravity="left"
                 android:orientation="horizontal">
-
 
                 <Button
                     android:id="@+id/botonPractica1"
                     style="@style/boton.2"
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:layout_gravity="left"
-                    android:layout_marginRight="20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:layout_weight="1"
                     android:onClick="botonPractica1"
-                    android:rotation="45"
                     android:text="@string/seccion1" />
 
                 <Button
                     android:id="@+id/botonPractica2"
                     style="@style/boton.1"
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:layout_gravity="end"
-                    android:layout_marginLeft="20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:layout_weight="1"
                     android:onClick="botonPractica2"
-                    android:rotation="45"
                     android:text="@string/seccion2" />
             </LinearLayout>
 
@@ -91,28 +85,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="@color/cuadriculaMarco"
-                android:gravity="center"
+                android:gravity="left"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/botonPractica3"
                     style="@style/boton.1"
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="70dp"
+                    android:layout_weight="1"
                     android:onClick="botonPractica3"
-                    android:rotation="45"
                     android:text="@string/seccion3" />
 
                 <Button
                     android:id="@+id/botonPractica4"
                     style="@style/boton.2"
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:onClick="botonPractica4"
-                    android:rotation="45"
                     android:text="@string/seccion4" />
             </LinearLayout>
 
