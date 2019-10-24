@@ -202,7 +202,7 @@ public abstract class EjercicioBaseActivity extends AppCompatActivity {
      * @param fila fila "1" -> 0, "2" ->1, ...
      * @return casilla
      */
-    private ImageView getCasilla(int col, int fila) {
+    public ImageView getCasilla(int col, int fila) {
         LinearLayout tabla = findViewById(R.id.tabla);
         LinearLayout linea = (LinearLayout) tabla.getChildAt(8 - fila);  //Las filas se numera de abajo a arriba
         return (ImageView) linea.getChildAt(col + 1);  // Hay que sumar 1 por el borde
@@ -274,7 +274,7 @@ public abstract class EjercicioBaseActivity extends AppCompatActivity {
         animacionCasilla.start();
     }
 
-    protected boolean esCuadriculaNegra(ImageView imageview) {
+    public boolean esCuadriculaNegra(ImageView imageview) {
         String tag = imageview.getTag().toString();
         int col = tag.charAt(0) - 'A';
         int fila = tag.charAt(1) - '1';
