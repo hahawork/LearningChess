@@ -21,6 +21,7 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
     private Random random;
     private VistaAvatar avatar;
     TextView tvTituloEjercicio;
+    ImageView ivSaltarEjercicio;
     int columnaAleatoria, filaAleatoria;
     Pieza.Tipo piezaSeleccionada;
     String coordenadaSolicitada;
@@ -52,6 +53,15 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
             }
         });
 
+        ivSaltarEjercicio = findViewById(R.id.ivSaltarEjercicio);
+        ivSaltarEjercicio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                seleccionaCoordenada();
+            }
+        });
+
+
         coordenadaSolicitada = seleccionaCoordenada();
         seleccionaTipoJuego();
 
@@ -68,6 +78,7 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
         String columna = letrasColumnas[columnaAleatoria];
 
         tvTituloEjercicio.setVisibility(View.VISIBLE);
+        ivSaltarEjercicio.setVisibility(View.VISIBLE);
 
         int fila = 1 + filaAleatoria;
         String _coordenada = columna + fila;

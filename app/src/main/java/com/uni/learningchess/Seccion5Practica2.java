@@ -1,26 +1,53 @@
 package com.uni.learningchess;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.util.Locale;
 import java.util.Random;
 import java.util.Vector;
 
 import static com.uni.learningchess.Pieza.Color.NEGRO;
 
 
-public class Seccion5Practica2 extends MoverPiezaActivity {
+public class Seccion5Practica2 extends MoverPiezaActivity implements TextToSpeech.OnInitListener {
+
+    @Override
+    public void onInit(int status) {
+        if (status == TextToSpeech.LANG_MISSING_DATA | status == TextToSpeech.LANG_NOT_SUPPORTED) {
+            Toast.makeText(this, "ERROR LANG_MISSING_DATA | LANG_NOT_SUPPORTED", Toast.LENGTH_SHORT).show();
+
+            // check for TTS data
+            Intent checkTTSIntent = new Intent();
+            checkTTSIntent.setAction(TextToSpeech.Engine.ACTION_CHECK_TTS_DATA);
+            startActivityForResult(checkTTSIntent, 100);
+
+        }
+        // check for successful instantiation
+        if (status == TextToSpeech.SUCCESS) {
+            if (textToSpeech.isLanguageAvailable(Locale.US) == TextToSpeech.LANG_AVAILABLE)
+                textToSpeech.setLanguage(Locale.US);
+        } else if (status == TextToSpeech.ERROR) {
+            Toast.makeText(this, "Sorry! Text To Speech failed...",
+                    Toast.LENGTH_LONG).show();
+        }
+
+    }
 
     private enum MODO {VALORPIEZAS, MOVPIEZAS, CAPTURAS}
 
     private Random random;
     private VistaAvatar avatar;
     TextView tvTituloEjercicio;
+    ImageView ivSaltarEjercicio;
     int columnaAleatoria, filaAleatoria;
     Pieza.Tipo piezaSeleccionada;
     String coordenadaSolicitada;
@@ -30,6 +57,8 @@ public class Seccion5Practica2 extends MoverPiezaActivity {
     Vector<Pieza> vectorPiezasNegras;
     String[] letrasColumnas = {"A", "B", "C", "D", "E", "F", "G", "H"};
 
+    TextToSpeech textToSpeech;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +67,10 @@ public class Seccion5Practica2 extends MoverPiezaActivity {
         MG = new MetodosGenerales(this);
         vectorPiezasBlancas = new Vector<>();
         vectorPiezasNegras = new Vector<>();
+
+        textToSpeech = new TextToSpeech(this, this);
+        textToSpeech.setLanguage(new Locale("es", "NI"));
+
 
         tvTituloEjercicio = findViewById(R.id.tvTituloEjerciciosPracticas);
         Typeface fuente = Typeface.createFromAsset(getAssets(), "fonts/BalooPaaji-Regular.ttf");
@@ -50,7 +83,39 @@ public class Seccion5Practica2 extends MoverPiezaActivity {
                 seleccionaCoordenada();
             }
         });
+
+        ivSaltarEjercicio = findViewById(R.id.ivSaltarEjercicio);
+        ivSaltarEjercicio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                seleccionaCoordenada();
+            }
+        });
     }
+
+    /**
+     * Handle the results from the recognition activity.
+     */
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 100) {
+            if (resultCode == TextToSpeech.Engine.CHECK_VOICE_DATA_PASS) {
+                // the user has the necessary data - create the TTS
+                textToSpeech = new TextToSpeech(this, this);
+            } else {
+                // no data - install it now
+                Intent installTTSIntent = new Intent();
+                installTTSIntent
+                        .setAction(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA);
+                startActivity(installTTSIntent);
+            }
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
+
+    }
+
 
     @Override
     protected int getLayoutResourceId() {
@@ -63,6 +128,7 @@ public class Seccion5Practica2 extends MoverPiezaActivity {
         String columna = letrasColumnas[columnaAleatoria];
 
         tvTituloEjercicio.setVisibility(View.VISIBLE);
+        ivSaltarEjercicio.setVisibility(View.VISIBLE);
 
         int fila = 1 + filaAleatoria;
         coordenadaSolicitada = columna + fila;
@@ -128,7 +194,8 @@ public class Seccion5Practica2 extends MoverPiezaActivity {
         piezaIzquierda = piezaIzquierda.toLowerCase();
         piezaDerecha = piezaDerecha.toLowerCase();
 
-        tvTituloEjercicio.setText(String.format("Que vale más %s o %s?", piezaIzquierda, piezaDerecha));
+        tvTituloEjercicio.setText(String.format("¿Qué vale más?, ¿%s o %s?", piezaIzquierda, piezaDerecha));
+        speak(tvTituloEjercicio.getText().toString());
 
         imagenPiezaDerecha = findViewById(R.id.piezaDerecha);
         imagenPiezaIzquierda = findViewById(R.id.piezaIzquierda);
@@ -174,7 +241,8 @@ public class Seccion5Practica2 extends MoverPiezaActivity {
         Pieza pieza = new Pieza(piezaSeleccionada, Pieza.Color.BLANCO, coordenadaSolicitada);
         vectorPiezasBlancas.add(pieza);
         colocaPiezas();
-        tvTituloEjercicio.setText("La pieza " + pieza.getTipo() + " está en " + coordenadaSolicitada + ", realiza un movimiento válido.");
+        tvTituloEjercicio.setText("¡La pieza " + pieza.getTipo() + " está en " + coordenadaSolicitada + "!, realizá un movimiento válido.");
+        speak(tvTituloEjercicio.getText().toString());
     }
     //endregion
 
@@ -189,6 +257,8 @@ public class Seccion5Practica2 extends MoverPiezaActivity {
 
         Pieza pieza = new Pieza(piezaSeleccionada, Pieza.Color.BLANCO, coordenadaSolicitada);
         tvTituloEjercicio.setText(pieza.getTipo() + " en " + coordenadaSolicitada + ", CAPTURA una pieza negra.");
+        speak(tvTituloEjercicio.getText().toString());
+
         vectorPiezasBlancas.add(pieza);
         colocaPiezas();
 
@@ -301,6 +371,22 @@ public class Seccion5Practica2 extends MoverPiezaActivity {
             (findViewById(R.id.include_tablero)).setVisibility(View.VISIBLE);
             (findViewById(R.id.include_valorpiezas)).setVisibility(View.GONE);
         }
+    }
+
+    private void speak(String str) {
+        textToSpeech.speak(str, TextToSpeech.QUEUE_FLUSH, null);
+        textToSpeech.setSpeechRate(0.0f);
+        textToSpeech.setPitch(0.0f);
+        avatar.habla();
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (textToSpeech != null) {
+            textToSpeech.stop();
+            textToSpeech.shutdown();
+        }
+        super.onDestroy();
     }
 
     @Override

@@ -21,6 +21,7 @@ public class Seccion5Practica1 extends EjercicioBaseActivity {
     private Random random;
     private VistaAvatar avatar;
     TextView tvTituloEjercicio;
+    ImageView ivSaltarEjercicio;
     int columnaAleatoria, filaAleatoria;
     Pieza.Tipo piezaSeleccionada;
     MODO tipoJuego;
@@ -35,11 +36,18 @@ public class Seccion5Practica1 extends EjercicioBaseActivity {
         random = new Random(System.currentTimeMillis());
         baseDatos = new BaseDatos(this);
         setting = PreferenceManager.getDefaultSharedPreferences(this);
-        idUsuario = setting.getString("spIdUsurioActual","1");
+        idUsuario = setting.getString("spIdUsurioActual", "1");
 
         tvTituloEjercicio = findViewById(R.id.tvTituloEjerciciosPracticas);
         Typeface fuente = Typeface.createFromAsset(getAssets(), "fonts/BalooPaaji-Regular.ttf");
         tvTituloEjercicio.setTypeface(fuente);
+        ivSaltarEjercicio = findViewById(R.id.ivSaltarEjercicio);
+        ivSaltarEjercicio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                seleccionaCoordenada();
+            }
+        });
 
         avatar = getAvatar();
         avatar.habla(R.raw.senyala_casilla_presentacion, new VistaAvatar.OnAvatarHabla() {
@@ -62,6 +70,7 @@ public class Seccion5Practica1 extends EjercicioBaseActivity {
         String columna = letras[columnaAleatoria];
 
         tvTituloEjercicio.setVisibility(View.VISIBLE);
+        ivSaltarEjercicio.setVisibility(View.VISIBLE);
 
         int fila = 1 + filaAleatoria;
         coordenadaSolicitada = columna + fila;
@@ -212,7 +221,7 @@ public class Seccion5Practica1 extends EjercicioBaseActivity {
                 @Override
                 public void onTerminaHabla() {
 
-                    baseDatos.IncrementaAcierto(idUsuario,"1");
+                    baseDatos.IncrementaAcierto(idUsuario, "1");
                     seleccionaCoordenada();
                 }
             });
@@ -228,7 +237,7 @@ public class Seccion5Practica1 extends EjercicioBaseActivity {
 
             resaltarCasilla(colDestino, filaDestino, Movimiento.INCORRECTO);
 
-            baseDatos.IncrementaEjercicioFalla(idUsuario,"1");
+            baseDatos.IncrementaEjercicioFalla(idUsuario, "1");
 
             preguntaCoordenada();
 
