@@ -263,8 +263,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void solicitarPermisoRecordAudio() {
-        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                Manifest.permission.RECORD_AUDIO)) {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.RECORD_AUDIO) &&
+                ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
             Snackbar snackbar = Snackbar.make(avatar, "Sin el permiso grabación de audio,\n"
                     + "no puedo mostrarte el avatar hablando.", Snackbar.LENGTH_INDEFINITE);
             View snackbarView = snackbar.getView();
@@ -274,12 +274,12 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     ActivityCompat.requestPermissions(MainActivity.this, new String[]{
-                            Manifest.permission.RECORD_AUDIO}, SOLICITUD_GRABAR_AUDIO);
+                            Manifest.permission.RECORD_AUDIO, Manifest.permission.READ_EXTERNAL_STORAGE}, SOLICITUD_GRABAR_AUDIO);
                 }
             }).show();
         } else {
             ActivityCompat.requestPermissions(this, new String[]{
-                    Manifest.permission.RECORD_AUDIO}, SOLICITUD_GRABAR_AUDIO);
+                    Manifest.permission.RECORD_AUDIO, Manifest.permission.READ_EXTERNAL_STORAGE}, SOLICITUD_GRABAR_AUDIO);
         }
     }
 

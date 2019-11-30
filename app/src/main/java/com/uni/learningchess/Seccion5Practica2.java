@@ -3,6 +3,7 @@ package com.uni.learningchess;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Environment;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Random;
 import java.util.Vector;
@@ -374,10 +376,18 @@ public class Seccion5Practica2 extends MoverPiezaActivity implements TextToSpeec
     }
 
     private void speak(String str) {
-        textToSpeech.speak(str, TextToSpeech.QUEUE_FLUSH, null);
-        textToSpeech.setSpeechRate(0.0f);
+
         textToSpeech.setPitch(0.0f);
-        avatar.habla();
+        textToSpeech.setSpeechRate(0.0f); // entre mas alto, mas lento
+
+        HashMap<String, String> myHashRender = new HashMap();
+        String destFileName = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ejercicio.mp3";
+        myHashRender.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, str);
+        textToSpeech.synthesizeToFile(str, myHashRender, destFileName);
+
+        textToSpeech.speak(str, TextToSpeech.QUEUE_FLUSH, null);
+
+        avatar.habla(destFileName, null);
     }
 
     @Override

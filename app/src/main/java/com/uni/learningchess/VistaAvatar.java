@@ -8,6 +8,7 @@ import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.media.audiofx.Visualizer;
 import android.net.Uri;
+import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.graphics.drawable.AnimatedVectorDrawableCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import android.view.LayoutInflater;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -266,6 +268,22 @@ public class VistaAvatar extends FrameLayout {
             sincronizaBoca();
             habla();
         } catch (Exception e) {
+            e.printStackTrace();
+            Log.e("AjedrezEjercicioBase", e.toString());
+        }
+    }
+    public void habla(String pathSdcard, OnAvatarHabla escuchador) {
+        onAvatarHabla = escuchador;
+        try {
+            if (new File(pathSdcard).exists()) {
+                mediaPlayerVoz.reset();
+                mediaPlayerVoz.setDataSource(activity, Uri.parse(pathSdcard));
+                mediaPlayerVoz.prepare();
+                sincronizaBoca();
+                habla();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
             Log.e("AjedrezEjercicioBase", e.toString());
         }
     }
