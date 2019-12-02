@@ -6,14 +6,19 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
+import android.widget.Toast;
 
 import static com.uni.learningchess.BaseDatos.iBaseDatos.TBL_USUARIO_AVANCES;
 
 public class BaseDatos extends SQLiteOpenHelper {
 
+    Context context;
 
     public BaseDatos(Context context) {
+
         super(context, iBaseDatos.BK_DBNAME_EXTERNALSD, null, 1);
+
+        this.context = context;
     }
 
     String TBLCATSECCIONES = "CREATE TABLE " + iBaseDatos.TBL_CAT_SECCIONES + " (idSecc integer not NULL PRIMARY KEY AUTOINCREMENT, Descripcion  varchar(20))";
@@ -136,6 +141,7 @@ public class BaseDatos extends SQLiteOpenHelper {
                     TBL_USUARIO_AVANCES, idUsuario, idSeccion), null);
 
             if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
                 int TotalAcierto = cursor.getInt(cursor.getColumnIndex("CantAcertado"));
                 ContentValues values = new ContentValues();
                 values.put("CantAcertado", (TotalAcierto + 1));
@@ -148,6 +154,8 @@ public class BaseDatos extends SQLiteOpenHelper {
                 values.put("CantFallado", 0);
                 insertarRegistro(TBL_USUARIO_AVANCES,values);
             }
+
+            Toast.makeText(context,"Incremeta acierto en la DB",Toast.LENGTH_LONG).show();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -162,6 +170,7 @@ public class BaseDatos extends SQLiteOpenHelper {
                     TBL_USUARIO_AVANCES, idUsuario, idSeccion), null);
 
             if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
                 int TotalFallas = cursor.getInt(cursor.getColumnIndex("CantFallado"));
                 ContentValues values = new ContentValues();
                 values.put("CantFallado", (TotalFallas + 1));
@@ -175,6 +184,7 @@ public class BaseDatos extends SQLiteOpenHelper {
                 insertarRegistro(TBL_USUARIO_AVANCES,values);
             }
 
+            Toast.makeText(context,"Incremeta falla en la DB",Toast.LENGTH_LONG).show();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,12 +1,16 @@
 package com.uni.learningchess;
 
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,12 +35,20 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
     Vector<Pieza> vectorPiezasNegras;
     String[] letrasColumnas = {"A", "B", "C", "D", "E", "F", "G", "H"};
 
+	SharedPreferences setting;
+	BaseDatos baseDatos;
+	String idUsuario = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         random = new Random(System.currentTimeMillis());
+
+		baseDatos = new BaseDatos(this);
+		setting = PreferenceManager.getDefaultSharedPreferences(this);
+		idUsuario = setting.getString("spIdUsurioActual", "1");
+
         MG = new MetodosGenerales(this);
         vectorPiezasBlancas = new Vector<>();
         vectorPiezasNegras = new Vector<>();
@@ -49,22 +61,24 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
         avatar.habla(R.raw.senyala_casilla_presentacion, new VistaAvatar.OnAvatarHabla() {
             @Override
             public void onTerminaHabla() {
-
-            }
-        });
-
-        ivSaltarEjercicio = findViewById(R.id.ivSaltarEjercicio);
-        ivSaltarEjercicio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                seleccionaCoordenada();
+				coordenadaSolicitada = seleccionaCoordenada();
+				seleccionaTipoJuego();
             }
         });
 
 
-        coordenadaSolicitada = seleccionaCoordenada();
-        seleccionaTipoJuego();
-
+		try {
+			ivSaltarEjercicio = findViewById(R.id.ivSaltarEjercicio);
+			ivSaltarEjercicio.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					coordenadaSolicitada = seleccionaCoordenada();
+					seleccionaTipoJuego();
+				}
+			});
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
     }
 
     @Override
@@ -115,7 +129,18 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
 
     public void AlternarDisenyo(MODO modo) {
 
-        if (modo == MODO.NOTACION) {
+    	LinearLayout llSecciones_layouts = findViewById(R.id.llSecciones_layouts);
+    	//llSecciones_layouts.removeAllViews();
+
+		LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
+		View view;
+		//RelativeLayout layout = (RelativeLayout) inflater.inflate(R.layout.custom_layout, null, false);
+
+
+		if (modo == MODO.NOTACION) {
+
+			//view = inflater.inflate(R.layout.activity_seccion3ejerc2 , null, false);
+
             (findViewById(R.id.include_notacion)).setVisibility(View.VISIBLE);
             (findViewById(R.id.include_colorcasilla)).setVisibility(View.GONE);
             (findViewById(R.id.include_moverpieza)).setVisibility(View.GONE);
@@ -124,6 +149,8 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
 
         } else if (modo == MODO.COLORCASILLA) {
 
+			//view = inflater.inflate(R.layout.activity_seccion3ejerc3 , null, false);
+
             (findViewById(R.id.include_notacion)).setVisibility(View.GONE);
             (findViewById(R.id.include_colorcasilla)).setVisibility(View.VISIBLE);
             (findViewById(R.id.include_moverpieza)).setVisibility(View.GONE);
@@ -131,6 +158,9 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
             (findViewById(R.id.include_tablero)).setVisibility(View.GONE);
 
         } else if (modo == MODO.MOVERPIEZA) {
+
+			//view = inflater.inflate(R.layout.activity_seccion3ejerc4 , null, false);
+
            /* setContentView(R.layout.activity_seccion3ejerc4);
             avatar = getAvatar();
             avatar.habla(R.raw.colocar_piezas_presentacion);*/
@@ -142,6 +172,7 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
 
         } else {
 
+			//view = inflater.inflate(R.layout.activity_seccion3ejerc5, null, false);
 
             (findViewById(R.id.include_notacion)).setVisibility(View.GONE);
             (findViewById(R.id.include_colorcasilla)).setVisibility(View.GONE);
@@ -149,6 +180,8 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
             (findViewById(R.id.include_coordenadascasilla)).setVisibility(View.VISIBLE);
             (findViewById(R.id.include_tablero)).setVisibility(View.GONE);
         }
+
+		//llSecciones_layouts.addView(view,0);
     }
 
     protected void retiraPiezas() {
@@ -223,6 +256,7 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
         opcion1 = findViewById(R.id.botonOpcion1);
         opcion2 = findViewById(R.id.botonOpcion2);
         opcion3 = findViewById(R.id.botonOpcion3);
+
 
         // se obtinene el tiempo del sistema en milisegundos
         //esto servira para alternar el orden de las respuestas correcta en los botones
@@ -366,11 +400,13 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
                 avatar.habla(R.raw.ok_superado, new VistaAvatar.OnAvatarHabla() {
                     @Override
                     public void onTerminaHabla() {
+						baseDatos.IncrementaAcierto(idUsuario, "3");
                         coordenadaSolicitada = seleccionaCoordenada();
                         seleccionaTipoJuego();
                     }
                 });
             } else {
+				baseDatos.IncrementaEjercicioFalla(idUsuario, "3");
                 avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_INCORRECTO);
                 avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_INCORRECTO);
                 avatar.mueveCejas(VistaAvatar.MovimientoCejas.FRUNCIR);
@@ -412,6 +448,7 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
                 avatar.habla(R.raw.ok_superado, new VistaAvatar.OnAvatarHabla() {
                     @Override
                     public void onTerminaHabla() {
+						baseDatos.IncrementaAcierto(idUsuario, "3");
                         coordenadaSolicitada = seleccionaCoordenada();
                         seleccionaTipoJuego();
                     }
@@ -437,6 +474,8 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
                 avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_INCORRECTO);
                 avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_INCORRECTO);
                 avatar.mueveCejas(VistaAvatar.MovimientoCejas.FRUNCIR);
+
+				baseDatos.IncrementaEjercicioFalla(idUsuario, "3");
             }
         }
         return salida;
@@ -449,11 +488,13 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
             avatar.habla(R.raw.correcto, new VistaAvatar.OnAvatarHabla() {
                 @Override
                 public void onTerminaHabla() {
+					baseDatos.IncrementaAcierto(idUsuario, "3");
                     coordenadaSolicitada = seleccionaCoordenada();
                     seleccionaTipoJuego();
                 }
             });
         } else {
+			baseDatos.IncrementaEjercicioFalla(idUsuario, "3");
             avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_INCORRECTO);
             avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_INCORRECTO);
             avatar.mueveCejas(VistaAvatar.MovimientoCejas.FRUNCIR);

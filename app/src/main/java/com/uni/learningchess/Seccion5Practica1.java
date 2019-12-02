@@ -149,6 +149,7 @@ public class Seccion5Practica1 extends EjercicioBaseActivity {
 
             String coordenadaPulsada = imageView.getTag().toString();
             if (coordenadaPulsada.equals(coordenadaSolicitada)) {
+                baseDatos.IncrementaAcierto(idUsuario, "1");
                 avatar.mueveCejas(VistaAvatar.MovimientoCejas.ARQUEAR);
                 avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_CORRECTO);
                 avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_CORRECTO);
@@ -189,6 +190,7 @@ public class Seccion5Practica1 extends EjercicioBaseActivity {
                 int filaCoordenadaPulsada = coordenadaPulsada.charAt(1) - '1';
                 resaltarCasilla(colCoordenadaPulsada, filaCoordenadaPulsada, Movimiento.INCORRECTO);
                 preguntaCoordenada();
+                baseDatos.IncrementaAcierto(idUsuario, "1");
             }
         }
         return true;

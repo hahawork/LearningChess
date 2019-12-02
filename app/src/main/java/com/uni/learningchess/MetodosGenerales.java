@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -126,7 +127,14 @@ public class MetodosGenerales {
         int idImageView = mActivity.getResources().getIdentifier(pieza.getCoordenada(), "id", mContext.getPackageName());
         ImageView imageView = (ImageView) mActivity.findViewById(idImageView);
         int idDrawablePieza = getDrawablePieza(pieza);
-        imageView.setImageResource(idDrawablePieza);
+        if (imageView.getVisibility() == View.VISIBLE) {
+            // Its visible
+            imageView.setImageResource(idDrawablePieza);
+        } else {
+            Log.w("ColocarPieza", "El id del image view  no esta visible.");
+            // Either gone or invisible
+        }
+
         Log.d("Ajedrez", "tipo=" + pieza.getTipo() + " color=" + pieza.getColor() + " coordenada=" + pieza.getCoordenada() + " getResourceName(idImageView)=" + mActivity.getResources().getResourceName(idImageView));
     }
 

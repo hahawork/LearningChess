@@ -1,9 +1,11 @@
 package com.uni.learningchess;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
@@ -61,12 +63,23 @@ public class Seccion5Practica2 extends MoverPiezaActivity implements TextToSpeec
 
     TextToSpeech textToSpeech;
 
+
+	SharedPreferences setting;
+	BaseDatos baseDatos;
+	String idUsuario = "";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         random = new Random(System.currentTimeMillis());
-        MG = new MetodosGenerales(this);
+
+		baseDatos = new BaseDatos(this);
+		setting = PreferenceManager.getDefaultSharedPreferences(this);
+		idUsuario = setting.getString("spIdUsurioActual", "1");
+
+
+		MG = new MetodosGenerales(this);
         vectorPiezasBlancas = new Vector<>();
         vectorPiezasNegras = new Vector<>();
 
@@ -212,8 +225,11 @@ public class Seccion5Practica2 extends MoverPiezaActivity implements TextToSpeec
             public void onClick(View v) {
                 LinearLayout marco = findViewById(R.id.marcoIzquierda);
                 if (new ValoresPiezasActivity().MetodoPracticaSeccion5(v, marco, avatar, imagenPiezaIzquierda, imagenPiezaDerecha)) {
-                    seleccionaCoordenada();
-                }
+					baseDatos.IncrementaAcierto(idUsuario, "2");
+					seleccionaCoordenada();
+				}else {
+                	baseDatos.IncrementaEjercicioFalla(idUsuario,"2");
+				}
             }
         });
         imagenPiezaDerecha.setOnClickListener(new View.OnClickListener() {
@@ -221,8 +237,11 @@ public class Seccion5Practica2 extends MoverPiezaActivity implements TextToSpeec
             public void onClick(View v) {
                 LinearLayout marco = findViewById(R.id.marcoDerecha);
                 if (new ValoresPiezasActivity().MetodoPracticaSeccion5(v, marco, avatar, imagenPiezaIzquierda, imagenPiezaDerecha)) {
-                    seleccionaCoordenada();
-                }
+					baseDatos.IncrementaAcierto(idUsuario, "2");
+                	seleccionaCoordenada();
+                }else {
+					baseDatos.IncrementaEjercicioFalla(idUsuario,"2");
+				}
             }
         });
     }
@@ -428,6 +447,7 @@ public class Seccion5Practica2 extends MoverPiezaActivity implements TextToSpeec
                 @Override
                 public void onTerminaHabla() {
                     avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.TIC_TAC);
+					baseDatos.IncrementaAcierto(idUsuario, "2");
                     seleccionaCoordenada();
                 }
             });
@@ -449,6 +469,8 @@ public class Seccion5Practica2 extends MoverPiezaActivity implements TextToSpeec
                 resaltarCasilla(p.getColumna(), p.getFila(), Movimiento.CORRECTO);
             } else
                 resaltarCasilla(colOrigen, filaOrigen, validadorResaltarCasillas);
+
+			baseDatos.IncrementaEjercicioFalla(idUsuario, "2");
         }
     }
 

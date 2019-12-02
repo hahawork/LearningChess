@@ -54,14 +54,14 @@ public class MovimientosCapturas extends MoverPiezaActivity {
 
     private void getExtra() {
         Bundle bundle = getIntent().getExtras();
-        if (bundle != null) {
-        int count = bundle.getInt("pieza", 0);
-        Pieza.Tipo VienePieza = Pieza.Tipo.values()[count];
-        PiezaBlanca = new Pieza(VienePieza, BLANCO, "E4");
-    } else {
-        PiezaBlanca = new Pieza(PEON, BLANCO, "B4");
+            if (bundle != null) {
+                int count = bundle.getInt("pieza", 0);
+                Pieza.Tipo VienePieza = Pieza.Tipo.values()[count];
+                PiezaBlanca = new Pieza(VienePieza, BLANCO, "E4");
+        } else {
+            PiezaBlanca = new Pieza(PEON, BLANCO, "B4");
+        }
     }
-}
 
     @Override
     protected int getLayoutResourceId() {
