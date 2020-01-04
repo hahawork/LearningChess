@@ -6,7 +6,7 @@ public class Pieza {
 
     private Tipo tipo;
     private Color color;
-    private String coordenada;
+    private String coordenada,coordenadacorrecta="A0";
     private boolean MoverDarJaqueMate;
 
     public enum Tipo {PEON, CABALLO, ALFIL, TORRE, DAMA, REY}
@@ -20,11 +20,12 @@ public class Pieza {
         this.MoverDarJaqueMate = false;
     }
 
-    public Pieza(Tipo tipo, Color color, String coordenada, boolean moverDarJaqueMate) {
+    public Pieza(Tipo tipo, Color color, String coordenada, boolean moverDarJaqueMate,String coordenadacorrecta) {
         this.coordenada = coordenada;
         this.tipo = tipo;
         this.color = color;
         this.MoverDarJaqueMate = moverDarJaqueMate;
+        this.coordenadacorrecta = coordenadacorrecta;
     }
 
     public String getCoordenada() {
@@ -68,4 +69,12 @@ public class Pieza {
     public void setMoverDarJaqueMate(boolean moverDarJaqueMate) {
         MoverDarJaqueMate = moverDarJaqueMate;
     }
+    public int getColumnaCorrecta() {
+        return coordenadacorrecta.charAt(0) - 'A';
+    }
+
+    public int getFilaCorrecta() {
+        return coordenadacorrecta.charAt(1) - '1';
+    }
+
 }

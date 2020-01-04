@@ -300,7 +300,7 @@ public class Seccion4JaqueMateReyActivity extends EjercicioBaseActivity implemen
                 vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "A3"));
                 vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "B2"));
                 vectorPiezasBlancas.add(new Pieza(DAMA, BLANCO, "B3"));
-                vectorPiezasBlancas.add(new Pieza(TORRE, BLANCO, "D1",true));
+                vectorPiezasBlancas.add(new Pieza(TORRE, BLANCO, "D1", true, "D8"));
                 vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "E4"));
                 vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "G2"));
                 vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "H2"));
@@ -320,7 +320,7 @@ public class Seccion4JaqueMateReyActivity extends EjercicioBaseActivity implemen
                 vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "B2"));
                 vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "C2"));
                 vectorPiezasBlancas.add(new Pieza(TORRE, BLANCO, "H1"));
-                vectorPiezasBlancas.add(new Pieza(CABALLO, BLANCO, "E5",true));
+                vectorPiezasBlancas.add(new Pieza(CABALLO, BLANCO, "E5", true, "G6"));
                 vectorPiezasBlancas.add(new Pieza(ALFIL, BLANCO, "B3"));
 
                 vectorPiezasNegras.add(new Pieza(REY, NEGRO, "H8"));
@@ -331,14 +331,14 @@ public class Seccion4JaqueMateReyActivity extends EjercicioBaseActivity implemen
                 vectorPiezasNegras.add(new Pieza(CABALLO, NEGRO, "B8"));
                 vectorPiezasNegras.add(new Pieza(ALFIL, NEGRO, "C8"));
                 break;
-            case 2: //tablero 3
-                vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "F4"));
-                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "F7"));
-                vectorPiezasBlancas.add(new Pieza(DAMA, BLANCO, "C7",true));
-                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "F5"));
+            case 2: //tablero 13
+                vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "G1"));
+                vectorPiezasBlancas.add(new Pieza(ALFIL, BLANCO, "A5"));
+                vectorPiezasBlancas.add(new Pieza(DAMA, BLANCO, "F4", true, "D4"));
 
-                vectorPiezasNegras.add(new Pieza(REY, NEGRO, "F6"));
-                vectorPiezasNegras.add(new Pieza(TORRE, NEGRO, "G8"));
+                vectorPiezasNegras.add(new Pieza(REY, NEGRO, "D7"));
+                vectorPiezasNegras.add(new Pieza(ALFIL, NEGRO, "E8"));
+                vectorPiezasNegras.add(new Pieza(DAMA, NEGRO, "E6"));
                 break;
         }
 
@@ -354,7 +354,7 @@ public class Seccion4JaqueMateReyActivity extends EjercicioBaseActivity implemen
             case 0://tablero 12
                 vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "F1"));
                 vectorPiezasBlancas.add(new Pieza(TORRE, BLANCO, "B7"));
-                vectorPiezasBlancas.add(new Pieza(CABALLO, BLANCO, "E6",true));
+                vectorPiezasBlancas.add(new Pieza(CABALLO, BLANCO, "E6", true, "G7"));
 
                 vectorPiezasNegras.add(new Pieza(REY, NEGRO, "E8"));
                 vectorPiezasNegras.add(new Pieza(DAMA, NEGRO, "D8"));
@@ -363,7 +363,7 @@ public class Seccion4JaqueMateReyActivity extends EjercicioBaseActivity implemen
             case 1://tablero 6
                 vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "G2"));
                 vectorPiezasBlancas.add(new Pieza(ALFIL, BLANCO, "G3"));
-                vectorPiezasBlancas.add(new Pieza(DAMA, BLANCO, "A4",true));
+                vectorPiezasBlancas.add(new Pieza(DAMA, BLANCO, "A4", true, "A8"));
 
                 vectorPiezasNegras.add(new Pieza(REY, NEGRO, "C8"));
                 vectorPiezasNegras.add(new Pieza(TORRE, NEGRO, "D8"));
@@ -371,7 +371,7 @@ public class Seccion4JaqueMateReyActivity extends EjercicioBaseActivity implemen
             case 2://tablero 7
                 vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "H1"));
                 vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "E6"));
-                vectorPiezasBlancas.add(new Pieza(CABALLO, BLANCO, "C5",true));
+                vectorPiezasBlancas.add(new Pieza(CABALLO, BLANCO, "C5", true, "A6"));
                 vectorPiezasBlancas.add(new Pieza(TORRE, BLANCO, "C2"));
 
                 vectorPiezasNegras.add(new Pieza(REY, NEGRO, "C7"));
@@ -392,7 +392,7 @@ public class Seccion4JaqueMateReyActivity extends EjercicioBaseActivity implemen
                 vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "G1"));
                 vectorPiezasBlancas.add(new Pieza(DAMA, BLANCO, "A1"));
                 vectorPiezasBlancas.add(new Pieza(TORRE, BLANCO, "D1"));
-                vectorPiezasBlancas.add(new Pieza(CABALLO, BLANCO, "D4",true));
+                vectorPiezasBlancas.add(new Pieza(CABALLO, BLANCO, "D4", true, "C6"));
                 vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "E2"));
                 vectorPiezasBlancas.add(new Pieza(ALFIL, BLANCO, "F7"));
 
@@ -405,7 +405,7 @@ public class Seccion4JaqueMateReyActivity extends EjercicioBaseActivity implemen
                 vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "C1"));
                 vectorPiezasBlancas.add(new Pieza(ALFIL, BLANCO, "B2"));
                 vectorPiezasBlancas.add(new Pieza(CABALLO, BLANCO, "G5"));
-                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "H6",true));
+                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "H6", true, "H7"));
 
                 vectorPiezasNegras.add(new Pieza(REY, NEGRO, "G8"));
                 vectorPiezasNegras.add(new Pieza(TORRE, NEGRO, "F8"));
@@ -413,8 +413,8 @@ public class Seccion4JaqueMateReyActivity extends EjercicioBaseActivity implemen
             case 2://tablero 10
                 vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "H1"));
                 vectorPiezasBlancas.add(new Pieza(TORRE, BLANCO, "B1"));
-                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "D6",true));
-                vectorPiezasBlancas.add(new Pieza(TORRE, BLANCO, "G7"));
+                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "D6"));
+                vectorPiezasBlancas.add(new Pieza(TORRE, BLANCO, "G7",true,"C7"));
 
                 vectorPiezasNegras.add(new Pieza(REY, NEGRO, "C8"));
                 vectorPiezasNegras.add(new Pieza(TORRE, NEGRO, "D8"));
@@ -462,6 +462,8 @@ public class Seccion4JaqueMateReyActivity extends EjercicioBaseActivity implemen
         boolean movimientoCorrecto = movimientoPiezaBlanca && movimientoValido;
         boolean capturaReyNegro = capturaPieza && (mg.getColorPieza(colOrigen, filaOrigen) == NEGRO);
         boolean esPiezaCorrectaJaqueMate = mg.getPieza(colOrigen,filaOrigen).isMoverDarJaqueMate();
+        boolean esCasillaCorrecta = mg.getPieza(colOrigen, filaOrigen).getColumnaCorrecta() == colDestino &&
+                mg.getPieza(colOrigen, filaOrigen).getFilaCorrecta() == filaDestino;
 
         if (movimientoCorrecto && capturaPieza) eliminaPieza(piezaDestino);
 
@@ -469,7 +471,7 @@ public class Seccion4JaqueMateReyActivity extends EjercicioBaseActivity implemen
         Log.d("Ajedrez", "movimientoValido=" + movimientoValido);
         Log.d("Ajedrez", "capturaPieza=" + capturaPieza);
         Log.d("Ajedrez", "movimientoCorrecto=" + movimientoCorrecto);
-        return movimientoCorrecto && esPiezaCorrectaJaqueMate && !capturaReyNegro;
+        return movimientoCorrecto && esPiezaCorrectaJaqueMate && esCasillaCorrecta && !capturaReyNegro;
     }
 
     @Override
