@@ -25,6 +25,7 @@ public class Seccion4JaqueMateReyActivity extends EjercicioBaseActivity implemen
     private Vector<Pieza> vectorPiezasBlancas;
     private Vector<Pieza> vectorPiezasNegras;
     private Vector<Pieza> vectorPiezasBlancasAtacantes; // Que hacen jaque al Rey.
+
     private Random random;
     Pieza PeonCoronado;
     MetodosGenerales mg;

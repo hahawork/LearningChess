@@ -24,27 +24,21 @@ public class Seccion4Ahogado extends EjercicioBaseActivity {
     private int contadorMovimientos = 0;
     public Vector<Pieza> vectorPiezasBlancas;
     public Vector<Pieza> vectorPiezasNegras;
-    public Vector<Pieza> vectorPiezasBlancasDefensoras; // Que pueden evitar el jaque al Rey blanco.
-    public Vector<Pieza> vectorPiezasNegasDefensoras; // Que pueden evitar el jaque al Rey negro.
-    public Vector<Pieza> vectorPiezasNegrasAtacantes; // Que hacen jaque al Rey blanco.
     public Vector<Pieza> vectorPiezasBlancasAtacantes; // Que hacen jaque al Rey negro.
     private Random random;
 
-    MetodosGenerales MG;
+    MetodosGenerales mg;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        MG = new MetodosGenerales(this);
+        mg = new MetodosGenerales(this);
 
         vectorPiezasBlancas = new Vector<>();
-        vectorPiezasBlancasDefensoras = new Vector<>();
         vectorPiezasBlancasAtacantes = new Vector<>();
 
         vectorPiezasNegras = new Vector<>();
-        vectorPiezasNegasDefensoras = new Vector<>();
-        vectorPiezasNegrasAtacantes = new Vector<>();
 
         inicializaJugada(contadorMovimientos);
 
@@ -67,8 +61,8 @@ public class Seccion4Ahogado extends EjercicioBaseActivity {
     private Validador validadorPeon = new Validador() {
         @Override
         public boolean movimientoValido(int colOrigen, int filaOrigen, int colDestino, int filaDestino) {
-            boolean esPeon = (MG.getTipoPieza(colOrigen, filaOrigen) == PEON);
-            boolean esBlanco = (MG.getColorPieza(colOrigen, filaOrigen) == BLANCO);
+            boolean esPeon = (mg.getTipoPieza(colOrigen, filaOrigen) == PEON);
+            boolean esBlanco = (mg.getColorPieza(colOrigen, filaOrigen) == BLANCO);
             boolean diferenteCasilla = (colOrigen != colDestino) || (filaOrigen != filaDestino);
             boolean avanzaUno = ((esBlanco && (filaDestino == filaOrigen + 1))
                     || (!esBlanco && (filaDestino == filaOrigen - 1))
@@ -80,7 +74,7 @@ public class Seccion4Ahogado extends EjercicioBaseActivity {
     private Validador validadorCaballo = new Validador() {
         @Override
         public boolean movimientoValido(int colOrigen, int filaOrigen, int colDestino, int filaDestino) {
-            boolean esCaballo = (MG.getTipoPieza(colOrigen, filaOrigen) == CABALLO);
+            boolean esCaballo = (mg.getTipoPieza(colOrigen, filaOrigen) == CABALLO);
             boolean diferenteCasilla = (colOrigen != colDestino) || (filaOrigen != filaDestino);
             boolean vertical2horizintal1 = (Math.abs(filaOrigen - filaDestino) == 2)
                     && (Math.abs(colOrigen - colDestino) == 1);
@@ -93,10 +87,10 @@ public class Seccion4Ahogado extends EjercicioBaseActivity {
     private Validador validadorAlfil = new Validador() {
         @Override
         public boolean movimientoValido(int colOrigen, int filaOrigen, int colDestino, int filaDestino) {
-            boolean esAlfil = (MG.getTipoPieza(colOrigen, filaOrigen) == ALFIL);
+            boolean esAlfil = (mg.getTipoPieza(colOrigen, filaOrigen) == ALFIL);
             boolean diferenteCasilla = (colOrigen != colDestino) || (filaOrigen != filaDestino);
             boolean mismaDiagonal = (Math.abs(filaOrigen - filaDestino) == Math.abs(colOrigen - colDestino));
-            boolean saltaPiezas = MG.saltaPiezas(colOrigen, filaOrigen, colDestino, filaDestino);
+            boolean saltaPiezas = mg.saltaPiezas(colOrigen, filaOrigen, colDestino, filaDestino);
             return (esAlfil && diferenteCasilla && mismaDiagonal && !saltaPiezas);
         }
     };
@@ -104,11 +98,11 @@ public class Seccion4Ahogado extends EjercicioBaseActivity {
     private Validador validadorTorre = new Validador() {
         @Override
         public boolean movimientoValido(int colOrigen, int filaOrigen, int colDestino, int filaDestino) {
-            boolean esTorre = (MG.getTipoPieza(colOrigen, filaOrigen) == TORRE);
+            boolean esTorre = (mg.getTipoPieza(colOrigen, filaOrigen) == TORRE);
             boolean diferenteCasilla = (colOrigen != colDestino) || (filaOrigen != filaDestino);
             boolean mismaColumna = (colOrigen == colDestino);
             boolean mismaFila = (filaOrigen == filaDestino);
-            boolean saltaPiezas = MG.saltaPiezas(colOrigen, filaOrigen, colDestino, filaDestino);
+            boolean saltaPiezas = mg.saltaPiezas(colOrigen, filaOrigen, colDestino, filaDestino);
             return (esTorre && diferenteCasilla && (mismaColumna || mismaFila) && !saltaPiezas);
         }
     };
@@ -116,12 +110,12 @@ public class Seccion4Ahogado extends EjercicioBaseActivity {
     private Validador validadorDama = new Validador() {
         @Override
         public boolean movimientoValido(int colOrigen, int filaOrigen, int colDestino, int filaDestino) {
-            boolean esDama = (MG.getTipoPieza(colOrigen, filaOrigen) == DAMA);
+            boolean esDama = (mg.getTipoPieza(colOrigen, filaOrigen) == DAMA);
             boolean diferenteCasilla = (colOrigen != colDestino) || (filaOrigen != filaDestino);
             boolean mismaColumna = (colOrigen == colDestino);
             boolean mismaFila = (filaOrigen == filaDestino);
             boolean mismaDiagonal = (Math.abs(filaOrigen - filaDestino) == Math.abs(colOrigen - colDestino));
-            boolean saltaPiezas = MG.saltaPiezas(colOrigen, filaOrigen, colDestino, filaDestino);
+            boolean saltaPiezas = mg.saltaPiezas(colOrigen, filaOrigen, colDestino, filaDestino);
             return (esDama && diferenteCasilla && (mismaColumna || mismaFila || mismaDiagonal) && !saltaPiezas);
         }
     };
@@ -129,7 +123,7 @@ public class Seccion4Ahogado extends EjercicioBaseActivity {
     private Validador validadorRey = new Validador() {
         @Override
         public boolean movimientoValido(int colOrigen, int filaOrigen, int colDestino, int filaDestino) {
-            boolean esRey = (MG.getTipoPieza(colOrigen, filaOrigen) == REY);
+            boolean esRey = (mg.getTipoPieza(colOrigen, filaOrigen) == REY);
             boolean diferenteCasilla = (colOrigen != colDestino) || (filaOrigen != filaDestino);
             boolean distanciaUno = (Math.abs(filaOrigen - filaDestino) <= 1)
                     && (Math.abs(colOrigen - colDestino) <= 1);
@@ -140,31 +134,30 @@ public class Seccion4Ahogado extends EjercicioBaseActivity {
     private Validador validadorGenerico = new Validador() {
         @Override
         public boolean movimientoValido(int colOrigen, int filaOrigen, int colDestino, int filaDestino) {
-            boolean movimientoValidoPiezas = false;
-            if (MG.hayPieza(colOrigen, filaOrigen) && casillaDisponible(colOrigen, filaOrigen, colDestino, filaDestino)) {
-
-                switch (MG.getTipoPieza(colOrigen, filaOrigen)) {
+            boolean movimientoValidoBlancas = false;
+            if (mg.hayPieza(colOrigen, filaOrigen) && mg.casillaDisponible(colOrigen, filaOrigen, colDestino, filaDestino)) {
+                switch (mg.getTipoPieza(colOrigen, filaOrigen)) {
                     case PEON:
-                        movimientoValidoPiezas = validadorPeon.movimientoValido(colOrigen, filaOrigen, colDestino, filaDestino);
+                        movimientoValidoBlancas = validadorPeon.movimientoValido(colOrigen, filaOrigen, colDestino, filaDestino);
                         break;
                     case CABALLO:
-                        movimientoValidoPiezas = validadorCaballo.movimientoValido(colOrigen, filaOrigen, colDestino, filaDestino);
+                        movimientoValidoBlancas = validadorCaballo.movimientoValido(colOrigen, filaOrigen, colDestino, filaDestino);
                         break;
                     case ALFIL:
-                        movimientoValidoPiezas = validadorAlfil.movimientoValido(colOrigen, filaOrigen, colDestino, filaDestino);
+                        movimientoValidoBlancas = validadorAlfil.movimientoValido(colOrigen, filaOrigen, colDestino, filaDestino);
                         break;
                     case TORRE:
-                        movimientoValidoPiezas = validadorTorre.movimientoValido(colOrigen, filaOrigen, colDestino, filaDestino);
+                        movimientoValidoBlancas = validadorTorre.movimientoValido(colOrigen, filaOrigen, colDestino, filaDestino);
                         break;
                     case DAMA:
-                        movimientoValidoPiezas = validadorDama.movimientoValido(colOrigen, filaOrigen, colDestino, filaDestino);
+                        movimientoValidoBlancas = validadorDama.movimientoValido(colOrigen, filaOrigen, colDestino, filaDestino);
                         break;
                     case REY:
-                        movimientoValidoPiezas = validadorRey.movimientoValido(colOrigen, filaOrigen, colDestino, filaDestino);
+                        movimientoValidoBlancas = validadorRey.movimientoValido(colOrigen, filaOrigen, colDestino, filaDestino);
                         break;
                 }
             }
-            return (movimientoValidoPiezas);
+            return (movimientoValidoBlancas);
         }
     };
 
@@ -172,198 +165,81 @@ public class Seccion4Ahogado extends EjercicioBaseActivity {
         @Override
         public boolean movimientoValido(int colOrigen, int filaOrigen, int colDestino, int filaDestino) {
             boolean validador = false;
-            Pieza pieza = MG.getPieza(colOrigen, filaOrigen);
+            Pieza pieza = mg.getPieza(colOrigen, filaOrigen);
 
             if (pieza != null) {
-                boolean movimientoValidoPieza = validadorGenerico.movimientoValido(colOrigen, filaOrigen, colDestino, filaDestino);
-                Log.d("Ajedrez ", "***movimientoValidoPieza=" + movimientoValidoPieza);
-                Pieza piezaDestino = MG.getPieza(colDestino, filaDestino);
-
+                boolean movimientoValidoBlancas = validadorGenerico.movimientoValido(colOrigen, filaOrigen, colDestino, filaDestino);
+                Log.d("Ajedrez", "***movimientoValidoBlancas=" + movimientoValidoBlancas);
+                Pieza piezaDestino = mg.getPieza(colDestino, filaDestino);
                 if (piezaDestino != null && piezaDestino.getColor() == NEGRO) {
                     vectorPiezasNegras.remove(piezaDestino);
-                } else if (piezaDestino != null && piezaDestino.getColor() == BLANCO) {
-                    vectorPiezasBlancas.remove(piezaDestino);
                 }
 
                 pieza.setCoordenada(colDestino, filaDestino);
                 boolean reyEnJaque = reyEnJaque();
                 Log.d("Ajedrez", "***reyEnJaque=" + reyEnJaque);
+                validador = movimientoValidoBlancas;// && reyEnJaque;
                 pieza.setCoordenada(colOrigen, filaOrigen);
                 if (piezaDestino != null && piezaDestino.getColor() == NEGRO) {
-                    if (!vectorPiezasNegras.contains(piezaDestino))
-                        vectorPiezasNegras.add(piezaDestino);
+                    vectorPiezasNegras.add(piezaDestino);
                 }
-                if (piezaDestino != null && piezaDestino.getColor() == BLANCO) {
-                    if (!vectorPiezasBlancas.contains(piezaDestino))
-                        vectorPiezasBlancas.add(piezaDestino);
-                }
-
-                //actualiza de nuevo el vector en MG para el metodo getPieza();
-                ActualizarVectoresEnMetodosGenerales();
-
-                validador = movimientoValidoPieza;// && !reyEnJaque;
-                // pieza.setCoordenada(colOrigen, filaOrigen);
             }
             return (validador);
         }
     };
 
     private boolean reyEnJaque() {
-        //vectorPiezasBlancasAtacantes.removeAllElements();
-        //vectorPiezasNegrasAtacantes.removeAllElements();
-
-        Pieza reyBlanco = null;
-        for (int i = 0; (i < vectorPiezasBlancas.size() && reyBlanco == null); i++) {
-            Pieza pieza = vectorPiezasBlancas.get(i);
-            if (pieza.getTipo() == REY && pieza.getColor() == BLANCO)
-                reyBlanco = vectorPiezasBlancas.get(i);
-        }
-        Pieza reyNegro = null;
-        for (int i = 0; (i < vectorPiezasNegras.size() && reyNegro == null); i++) {
-            Pieza pieza = vectorPiezasNegras.get(i);
-            if (pieza.getTipo() == REY && pieza.getColor() == NEGRO)
-                reyNegro = vectorPiezasNegras.get(i);
-        }
-
-        //ciclo para recorrer las pieza y determinar las atacantes al rey blanco
-        if (reyBlanco != null) {  // SI EN ESTA JUGADA EXISTE EL REY BLANCO
-            for (int i = 0; i < vectorPiezasNegras.size(); i++) {
-                Pieza piezaNegra = vectorPiezasNegras.get(i);
-                Log.d("Ajedrez", "piezaNegra.getTipo()=" + piezaNegra.getTipo());
-                switch (piezaNegra.getTipo()) {
-                    case PEON:
-                        if (validadorPeon.movimientoValido(piezaNegra.getColumna(), piezaNegra.getFila(),
-                                reyBlanco.getColumna(), reyBlanco.getFila())) {
-                            vectorPiezasNegrasAtacantes.add(piezaNegra);
-                        }
-                        break;
-
-                    case CABALLO:
-                        if (validadorCaballo.movimientoValido(piezaNegra.getColumna(), piezaNegra.getFila(),
-                                reyBlanco.getColumna(), reyBlanco.getFila())) {
-                            vectorPiezasNegrasAtacantes.add(piezaNegra);
-                        }
-                        break;
-
-                    case ALFIL:
-                        if (validadorAlfil.movimientoValido(piezaNegra.getColumna(), piezaNegra.getFila(),
-                                reyBlanco.getColumna(), reyBlanco.getFila())) {
-                            vectorPiezasNegrasAtacantes.add(piezaNegra);
-                        }
-                        break;
-
-                    case TORRE:
-                        if (validadorTorre.movimientoValido(piezaNegra.getColumna(), piezaNegra.getFila(),
-                                reyBlanco.getColumna(), reyBlanco.getFila())) {
-                            vectorPiezasNegrasAtacantes.add(piezaNegra);
-                        }
-                        break;
-
-                    case DAMA:
-                        if (validadorDama.movimientoValido(piezaNegra.getColumna(), piezaNegra.getFila(),
-                                reyBlanco.getColumna(), reyBlanco.getFila())) {
-                            vectorPiezasNegrasAtacantes.add(piezaNegra);
-                        }
-                        break;
-
-                    case REY:
-                        if (validadorRey.movimientoValido(piezaNegra.getColumna(), piezaNegra.getFila(),
-                                reyBlanco.getColumna(), reyBlanco.getFila())) {
-                            vectorPiezasNegrasAtacantes.add(piezaNegra);
-                        }
-                        break;
-                }
-            }
-        }
-        //ciclo para recorrer las pieza y determinar las atacantes al rey negro
-        if (reyNegro != null) {    // SI EN ESTA JUGADA EXISTE EL REY NEGRO
-            for (int i = 0; i < vectorPiezasBlancas.size(); i++) {
-                Pieza piezaBlanca = vectorPiezasBlancas.get(i);
-                Log.d("Ajedrez", "piezaBlanca.getTipo()=" + piezaBlanca.getTipo());
-                switch (piezaBlanca.getTipo()) {
-                    case PEON:
-                        if (validadorPeon.movimientoValido(piezaBlanca.getColumna(), piezaBlanca.getFila(),
-                                reyNegro.getColumna(), reyNegro.getFila())) {
-                            vectorPiezasBlancasAtacantes.add(piezaBlanca);
-                        }
-                        break;
-                    case CABALLO:
-                        if (validadorCaballo.movimientoValido(piezaBlanca.getColumna(), piezaBlanca.getFila(),
-                                reyNegro.getColumna(), reyNegro.getFila())) {
-                            vectorPiezasBlancasAtacantes.add(piezaBlanca);
-                        }
-                        break;
-                    case ALFIL:
-                        if (validadorAlfil.movimientoValido(piezaBlanca.getColumna(), piezaBlanca.getFila(),
-                                reyNegro.getColumna(), reyNegro.getFila())) {
-                            vectorPiezasBlancasAtacantes.add(piezaBlanca);
-                        }
-                        break;
-
-                    case TORRE:
-                        if (validadorTorre.movimientoValido(piezaBlanca.getColumna(), piezaBlanca.getFila(),
-                                reyNegro.getColumna(), reyNegro.getFila())) {
-                            vectorPiezasBlancasAtacantes.add(piezaBlanca);
-                        }
-                        break;
-
-                    case DAMA:
-                        if (validadorDama.movimientoValido(piezaBlanca.getColumna(), piezaBlanca.getFila(),
-                                reyNegro.getColumna(), reyNegro.getFila())) {
-                            vectorPiezasBlancasAtacantes.add(piezaBlanca);
-                        }
-                        break;
-
-                    case REY:
-                        if (validadorRey.movimientoValido(piezaBlanca.getColumna(), piezaBlanca.getFila(),
-                                reyNegro.getColumna(), reyNegro.getFila())) {
-                            vectorPiezasBlancasAtacantes.add(piezaBlanca);
-                        }
-                        break;
-                }
-            }
-        }
-        return (vectorPiezasNegrasAtacantes.size() > 0 || vectorPiezasBlancasAtacantes.size() > 0);
-    }
-
-    private boolean reyBlancoEnJaqueMate() {
-        vectorPiezasBlancasDefensoras.removeAllElements();
-        for (int p = 0; p < vectorPiezasBlancas.size(); p++) {
-            Pieza pieza = vectorPiezasBlancas.get(p);
-            for (int c = 0; c < 8; c++) {
-                for (int f = 0; f < 8; f++) {
-                    if (validador.movimientoValido(pieza.getColumna(), pieza.getFila(), c, f)) {
-                        vectorPiezasBlancasDefensoras.add(pieza);
+        vectorPiezasBlancasAtacantes.removeAllElements();
+        Pieza reyNegro = vectorPiezasNegras.get(0);
+        Log.d("Ajedrez", "reyBlanco.getTipo()=" + reyNegro.getTipo());
+        for (int i = 0; i < vectorPiezasBlancas.size(); i++) {
+            Pieza piezaBlanca = vectorPiezasBlancas.get(i);
+            Log.d("Ajedrez", "piezaBlanca.getTipo()=" + piezaBlanca.getTipo());
+            switch (piezaBlanca.getTipo()) {
+                case PEON:
+                    if (validadorPeon.movimientoValido(piezaBlanca.getColumna(), piezaBlanca.getFila(),
+                            reyNegro.getColumna(), reyNegro.getFila())) {
+                        vectorPiezasBlancasAtacantes.add(piezaBlanca);
                     }
-                }
-            }
-        }
-        return (vectorPiezasBlancasDefensoras.size() == 0);
-    }
+                    break;
 
-    private boolean reyNegroEnJaqueMate() {
-        vectorPiezasNegasDefensoras.removeAllElements();
-        for (int p = 0; p < vectorPiezasNegras.size(); p++) {
-            Pieza pieza = vectorPiezasNegras.get(p);
-            for (int c = 0; c < 8; c++) {
-                for (int f = 0; f < 8; f++) {
-                    if (validador.movimientoValido(pieza.getColumna(), pieza.getFila(), c, f)) {
-                        vectorPiezasNegasDefensoras.add(pieza);
+                case CABALLO:
+                    if (validadorCaballo.movimientoValido(piezaBlanca.getColumna(), piezaBlanca.getFila(),
+                            reyNegro.getColumna(), reyNegro.getFila())) {
+                        vectorPiezasBlancasAtacantes.add(piezaBlanca);
                     }
-                }
+                    break;
+
+                case ALFIL:
+                    if (validadorAlfil.movimientoValido(piezaBlanca.getColumna(), piezaBlanca.getFila(),
+                            reyNegro.getColumna(), reyNegro.getFila())) {
+                        vectorPiezasBlancasAtacantes.add(piezaBlanca);
+                    }
+                    break;
+
+                case TORRE:
+                    if (validadorTorre.movimientoValido(piezaBlanca.getColumna(), piezaBlanca.getFila(),
+                            reyNegro.getColumna(), reyNegro.getFila())) {
+                        vectorPiezasBlancasAtacantes.add(piezaBlanca);
+                    }
+                    break;
+
+                case DAMA:
+                    if (validadorDama.movimientoValido(piezaBlanca.getColumna(), piezaBlanca.getFila(),
+                            reyNegro.getColumna(), reyNegro.getFila())) {
+                        vectorPiezasBlancasAtacantes.add(piezaBlanca);
+                    }
+                    break;
+
+                case REY:
+                    if (validadorRey.movimientoValido(piezaBlanca.getColumna(), piezaBlanca.getFila(),
+                            reyNegro.getColumna(), reyNegro.getFila())) {
+                        vectorPiezasBlancasAtacantes.add(piezaBlanca);
+                    }
+                    break;
             }
         }
-        return (vectorPiezasNegasDefensoras.size() == 0);
-    }
-
-    public boolean capturaPieza(int colOrigen, int filaOrigen, int colDestino, int filaDestino) {
-        Pieza piezaOrigen = MG.getPieza(colOrigen, filaOrigen);
-        Pieza piezaDestino = MG.getPieza(colDestino, filaDestino);
-        return (piezaOrigen != null && piezaDestino != null && piezaOrigen.getColor() != piezaDestino.getColor());
-    }
-
-    public boolean casillaDisponible(int colOrigen, int filaOrigen, int colDestino, int filaDestino) {
-        return (!MG.hayPieza(colDestino, filaDestino) || capturaPieza(colOrigen, filaOrigen, colDestino, filaDestino));
+        return (vectorPiezasBlancasAtacantes.size() > 0);
     }
 
     protected void retiraPiezas() {
@@ -388,29 +264,6 @@ public class Seccion4Ahogado extends EjercicioBaseActivity {
     public void eliminaPieza(Pieza pieza) {
         vectorPiezasBlancas.removeElement(pieza);
         vectorPiezasNegras.removeElement(pieza);
-
-        //se actualiza las piezas en el vector
-        ActualizarVectoresEnMetodosGenerales();
-
-    }
-
-    private void colocaPiezas() {
-
-        ActualizarVectoresEnMetodosGenerales();
-
-        for (Pieza pieza : vectorPiezasBlancas) {
-            MG.colocaPieza(pieza);
-        }
-        for (Pieza pieza : vectorPiezasNegras) {
-            MG.colocaPieza(pieza);
-        }
-    }
-
-    private void ActualizarVectoresEnMetodosGenerales() {
-        Vector<Pieza> vectorPiezas = new Vector<>();
-        vectorPiezas.addAll(vectorPiezasBlancas);
-        vectorPiezas.addAll(vectorPiezasNegras);
-        MG.setVectorPiezas(vectorPiezas);
     }
 
     private void inicializaJugada(int jugada) {
@@ -421,50 +274,103 @@ public class Seccion4Ahogado extends EjercicioBaseActivity {
             case 0:
                 inicializaJugada1();
                 break;
+            case 1:
+                inicializaJugada2();
+                break;
+            case 2:
+                inicializaJugada3();
+                break;
         }
     }
 
     private void inicializaJugada1() {
         vectorPiezasBlancas.removeAllElements();
         vectorPiezasNegras.removeAllElements();
-        int variante = random.nextInt(1);
+        int variante = random.nextInt(2);
         switch (variante) {
             case 0:
 
-                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "E4"));
-                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "G5"));
-                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "H3"));
-                vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "H4"));
-                vectorPiezasBlancas.add(new Pieza(DAMA, BLANCO, "E8"));
+                vectorPiezasBlancas.add(new Pieza(ALFIL, BLANCO, "E5"));
+                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "A5", true, "A6"));
+                vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "C4"));
 
-                vectorPiezasNegras.add(new Pieza(TORRE, NEGRO, "C3"));
-                vectorPiezasNegras.add(new Pieza(TORRE, NEGRO, "C7"));
-                vectorPiezasNegras.add(new Pieza(PEON, NEGRO, "E5"));
-                vectorPiezasNegras.add(new Pieza(ALFIL, NEGRO, "E6"));
-                vectorPiezasNegras.add(new Pieza(ALFIL, NEGRO, "F8"));
-                vectorPiezasNegras.add(new Pieza(PEON, NEGRO, "F7"));
-                vectorPiezasNegras.add(new Pieza(PEON, NEGRO, "G6"));
-                vectorPiezasNegras.add(new Pieza(REY, NEGRO, "G7"));
-                vectorPiezasNegras.add(new Pieza(PEON, NEGRO, "H7"));
+                vectorPiezasNegras.add(new Pieza(PEON, NEGRO, "A7"));
+                vectorPiezasNegras.add(new Pieza(REY, NEGRO, "A8"));
                 break;
             case 1:
-                vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "C4"));
-                vectorPiezasBlancas.add(new Pieza(ALFIL, BLANCO, "E5"));
-                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "A6"));
+                vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "D5"));
+                vectorPiezasBlancas.add(new Pieza(DAMA, BLANCO, "E7", true, "C7"));
 
                 vectorPiezasNegras.add(new Pieza(REY, NEGRO, "A8"));
-                vectorPiezasNegras.add(new Pieza(PEON, NEGRO, "A7"));
                 break;
-            case 2:
+        }
+        colocaPiezas();
+    }
+    private void inicializaJugada2() {
+        vectorPiezasBlancas.removeAllElements();
+        vectorPiezasNegras.removeAllElements();
+        int variante = random.nextInt(2);
+        switch (variante) {
+            case 0:
 
+                vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "D1"));
+                vectorPiezasBlancas.add(new Pieza(TORRE, BLANCO, "A4", true, "A5"));
+                vectorPiezasBlancas.add(new Pieza(TORRE, BLANCO, "B7"));
+                vectorPiezasBlancas.add(new Pieza(DAMA, BLANCO, "D1"));
+                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "F6"));
+                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "G5"));
+
+                vectorPiezasNegras.add(new Pieza(PEON, NEGRO, "F7"));
+                vectorPiezasNegras.add(new Pieza(REY, NEGRO, "E6"));
                 break;
-            case 3:
+            case 1:
+                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "D7"));
+                vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "D6", true, "C6"));
 
+                vectorPiezasNegras.add(new Pieza(REY, NEGRO, "D8"));
+                break;
+        }
+        colocaPiezas();
+    }
+    private void inicializaJugada3() {
+        vectorPiezasBlancas.removeAllElements();
+        vectorPiezasNegras.removeAllElements();
+        int variante = random.nextInt(2);
+        switch (variante) {
+            case 0:
+
+                vectorPiezasBlancas.add(new Pieza(CABALLO, BLANCO, "A6"));
+                vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "C6", true, "B6"));
+
+                vectorPiezasNegras.add(new Pieza(REY, NEGRO, "A8"));
+                break;
+            case 1:
+                vectorPiezasBlancas.add(new Pieza(DAMA, BLANCO, "D4",true,"C4"));
+                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "F4"));
+                vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "B1"));
+
+                vectorPiezasNegras.add(new Pieza(REY, NEGRO, "A3"));
+                vectorPiezasNegras.add(new Pieza(PEON, NEGRO, "F5"));
                 break;
         }
         colocaPiezas();
     }
 
+    private void colocaPiezas() {
+
+        Vector<Pieza> vectorPiezas = new Vector<>();
+        vectorPiezas.addAll(vectorPiezasBlancas);
+        vectorPiezas.addAll(vectorPiezasNegras);
+        mg.setVectorPiezas(vectorPiezas);
+
+        for (Pieza pieza : vectorPiezasBlancas) {
+            mg.colocaPieza(pieza);
+        }
+        for (Pieza pieza : vectorPiezasNegras) {
+            mg.colocaPieza(pieza);
+        }
+
+    }
     @Override
     protected void onFinalCuentaAtras() {
         avatar.habla(R.raw.mover_rey_en_jaque, new VistaAvatar.OnAvatarHabla() {
@@ -481,19 +387,23 @@ public class Seccion4Ahogado extends EjercicioBaseActivity {
     protected boolean onMovimiento(int colOrigen, int filaOrigen, int colDestino, int filaDestino) {
         Log.d("Ajedrez", "onMovimiento colOrigen=" + colOrigen + " filaOrigen=" + filaOrigen + " colDestino=" + colDestino + " filaDestino=" + filaDestino);
         cancelaCuentaAtras();
-        Pieza piezaDestino = MG.getPieza(colDestino, filaDestino);
-        boolean movimientoPiezaBlanca = (MG.getColorPieza(colOrigen, filaOrigen) == BLANCO);
-        boolean movimientoPiezaNegra = (MG.getColorPieza(colOrigen, filaOrigen) == NEGRO);
+        Pieza piezaDestino = mg.getPieza(colDestino, filaDestino);
+        boolean movimientoPiezaBlanca = (mg.getColorPieza(colOrigen, filaOrigen) == BLANCO);
         boolean movimientoValido = validador.movimientoValido(colOrigen, filaOrigen, colDestino, filaDestino);
-        boolean capturaPieza = (capturaPieza(colOrigen, filaOrigen, colDestino, filaDestino));
-        boolean movimientoCorrecto = (movimientoPiezaNegra || movimientoPiezaBlanca) && movimientoValido;
+        boolean capturaPieza = (mg.capturaPieza(colOrigen, filaOrigen, colDestino, filaDestino));
+        boolean movimientoCorrecto = movimientoPiezaBlanca && movimientoValido;
+        boolean capturaReyNegro = capturaPieza && (mg.getColorPieza(colOrigen, filaOrigen) == NEGRO);
+        boolean esPiezaCorrectaJaqueMate = mg.getPieza(colOrigen, filaOrigen).isMoverDarJaqueMate();
+        boolean esCasillaCorrecta = mg.getPieza(colOrigen, filaOrigen).getColumnaCorrecta() == colDestino &&
+                mg.getPieza(colOrigen, filaOrigen).getFilaCorrecta() == filaDestino;
 
         if (movimientoCorrecto && capturaPieza) eliminaPieza(piezaDestino);
+
         Log.d("Ajedrez", "movimientoPiezaBlanca=" + movimientoPiezaBlanca);
         Log.d("Ajedrez", "movimientoValido=" + movimientoValido);
         Log.d("Ajedrez", "capturaPieza=" + capturaPieza);
         Log.d("Ajedrez", "movimientoCorrecto=" + movimientoCorrecto);
-        return movimientoCorrecto;
+        return movimientoCorrecto && esPiezaCorrectaJaqueMate && esCasillaCorrecta && !capturaReyNegro;
     }
 
     @Override
@@ -501,14 +411,10 @@ public class Seccion4Ahogado extends EjercicioBaseActivity {
         Log.d("Ajedrez", "onMovimiento movimientoValido=" + movimientoValido + " colOrigen=" + colOrigen + " filaOrigen=" + filaOrigen + " colDestino=" + colDestino + " filaDestino=" + filaDestino);
         avatar.mueveOjos(VistaAvatar.MovimientoOjos.DERECHA);
         if (movimientoValido) {
-
-            colocaPiezas();
-
-
             contadorMovimientos++;
             avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_CORRECTO);
             avatar.mueveCejas(VistaAvatar.MovimientoCejas.ARQUEAR);
-            if (contadorMovimientos % 2 != 0) {
+            if (contadorMovimientos < 3) {
                 avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_CORRECTO);
                 avatar.habla(R.raw.ok_intenta_otra_vez, new VistaAvatar.OnAvatarHabla() {
                     @Override
@@ -517,7 +423,7 @@ public class Seccion4Ahogado extends EjercicioBaseActivity {
                         empiezaCuentaAtras();
                     }
                 });
-                //inicializaJugada(contadorMovimientos);
+                inicializaJugada(contadorMovimientos);
             } else {
                 avatar.lanzaAnimacion(VistaAvatar.Animacion.EJERCICIO_SUPERADO);
                 avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.EJERCICIO_SUPERADO);
@@ -528,34 +434,6 @@ public class Seccion4Ahogado extends EjercicioBaseActivity {
                     }
                 });
             }
-
-            for (int i = 0; i < vectorPiezasBlancasAtacantes.size(); i++) {
-                Toast.makeText(this, "Jaque de "
-                        + vectorPiezasBlancasAtacantes.get(i).getTipo().toString().toLowerCase()
-                        + " " + vectorPiezasBlancasAtacantes.get(i).getColor().toString().toLowerCase()
-                        + " al rey negro", Toast.LENGTH_SHORT).show();
-            }
-            for (int i = 0; i < vectorPiezasNegrasAtacantes.size(); i++) {
-                Toast.makeText(this, "Jaque de "
-                        + vectorPiezasNegrasAtacantes.get(i).getTipo().toString().toLowerCase()
-                        + " " + vectorPiezasNegrasAtacantes.get(i).getColor().toString().toLowerCase()
-                        + " al rey blanco ", Toast.LENGTH_SHORT).show();
-            }
-
-            Pieza pieza = MG.getPieza(colOrigen, filaOrigen);
-            if (!reyBlancoEnJaqueMate()) {
-                Pieza piezaDefensora = vectorPiezasBlancasDefensoras.get(0);
-                resaltarCasilla(colDestino, filaDestino, Movimiento.INCORRECTO);
-                resaltarCasilla(piezaDefensora.getColumna(), piezaDefensora.getFila(), Movimiento.ORIGEN);
-                resaltarCasilla(piezaDefensora.getColumna(), piezaDefensora.getFila(), validador);
-            }
-            if (!reyNegroEnJaqueMate()) {
-                Pieza piezaDefensora = vectorPiezasNegasDefensoras.get(0);
-                resaltarCasilla(colDestino, filaDestino, Movimiento.INCORRECTO);
-                resaltarCasilla(piezaDefensora.getColumna(), piezaDefensora.getFila(), Movimiento.ORIGEN);
-                resaltarCasilla(piezaDefensora.getColumna(), piezaDefensora.getFila(), validador);
-            }
-
         } else {
             avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_INCORRECTO);
             avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_INCORRECTO);
@@ -570,26 +448,7 @@ public class Seccion4Ahogado extends EjercicioBaseActivity {
             for (int i = 0; i < vectorPiezasBlancasAtacantes.size(); i++) {
                 Toast.makeText(this, "Jaque de "
                         + vectorPiezasBlancasAtacantes.get(i).getTipo().toString().toLowerCase()
-                        + " al rey negro", Toast.LENGTH_SHORT).show();
-            }
-            for (int i = 0; i < vectorPiezasNegrasAtacantes.size(); i++) {
-                Toast.makeText(this, "Jaque de "
-                        + vectorPiezasNegrasAtacantes.get(i).getTipo().toString().toLowerCase()
-                        + " al rey blanco ", Toast.LENGTH_SHORT).show();
-            }
-
-            Pieza pieza = MG.getPieza(colOrigen, filaOrigen);
-            if (!reyBlancoEnJaqueMate()) {
-                Pieza piezaDefensora = vectorPiezasBlancasDefensoras.get(0);
-                resaltarCasilla(colDestino, filaDestino, Movimiento.INCORRECTO);
-                resaltarCasilla(piezaDefensora.getColumna(), piezaDefensora.getFila(), Movimiento.ORIGEN);
-                resaltarCasilla(piezaDefensora.getColumna(), piezaDefensora.getFila(), validador);
-            }
-            if (!reyNegroEnJaqueMate()) {
-                Pieza piezaDefensora = vectorPiezasNegasDefensoras.get(0);
-                resaltarCasilla(colDestino, filaDestino, Movimiento.INCORRECTO);
-                resaltarCasilla(piezaDefensora.getColumna(), piezaDefensora.getFila(), Movimiento.ORIGEN);
-                resaltarCasilla(piezaDefensora.getColumna(), piezaDefensora.getFila(), validador);
+                        + " al rey", Toast.LENGTH_SHORT).show();
             }
         }
     }
