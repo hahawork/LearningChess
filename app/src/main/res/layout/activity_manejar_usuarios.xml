@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/fondoPantalla"
     android:orientation="horizontal"
-    tools:context=".ManejarUsuarios">
+    tools:context=".userManejarUsuarios">
 
     <com.uni.learningchess.VistaAvatar
         android:id="@+id/vistaAvatar"

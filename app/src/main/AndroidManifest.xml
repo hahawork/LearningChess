@@ -2,13 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.uni.learningchess">
+
     <uses-sdk tools:overrideLibrary="com.scand.svg" />
+
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -17,8 +19,12 @@
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+        android:theme="@style/SplashTheme"
         tools:ignore="GoogleAppIndexingWarning">
+
+        <activity android:name=".userProgreso"
+            android:screenOrientation="landscape"
+            ></activity>
 
         <activity
             android:name=".Seccion5"
@@ -67,6 +73,7 @@
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -90,9 +97,9 @@
             android:label="@string/acercadeLabel"
             android:theme="@style/DialogCustom" />
         <activity
-            android:name=".ManejarUsuarios"
-            android:screenOrientation="landscape"
-            android:label="@string/ManejarUsuarios"/>
+            android:name=".userManejarUsuarios"
+            android:label="@string/ManejarUsuarios"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".ValoresPiezasActivity"
             android:screenOrientation="landscape" />
@@ -142,4 +149,5 @@
             android:name=".MovimientoPeonAlPaso"
             android:screenOrientation="landscape" />
     </application>
+
 </manifest>

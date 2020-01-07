@@ -51,13 +51,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // inside your activity (if you did not enable transitions in your theme)
-        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
-// set an exit transition
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setEnterTransition(new Explode());
-            getWindow().setExitTransition(new Explode());
-        }
+
+        setTheme(R.style.AppTheme);
+
         handler = new Handler();
         setContentView(R.layout.activity_main);
 
@@ -245,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
         public boolean onMenuItemClick(MenuItem menuItem) {
             switch (menuItem.getItemId()) {
                 case R.id.action_Usuarios:
-                    startActivity(new Intent(MainActivity.this, ManejarUsuarios.class));
+                    startActivity(new Intent(MainActivity.this, userManejarUsuarios.class));
                     return true;
                 case R.id.action_Sobre:
                     startActivity(new Intent(MainActivity.this, AcercaDeActivity.class));

@@ -20,7 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ManejarUsuarios extends AppCompatActivity {
+public class userManejarUsuarios extends AppCompatActivity {
 
     public enum GUARDAR {GUARDAR, EDITAR}
 
@@ -123,7 +123,7 @@ public class ManejarUsuarios extends AppCompatActivity {
                             editor.putString("spIdUsurioActual", id);
                             editor.putString("spNombreUsuarioActual", nombre);
                             editor.commit();
-                            Toast.makeText(ManejarUsuarios.this, String.format("%s es ahora el usuario seleccionado.", nombre), Toast.LENGTH_LONG).show();
+                            Toast.makeText(userManejarUsuarios.this, String.format("%s es ahora el usuario seleccionado.", nombre), Toast.LENGTH_LONG).show();
 
                             getData();
                         }
