@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -16,11 +15,9 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.PopupMenu;
-import android.transition.Explode;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -242,6 +239,9 @@ public class MainActivity extends AppCompatActivity {
             switch (menuItem.getItemId()) {
                 case R.id.action_Usuarios:
                     startActivity(new Intent(MainActivity.this, userManejarUsuarios.class));
+                    return true;
+                case R.id.action_Progreso:
+                    startActivity(new Intent(MainActivity.this, userProgreso.class));
                     return true;
                 case R.id.action_Sobre:
                     startActivity(new Intent(MainActivity.this, AcercaDeActivity.class));

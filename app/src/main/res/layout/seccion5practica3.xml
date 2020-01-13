@@ -128,7 +128,7 @@
         android:layout_weight="1" />
 
     <LinearLayout
-        android:id="@+id/llSecciones_layouts"
+
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="2"
@@ -162,65 +162,72 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/include_tablero"
-            android:layout_width="match_parent"
-            android:visibility="gone"
-            android:layout_height="match_parent">
-
-            <include
-                layout="@layout/tablero_sin_avatar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/include_notacion"
+            android:id="@+id/llSecciones_layouts"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <include
-                layout="@layout/activity_seccion3ejerc2"
+            <LinearLayout
+                android:id="@+id/include_tablero"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </LinearLayout>
+                android:layout_height="match_parent"
+                android:visibility="gone">
 
-        <LinearLayout
-            android:id="@+id/include_colorcasilla"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone">
+                <include
+                    layout="@layout/tablero_sin_avatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
 
-            <include
-                layout="@layout/activity_seccion3ejerc3"
+            <LinearLayout
+                android:id="@+id/include_notacion"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </LinearLayout>
+                android:layout_height="match_parent"
+                android:visibility="gone">
 
-        <LinearLayout
-            android:id="@+id/include_moverpieza"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone">
+                <include
+                    layout="@layout/activity_seccion3ejerc2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
 
-            <include
-                layout="@layout/activity_seccion3ejerc4"
+            <LinearLayout
+                android:id="@+id/include_colorcasilla"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </LinearLayout>
+                android:layout_height="match_parent"
+                android:visibility="gone">
 
-        <LinearLayout
-            android:id="@+id/include_coordenadascasilla"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone">
+                <include
+                    layout="@layout/activity_seccion3ejerc3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
 
-            <include
-                layout="@layout/activity_seccion3ejerc5"
+            <LinearLayout
+                android:id="@+id/include_moverpieza"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </LinearLayout>
+                android:layout_height="match_parent"
+                android:visibility="gone">
 
+                <include
+                    layout="@layout/activity_seccion3ejerc4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/include_coordenadascasilla"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone">
+
+                <include
+                    layout="@layout/activity_seccion3ejerc5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

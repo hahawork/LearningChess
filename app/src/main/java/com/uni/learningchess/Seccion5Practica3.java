@@ -10,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -129,37 +128,37 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
 
     public void AlternarDisenyo(MODO modo) {
 
-    	LinearLayout llSecciones_layouts = findViewById(R.id.llSecciones_layouts);
-    	//llSecciones_layouts.removeAllViews();
+        LinearLayout llSecciones_layouts = findViewById(R.id.llSecciones_layouts);
+        llSecciones_layouts.removeAllViews();
 
-		LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
-		View view;
-		//RelativeLayout layout = (RelativeLayout) inflater.inflate(R.layout.custom_layout, null, false);
+        LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
+        View view = null;
+        //RelativeLayout layout = (RelativeLayout) inflater.inflate(R.layout.custom_layout, null, false);
 
 
-		if (modo == MODO.NOTACION) {
+        if (modo == MODO.NOTACION) {
 
-			//view = inflater.inflate(R.layout.activity_seccion3ejerc2 , null, false);
+            view = inflater.inflate(R.layout.activity_seccion3ejerc2, null, false);
 
-            (findViewById(R.id.include_notacion)).setVisibility(View.VISIBLE);
+          /*  (findViewById(R.id.include_notacion)).setVisibility(View.VISIBLE);
             (findViewById(R.id.include_colorcasilla)).setVisibility(View.GONE);
             (findViewById(R.id.include_moverpieza)).setVisibility(View.GONE);
             (findViewById(R.id.include_coordenadascasilla)).setVisibility(View.GONE);
-            (findViewById(R.id.include_tablero)).setVisibility(View.GONE);
+            (findViewById(R.id.include_tablero)).setVisibility(View.GONE);*/
 
         } else if (modo == MODO.COLORCASILLA) {
 
-			//view = inflater.inflate(R.layout.activity_seccion3ejerc3 , null, false);
+            view = inflater.inflate(R.layout.activity_seccion3ejerc3, null, false);
 
-            (findViewById(R.id.include_notacion)).setVisibility(View.GONE);
+           /* (findViewById(R.id.include_notacion)).setVisibility(View.GONE);
             (findViewById(R.id.include_colorcasilla)).setVisibility(View.VISIBLE);
             (findViewById(R.id.include_moverpieza)).setVisibility(View.GONE);
             (findViewById(R.id.include_coordenadascasilla)).setVisibility(View.GONE);
-            (findViewById(R.id.include_tablero)).setVisibility(View.GONE);
+            (findViewById(R.id.include_tablero)).setVisibility(View.GONE);*/
 
         } else if (modo == MODO.MOVERPIEZA) {
 
-			//view = inflater.inflate(R.layout.activity_seccion3ejerc4 , null, false);
+            //view = inflater.inflate(R.layout.activity_seccion3ejerc4 , null, false);
 
            /* setContentView(R.layout.activity_seccion3ejerc4);
             avatar = getAvatar();
@@ -172,16 +171,21 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
 
         } else {
 
-			//view = inflater.inflate(R.layout.activity_seccion3ejerc5, null, false);
+            view = inflater.inflate(R.layout.activity_seccion3ejerc5, null, false);
 
-            (findViewById(R.id.include_notacion)).setVisibility(View.GONE);
+           /* (findViewById(R.id.include_notacion)).setVisibility(View.GONE);
             (findViewById(R.id.include_colorcasilla)).setVisibility(View.GONE);
             (findViewById(R.id.include_moverpieza)).setVisibility(View.GONE);
             (findViewById(R.id.include_coordenadascasilla)).setVisibility(View.VISIBLE);
-            (findViewById(R.id.include_tablero)).setVisibility(View.GONE);
+            (findViewById(R.id.include_tablero)).setVisibility(View.GONE);*/
         }
 
-		//llSecciones_layouts.addView(view,0);
+        if (view != null) {
+            llSecciones_layouts.addView(view);
+        } else {
+            coordenadaSolicitada = seleccionaCoordenada();
+            seleccionaTipoJuego();
+        }
     }
 
     protected void retiraPiezas() {
@@ -315,6 +319,37 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
         opcion2 = findViewById(R.id.botonNegra);
         opcion2.setText("Negra");
         opcion2.setTag(esCuadriculaNegra ? "1" : "0");
+
+        EventosBotones(null);
+    }
+
+    public void EventosBotones(View view) {
+        if (view != null) {
+            if (view.getTag() == "1") {
+                avatar.lanzaAnimacion(VistaAvatar.Animacion.EJERCICIO_SUPERADO);
+                avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.EJERCICIO_SUPERADO);
+                avatar.habla(R.raw.correcto, new VistaAvatar.OnAvatarHabla() {
+                    @Override
+                    public void onTerminaHabla() {
+                        baseDatos.IncrementaAcierto(idUsuario, "3");
+                        coordenadaSolicitada = seleccionaCoordenada();
+                        seleccionaTipoJuego();
+                    }
+                });
+            } else {
+                baseDatos.IncrementaEjercicioFalla(idUsuario, "3");
+                avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_INCORRECTO);
+                avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_INCORRECTO);
+                avatar.mueveCejas(VistaAvatar.MovimientoCejas.FRUNCIR);
+                avatar.habla(R.raw.incorrecto, new VistaAvatar.OnAvatarHabla() {
+                    @Override
+                    public void onTerminaHabla() {
+                        avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.TIC_TAC);
+                        empiezaCuentaAtras();
+                    }
+                });
+            }
+        }
     }
 
     public void MoverPieza() {
@@ -481,31 +516,5 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
         return salida;
     }
 
-    public void EventosBotones(View view) {
-        if (view.getTag() == "1") {
-            avatar.lanzaAnimacion(VistaAvatar.Animacion.EJERCICIO_SUPERADO);
-            avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.EJERCICIO_SUPERADO);
-            avatar.habla(R.raw.correcto, new VistaAvatar.OnAvatarHabla() {
-                @Override
-                public void onTerminaHabla() {
-					baseDatos.IncrementaAcierto(idUsuario, "3");
-                    coordenadaSolicitada = seleccionaCoordenada();
-                    seleccionaTipoJuego();
-                }
-            });
-        } else {
-			baseDatos.IncrementaEjercicioFalla(idUsuario, "3");
-            avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_INCORRECTO);
-            avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_INCORRECTO);
-            avatar.mueveCejas(VistaAvatar.MovimientoCejas.FRUNCIR);
-            avatar.habla(R.raw.incorrecto, new VistaAvatar.OnAvatarHabla() {
-                @Override
-                public void onTerminaHabla() {
-                    avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.TIC_TAC);
-                    empiezaCuentaAtras();
-                }
-            });
-        }
 
-    }
 }
