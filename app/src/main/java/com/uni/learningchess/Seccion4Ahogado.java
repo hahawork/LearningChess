@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Random;
@@ -51,6 +52,11 @@ public class Seccion4Ahogado extends EjercicioBaseActivity {
                 empiezaCuentaAtras();
             }
         });
+
+        TextView tvNotas= findViewById(R.id.tvTituloEjerciciosPracticas);
+        tvNotas.setText("Nota: Esto es con el fin de practicar y quedar claro que es el ahogado, pero te recomendamos utilizar este recurso en una posicion donde te ecuentres en desventaja.");
+        tvNotas.setTextSize(12);
+        tvNotas.setVisibility(View.VISIBLE);
     }
 
     @Override

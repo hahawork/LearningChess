@@ -21,6 +21,11 @@
     <color name="fondoPrincipal">#4EB67E</color>
     <color name="botonFondo1">#1da2e5</color>
     <color name="botonFondo2">#FBB813</color>
+    <color name="botonFondoRojo">#F85042</color>
+    <color name="botonFondoAzul">#4278F8</color>
+    <color name="botonFondoVerde">#47DA4A</color>
+    <color name="botonFondoAmarillo">#EFE75D</color>
+    <color name="botonFondoMorado">#EF5DDF</color>
     <color name="botonMarco">#FFFFFF</color>
     <color name="textoDialog">#FFFFFF</color>
     <color name="fondoDialog">#7CD1EC</color>

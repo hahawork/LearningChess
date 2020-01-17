@@ -146,6 +146,7 @@
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:gravity="center"
+                style="@style/boton.2"
                 android:padding="3dp"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/textSizeTituloCapitulos"

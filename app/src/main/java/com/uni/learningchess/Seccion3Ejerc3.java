@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -45,6 +47,9 @@ public class Seccion3Ejerc3 extends Seccion3BaseActivity {
         TextView titulo = findViewById(R.id.textoSeccion3Ejerc3Titulo);
         titulo.setText(String.format(getResources().getString(R.string.seccion3Ejerc3Titulo),
                 Casillas.get(seleccionada).getColumna() + "" + Casillas.get(seleccionada).getFila()));
+        Animation animSequential;
+        animSequential = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.animacion_rotar_elemento);
+        titulo.startAnimation(animSequential);
 
         casillaAleatoria = Casillas.get(seleccionada).getColor();
         Typeface fuente = Typeface.createFromAsset(getAssets(), "fonts/BalooPaaji-Regular.ttf");

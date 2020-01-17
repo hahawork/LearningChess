@@ -82,6 +82,31 @@
         <item name="android:background">@drawable/boton1</item>
     </style>
 
+    <style name="boton.rojo" parent="@style/boton">
+        <item name="android:textColor">@color/cuadriculaNegra</item>
+        <item name="android:background">@drawable/boton_rojo</item>
+    </style>
+
+    <style name="boton.azul" parent="@style/boton">
+        <item name="android:textColor">@color/cuadriculaNegra</item>
+        <item name="android:background">@drawable/boton_azul</item>
+    </style>
+
+    <style name="boton.verde" parent="@style/boton">
+        <item name="android:textColor">@color/cuadriculaNegra</item>
+        <item name="android:background">@drawable/boton_verde</item>
+    </style>
+
+    <style name="boton.amarillo" parent="@style/boton">
+        <item name="android:textColor">@color/cuadriculaNegra</item>
+        <item name="android:background">@drawable/boton_amarillo</item>
+    </style>
+
+    <style name="boton.morado" parent="@style/boton">
+        <item name="android:textColor">@color/cuadriculaNegra</item>
+        <item name="android:background">@drawable/boton_morado</item>
+    </style>
+
     <style name="DialogCustom" parent="@android:style/Theme.Dialog">
         <item name="android:textColor">@color/textoDialog</item>
         <item name="android:background">@color/fondoDialog</item>

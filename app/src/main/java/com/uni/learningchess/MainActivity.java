@@ -70,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
         Button boton4 = findViewById(R.id.boton4);
         boton4.setTypeface(fuente);
 
+        Button boton5 = findViewById(R.id.boton5);
+        boton5.setTypeface(fuente);
+
         TextView textoTituloApp = findViewById(R.id.textoTituloApp);
         textoTituloApp.setTypeface(fuente1);
         TextView textoContenidos = findViewById(R.id.textoContenidos);

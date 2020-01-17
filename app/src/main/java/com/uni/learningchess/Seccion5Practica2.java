@@ -64,9 +64,9 @@ public class Seccion5Practica2 extends MoverPiezaActivity implements TextToSpeec
     TextToSpeech textToSpeech;
 
 
-	SharedPreferences setting;
-	BaseDatos baseDatos;
-	String idUsuario = "";
+    SharedPreferences setting;
+    BaseDatos baseDatos;
+    String idUsuario = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,12 +74,12 @@ public class Seccion5Practica2 extends MoverPiezaActivity implements TextToSpeec
 
         random = new Random(System.currentTimeMillis());
 
-		baseDatos = new BaseDatos(this);
-		setting = PreferenceManager.getDefaultSharedPreferences(this);
-		idUsuario = setting.getString("spIdUsurioActual", "1");
+        baseDatos = new BaseDatos(this);
+        setting = PreferenceManager.getDefaultSharedPreferences(this);
+        idUsuario = setting.getString("spIdUsurioActual", "1");
 
 
-		MG = new MetodosGenerales(this);
+        MG = new MetodosGenerales(this);
         vectorPiezasBlancas = new Vector<>();
         vectorPiezasNegras = new Vector<>();
 
@@ -225,11 +225,11 @@ public class Seccion5Practica2 extends MoverPiezaActivity implements TextToSpeec
             public void onClick(View v) {
                 LinearLayout marco = findViewById(R.id.marcoIzquierda);
                 if (new ValoresPiezasActivity().MetodoPracticaSeccion5(v, marco, avatar, imagenPiezaIzquierda, imagenPiezaDerecha)) {
-					baseDatos.IncrementaAcierto(idUsuario, "2");
-					seleccionaCoordenada();
-				}else {
-                	baseDatos.IncrementaEjercicioFalla(idUsuario,"2");
-				}
+                    baseDatos.IncrementaAcierto(idUsuario, "2");
+                    seleccionaCoordenada();
+                } else {
+                    baseDatos.IncrementaEjercicioFalla(idUsuario, "2");
+                }
             }
         });
         imagenPiezaDerecha.setOnClickListener(new View.OnClickListener() {
@@ -237,11 +237,11 @@ public class Seccion5Practica2 extends MoverPiezaActivity implements TextToSpeec
             public void onClick(View v) {
                 LinearLayout marco = findViewById(R.id.marcoDerecha);
                 if (new ValoresPiezasActivity().MetodoPracticaSeccion5(v, marco, avatar, imagenPiezaIzquierda, imagenPiezaDerecha)) {
-					baseDatos.IncrementaAcierto(idUsuario, "2");
-                	seleccionaCoordenada();
-                }else {
-					baseDatos.IncrementaEjercicioFalla(idUsuario,"2");
-				}
+                    baseDatos.IncrementaAcierto(idUsuario, "2");
+                    seleccionaCoordenada();
+                } else {
+                    baseDatos.IncrementaEjercicioFalla(idUsuario, "2");
+                }
             }
         });
     }
@@ -286,7 +286,15 @@ public class Seccion5Practica2 extends MoverPiezaActivity implements TextToSpeec
         Vector<String> vectorMovValidos = obtenerCasillasMovValido(pieza.getColumna(), pieza.getFila(), validadorResaltarCasillas);
         Vector<String> casillasOcupadas = new Vector<>();
         casillasOcupadas.add(coordenadaSolicitada);
-        casillasOcupadas.add(vectorMovValidos.get(random.nextInt(vectorMovValidos.size())));
+        int piezasValidas = 0;
+        for (String casilla : vectorMovValidos) {
+            //casillasOcupadas.add(vectorMovValidos.get(random.nextInt(vectorMovValidos.size())));
+            casillasOcupadas.add(casilla);
+            if (piezasValidas > 1)
+                break;
+
+            piezasValidas++;
+        }
         ColocarPiezasNegraCapturas(vectorMovValidos, casillasOcupadas);
     }
 
@@ -296,8 +304,11 @@ public class Seccion5Practica2 extends MoverPiezaActivity implements TextToSpeec
         for (int i = 0; i < 5; i++) {
             Pieza.Tipo tipo = Pieza.Tipo.values()[random.nextInt(Pieza.Tipo.values().length)];
             if (i == 0) {
-                //ya viene una coordenada de pieza negra
-                vectorPiezasNegras.add(new Pieza(tipo, NEGRO, casillasOcupadas.get(1)));
+                //ya viene una o mas coordenada de pieza negra
+                for (int j = 1; j < casillasOcupadas.size(); j++) {
+                    vectorPiezasNegras.add(new Pieza(tipo, NEGRO, casillasOcupadas.get(j)));
+                    tipo = Pieza.Tipo.values()[random.nextInt(Pieza.Tipo.values().length)];
+                }
                 continue;
             }
 
@@ -447,7 +458,7 @@ public class Seccion5Practica2 extends MoverPiezaActivity implements TextToSpeec
                 @Override
                 public void onTerminaHabla() {
                     avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.TIC_TAC);
-					baseDatos.IncrementaAcierto(idUsuario, "2");
+                    baseDatos.IncrementaAcierto(idUsuario, "2");
                     seleccionaCoordenada();
                 }
             });
@@ -470,7 +481,7 @@ public class Seccion5Practica2 extends MoverPiezaActivity implements TextToSpeec
             } else
                 resaltarCasilla(colOrigen, filaOrigen, validadorResaltarCasillas);
 
-			baseDatos.IncrementaEjercicioFalla(idUsuario, "2");
+            baseDatos.IncrementaEjercicioFalla(idUsuario, "2");
         }
     }
 

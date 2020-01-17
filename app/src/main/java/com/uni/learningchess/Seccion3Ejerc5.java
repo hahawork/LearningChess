@@ -3,10 +3,13 @@ package com.uni.learningchess;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.Random;
 
@@ -53,6 +56,11 @@ public class Seccion3Ejerc5 extends Seccion3BaseActivity {
 
         colocarColumna();
         colocarFila();
+
+        TextView tvTitulo = findViewById(R.id.textoSeccion3Ejerc5Titulo);
+        Animation animSequential;
+        animSequential = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.animacion_rotar_elemento);
+        tvTitulo.startAnimation(animSequential);
     }
 
     /**

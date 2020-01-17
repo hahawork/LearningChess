@@ -8,7 +8,6 @@ import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.media.audiofx.Visualizer;
 import android.net.Uri;
-import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.support.graphics.drawable.AnimatedVectorDrawableCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -263,6 +262,7 @@ public class VistaAvatar extends FrameLayout {
         onAvatarHabla = escuchador;
         try {
             mediaPlayerVoz.reset();
+            Log.w("RecursoAudio", "android.resource://" + activity.getPackageName() + "/" + idRecurso);
             mediaPlayerVoz.setDataSource(activity, Uri.parse("android.resource://" + activity.getPackageName() + "/" + idRecurso));
             mediaPlayerVoz.prepare();
             sincronizaBoca();

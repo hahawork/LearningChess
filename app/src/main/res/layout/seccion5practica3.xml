@@ -142,10 +142,11 @@
 
             <TextView
                 android:id="@+id/tvTituloEjerciciosPracticas"
+                style="@style/boton.2"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:padding="3dp"
                 android:textColor="@android:color/white"
@@ -201,18 +202,6 @@
 
                 <include
                     layout="@layout/activity_seccion3ejerc3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/include_moverpieza"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="gone">
-
-                <include
-                    layout="@layout/activity_seccion3ejerc4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
             </LinearLayout>

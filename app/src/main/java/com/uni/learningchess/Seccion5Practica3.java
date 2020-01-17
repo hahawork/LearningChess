@@ -4,8 +4,12 @@ import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -34,9 +38,9 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
     Vector<Pieza> vectorPiezasNegras;
     String[] letrasColumnas = {"A", "B", "C", "D", "E", "F", "G", "H"};
 
-	SharedPreferences setting;
-	BaseDatos baseDatos;
-	String idUsuario = "";
+    SharedPreferences setting;
+    BaseDatos baseDatos;
+    String idUsuario = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,9 +48,9 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
 
         random = new Random(System.currentTimeMillis());
 
-		baseDatos = new BaseDatos(this);
-		setting = PreferenceManager.getDefaultSharedPreferences(this);
-		idUsuario = setting.getString("spIdUsurioActual", "1");
+        baseDatos = new BaseDatos(this);
+        setting = PreferenceManager.getDefaultSharedPreferences(this);
+        idUsuario = setting.getString("spIdUsurioActual", "1");
 
         MG = new MetodosGenerales(this);
         vectorPiezasBlancas = new Vector<>();
@@ -56,28 +60,47 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
         Typeface fuente = Typeface.createFromAsset(getAssets(), "fonts/BalooPaaji-Regular.ttf");
         tvTituloEjercicio.setTypeface(fuente);
 
+        tvTituloEjercicio.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Animation animSequential;
+                animSequential = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.animacion_rotar_elemento);
+                tvTituloEjercicio.startAnimation(animSequential);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
         avatar = getAvatar();
         avatar.habla(R.raw.senyala_casilla_presentacion, new VistaAvatar.OnAvatarHabla() {
             @Override
             public void onTerminaHabla() {
-				coordenadaSolicitada = seleccionaCoordenada();
-				seleccionaTipoJuego();
+                coordenadaSolicitada = seleccionaCoordenada();
+                seleccionaTipoJuego();
             }
         });
 
 
-		try {
-			ivSaltarEjercicio = findViewById(R.id.ivSaltarEjercicio);
-			ivSaltarEjercicio.setOnClickListener(new View.OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					coordenadaSolicitada = seleccionaCoordenada();
-					seleccionaTipoJuego();
-				}
-			});
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+        try {
+            ivSaltarEjercicio = findViewById(R.id.ivSaltarEjercicio);
+            ivSaltarEjercicio.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    coordenadaSolicitada = seleccionaCoordenada();
+                    seleccionaTipoJuego();
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -116,19 +139,20 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
                 ColorDeCasilla();
                 break;
             case MOVERPIEZA:
+                MoverPieza();
+                break;
             case COORDENADAPIEZA:
                 coordenadaSolicitada = seleccionaCoordenada();
                 seleccionaTipoJuego();
-                //MoverPieza();
+                // SelecionarUbicacionPieza();
                 break;
-            // SelecionarUbicacionPieza();
         }
     }
 
     public void AlternarDisenyo(MODO modo) {
 
-       // LinearLayout llSecciones_layouts = findViewById(R.id.llSecciones_layouts);
-       // llSecciones_layouts.removeAllViews();
+        // LinearLayout llSecciones_layouts = findViewById(R.id.llSecciones_layouts);
+        // llSecciones_layouts.removeAllViews();
 
         LayoutInflater inflater = LayoutInflater.from(getApplicationContext());
         View view = null;
@@ -139,34 +163,28 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
 
             //view = inflater.inflate(R.layout.activity_seccion3ejerc2, null, false);
 
-           (findViewById(R.id.include_notacion)).setVisibility(View.VISIBLE);
+            (findViewById(R.id.include_notacion)).setVisibility(View.VISIBLE);
             (findViewById(R.id.include_colorcasilla)).setVisibility(View.GONE);
-            (findViewById(R.id.include_moverpieza)).setVisibility(View.GONE);
-            (findViewById(R.id.include_coordenadascasilla)).setVisibility(View.GONE);
             (findViewById(R.id.include_tablero)).setVisibility(View.GONE);
+            (findViewById(R.id.include_coordenadascasilla)).setVisibility(View.GONE);
 
         } else if (modo == MODO.COLORCASILLA) {
 
             //view = inflater.inflate(R.layout.activity_seccion3ejerc3, null, false);
 
-           (findViewById(R.id.include_notacion)).setVisibility(View.GONE);
+            (findViewById(R.id.include_notacion)).setVisibility(View.GONE);
             (findViewById(R.id.include_colorcasilla)).setVisibility(View.VISIBLE);
-            (findViewById(R.id.include_moverpieza)).setVisibility(View.GONE);
-            (findViewById(R.id.include_coordenadascasilla)).setVisibility(View.GONE);
             (findViewById(R.id.include_tablero)).setVisibility(View.GONE);
+            (findViewById(R.id.include_coordenadascasilla)).setVisibility(View.GONE);
 
         } else if (modo == MODO.MOVERPIEZA) {
 
             //view = inflater.inflate(R.layout.activity_seccion3ejerc4 , null, false);
 
-           /* setContentView(R.layout.activity_seccion3ejerc4);
-            avatar = getAvatar();
-            avatar.habla(R.raw.colocar_piezas_presentacion);*/
-
-           /* (findViewById(R.id.include_tablero)).setVisibility(View.GONE);
+            (findViewById(R.id.include_notacion)).setVisibility(View.GONE);
             (findViewById(R.id.include_colorcasilla)).setVisibility(View.GONE);
-            (findViewById(R.id.include_moverpieza)).setVisibility(View.VISIBLE);
-            (findViewById(R.id.include_notacion)).setVisibility(View.GONE);*/
+            (findViewById(R.id.include_tablero)).setVisibility(View.VISIBLE);
+            (findViewById(R.id.include_coordenadascasilla)).setVisibility(View.GONE);
 
         } else {
 
@@ -174,9 +192,8 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
 
             (findViewById(R.id.include_notacion)).setVisibility(View.GONE);
             (findViewById(R.id.include_colorcasilla)).setVisibility(View.GONE);
-            (findViewById(R.id.include_moverpieza)).setVisibility(View.GONE);
-            (findViewById(R.id.include_coordenadascasilla)).setVisibility(View.VISIBLE);
             (findViewById(R.id.include_tablero)).setVisibility(View.GONE);
+            (findViewById(R.id.include_coordenadascasilla)).setVisibility(View.VISIBLE);
         }
 
         /*if (view != null) {
@@ -231,7 +248,7 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
         StringBuilder cadena = new StringBuilder();
         cadena.append("Movió ");
         cadena.append(pieza.toString());
-        cadena.append(_captura ? " y hace captura a" : "a ");
+        cadena.append(_captura ? " y hace captura a " : " a ");
         cadena.append("la casilla ");
         cadena.append(_coordenada);
         cadena.append((_jaque ? " con jaque." : (_jaquemate ? " con jaque mate." : "")));
@@ -239,7 +256,7 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
         Pieza.Tipo pieza1 = Pieza.Tipo.values()[random.nextInt(Pieza.Tipo.values().length)];
         String _coordenadafake1 = seleccionaCoordenada().toLowerCase();
         String cadena_fake1 = String.format(
-                "Movió %s %s la casilla %s",
+                "Movió %s %s la casilla %s ",
                 pieza1.toString(),
                 (System.currentTimeMillis() % 2 == 0) ? " y hace captura a " : " a ",
                 _coordenadafake1);
@@ -250,12 +267,13 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
         } while (pieza2 == pieza);
 
         //String _coordenadafake2 = seleccionaCoordenada().toLowerCase();
-        String cadena_fake2 = String.format("Movió %s %s la casilla %s",
+        String cadena_fake2 = String.format("Movió %s %s la casilla %s ",
                 pieza2.toString(),
-                (System.currentTimeMillis() % 2 == 0) ? " y hace captura a" : " a ",
+                (System.currentTimeMillis() % 2 == 0) ? " y hace captura a " : " a ",
                 _coordenada);
 
-        ((TextView) findViewById(R.id.tvTituloNotacion_as3e2)).setText("¿Qué significa la notación abreviada " + _notacion + "?");
+        tvTituloEjercicio.setText("¿Qué significa la notación abreviada " + _notacion + "?");
+        ((TextView) findViewById(R.id.tvTituloNotacion_as3e2)).setVisibility(View.GONE);//setText("¿Qué significa la notación abreviada " + _notacion + "?");
         opcion1 = findViewById(R.id.botonOpcion1);
         opcion2 = findViewById(R.id.botonOpcion2);
         opcion3 = findViewById(R.id.botonOpcion3);
@@ -309,7 +327,8 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
         ImageView casilla = getCasilla(columnaAleatoria, filaAleatoria);
         boolean esCuadriculaNegra = esCuadriculaNegra(casilla);
 
-        ((TextView) findViewById(R.id.textoSeccion3Ejerc3Titulo)).setText(String.format(getResources().getString(R.string.seccion3Ejerc3Titulo), coordenadaSolicitada));
+        tvTituloEjercicio.setText(String.format(getResources().getString(R.string.seccion3Ejerc3Titulo), coordenadaSolicitada));
+        ((TextView) findViewById(R.id.textoSeccion3Ejerc3Titulo)).setVisibility(View.GONE);//setText(String.format(getResources().getString(R.string.seccion3Ejerc3Titulo), coordenadaSolicitada));
         opcion1 = findViewById(R.id.botonBlanca);
         opcion1.setText("Blanca");
         opcion1.setTag(esCuadriculaNegra ? "0" : "1");
@@ -354,16 +373,22 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
     public void MoverPieza() {
         LinearLayout piezas = findViewById(R.id.piezas);
         piezas.setVisibility(View.VISIBLE);
+        ((ImageView) findViewById(R.id.torre)).setVisibility(View.GONE);
+        ((ImageView) findViewById(R.id.rey)).setVisibility(View.GONE);
+        ((ImageView) findViewById(R.id.caballo)).setVisibility(View.GONE);
+        ((ImageView) findViewById(R.id.dama)).setVisibility(View.GONE);
+        ((ImageView) findViewById(R.id.alfil)).setVisibility(View.GONE);
 
-        TextView titulo = findViewById(R.id.textoSeccion3Ejerc4Titulo);
-        titulo.setText(String.format(getResources().getString(R.string.seccion3Ejerc4Titulo), coordenadaSolicitada));
+        //TextView titulo = findViewById(R.id.tvTituloEjerciciosPracticas);
+        tvTituloEjercicio.setText(String.format(getResources().getString(R.string.seccion3Ejerc4Titulo), coordenadaSolicitada));
+
     }
 
     private void SelecionarUbicacionPieza() {
         retiraPiezas();
 
         Pieza pieza = new Pieza(randomEnum(Pieza.Tipo.class), randomEnum(Pieza.Color.class), coordenadaSolicitada);
-        Toast.makeText(this,coordenadaSolicitada,Toast.LENGTH_LONG).show();
+        Toast.makeText(this, coordenadaSolicitada, Toast.LENGTH_LONG).show();
         MG.colocaPieza(pieza);
         colocarColumna();
         colocarFila();
@@ -434,13 +459,13 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
                 avatar.habla(R.raw.ok_superado, new VistaAvatar.OnAvatarHabla() {
                     @Override
                     public void onTerminaHabla() {
-						baseDatos.IncrementaAcierto(idUsuario, "3");
+                        baseDatos.IncrementaAcierto(idUsuario, "3");
                         coordenadaSolicitada = seleccionaCoordenada();
                         seleccionaTipoJuego();
                     }
                 });
             } else {
-				baseDatos.IncrementaEjercicioFalla(idUsuario, "3");
+                baseDatos.IncrementaEjercicioFalla(idUsuario, "3");
                 avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_INCORRECTO);
                 avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_INCORRECTO);
                 avatar.mueveCejas(VistaAvatar.MovimientoCejas.FRUNCIR);
@@ -482,9 +507,14 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
                 avatar.habla(R.raw.ok_superado, new VistaAvatar.OnAvatarHabla() {
                     @Override
                     public void onTerminaHabla() {
-						baseDatos.IncrementaAcierto(idUsuario, "3");
+
+                        LinearLayout piezas = findViewById(R.id.piezas);
+                        piezas.setVisibility(View.GONE);
+
+                        baseDatos.IncrementaAcierto(idUsuario, "3");
                         coordenadaSolicitada = seleccionaCoordenada();
                         seleccionaTipoJuego();
+
                     }
                 });
 
@@ -509,11 +539,9 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
                 avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_INCORRECTO);
                 avatar.mueveCejas(VistaAvatar.MovimientoCejas.FRUNCIR);
 
-				baseDatos.IncrementaEjercicioFalla(idUsuario, "3");
+                baseDatos.IncrementaEjercicioFalla(idUsuario, "3");
             }
         }
         return salida;
     }
-
-
 }
