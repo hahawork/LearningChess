@@ -21,8 +21,16 @@ public class BaseDatos extends SQLiteOpenHelper {
         this.context = context;
     }
 
-    String TBLCATSECCIONES = "CREATE TABLE " + iBaseDatos.TBL_CAT_SECCIONES + " (idSecc integer not NULL PRIMARY KEY AUTOINCREMENT, Descripcion  varchar(20))";
-    String TBLUSUARIO = "CREATE TABLE " + iBaseDatos.TBL_USUARIO + " ( iduser INTEGER PRIMARY KEY AUTOINCREMENT, Nombre VARCHAR(50), Edad integer, FechaReg TIMESTAMP DEFAULT CURRENT_TIMESTAMP)";
+    String TBLCATSECCIONES = "CREATE TABLE " + iBaseDatos.TBL_CAT_SECCIONES +
+			" (idSecc integer not NULL PRIMARY KEY AUTOINCREMENT, " +
+			"Descripcion  varchar(20))";
+
+    String TBLUSUARIO = "CREATE TABLE " + iBaseDatos.TBL_USUARIO +
+			" ( iduser INTEGER PRIMARY KEY AUTOINCREMENT, " +
+			"Nombre VARCHAR(50), " +
+			"Edad integer, " +
+			"FechaReg TIMESTAMP DEFAULT CURRENT_TIMESTAMP)";
+
     String TBLUSUARIOAVANCES = "CREATE TABLE " + TBL_USUARIO_AVANCES +
             " (idUA integer PRIMARY KEY AUTOINCREMENT, " +
             "iduser integer not NULL, " +

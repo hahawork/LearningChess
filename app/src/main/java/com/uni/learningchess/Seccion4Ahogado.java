@@ -325,7 +325,7 @@ public class Seccion4Ahogado extends EjercicioBaseActivity {
                 break;
             case 1:
                 vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "D7"));
-                vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "D6", true, "C6"));
+                vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "C6", true, "D6"));
 
                 vectorPiezasNegras.add(new Pieza(REY, NEGRO, "D8"));
                 break;

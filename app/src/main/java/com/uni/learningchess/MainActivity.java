@@ -258,6 +258,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+
     void solicitarPermisoRecordAudio() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.RECORD_AUDIO) &&
                 ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
