@@ -364,7 +364,7 @@ public class Seccion4JaqueMateReyActivity extends EjercicioBaseActivity implemen
             case 1://tablero 6
                 vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "G2"));
                 vectorPiezasBlancas.add(new Pieza(ALFIL, BLANCO, "G3"));
-                vectorPiezasBlancas.add(new Pieza(DAMA, BLANCO, "A4", true, "A8"));
+                vectorPiezasBlancas.add(new Pieza(DAMA, BLANCO, "A4", true, "C6"));
 
                 vectorPiezasNegras.add(new Pieza(REY, NEGRO, "C8"));
                 vectorPiezasNegras.add(new Pieza(TORRE, NEGRO, "D8"));

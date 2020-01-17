@@ -28,7 +28,7 @@
 
         <activity
             android:name=".Seccion5"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".Seccion5Practica3"
             android:screenOrientation="landscape" />

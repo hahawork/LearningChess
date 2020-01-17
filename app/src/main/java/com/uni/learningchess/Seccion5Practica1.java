@@ -190,7 +190,7 @@ public class Seccion5Practica1 extends EjercicioBaseActivity {
                 int filaCoordenadaPulsada = coordenadaPulsada.charAt(1) - '1';
                 resaltarCasilla(colCoordenadaPulsada, filaCoordenadaPulsada, Movimiento.INCORRECTO);
                 preguntaCoordenada();
-                baseDatos.IncrementaAcierto(idUsuario, "1");
+                baseDatos.IncrementaEjercicioFalla(idUsuario, "1");
             }
         }
         return true;
