@@ -42,15 +42,17 @@ public class userProgreso extends AppCompatActivity {
 		textoTituloApp.setTypeface(fuente1);
 
 		TextView tvNombreUsuario = findViewById(R.id.tvNombreUsuario);
-		tvNombreUsuario.setText(setting.getString("spNombreUsuarioActual","Invitado."));
+		tvNombreUsuario.setText(
+				setting.getString("spNombreUsuarioActual","Invitado.") +" .:. "+
+				setting.getString("spEdadUsuarioActual","5") +" años");
 		getData();
 	}
 
 	public void getData(){
 		try {
 			Cursor cdata = BD.obtenerDatosRawQuery("SELECT *  FROM " + BaseDatos.iBaseDatos.TBL_USUARIO_AVANCES
-					+ " INNER JOIN " + BaseDatos.iBaseDatos.TBL_CAT_SECCIONES + " ON idSeccion = idSecc	" +
-					"WHERE iduser = " + setting.getString("spIdUsurioActual", "1"));
+					+ " AS T1 INNER JOIN " + BaseDatos.iBaseDatos.TBL_CAT_SECCIONES + " AS T2 ON T1.idSeccion = T2.idSecc	INNER JOIN " +
+					BaseDatos.iBaseDatos.TBL_USUARIO + " AS T3 ON  T1.iduser = T3.iduser WHERE T1.iduser = " + setting.getString("spIdUsurioActual", "1"));
 
 			if (cdata.getCount() > 0) {
 

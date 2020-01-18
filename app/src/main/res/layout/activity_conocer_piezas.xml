@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondoPrincipal"
+    android:orientation="horizontal"
+    tools:context=".ConocerPiezas">
+
+    <com.uni.learningchess.VistaAvatar
+        android:id="@+id/vistaAvatar"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:background="@color/grisMarco"
+        android:orientation="vertical"
+        android:padding="@dimen/grosor_marco_pizarra">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/fondoTableroValorPiezas"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tituloValorPiezas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/fondoTableroValorPiezas"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="Selecciona el nombre de la pieza mostrada"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/textSizeSubTituloCapitulos" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/fondoPrincipal"
+                android:orientation="horizontal">
+
+                <com.uni.learningchess.RectangleLinearLayout
+                    android:id="@+id/cuadrado1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/separacion_pieza_pizarra"
+                    android:layout_marginLeft="@dimen/separacion_pieza_pizarra"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:id="@+id/marcoIzquierda"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@color/bordeMarco"
+                        android:orientation="vertical"
+                        android:padding="@dimen/marco_pieza_valoresPiezas">
+
+                        <ImageView
+                            android:id="@+id/piezaIzquierda"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="@color/fondoTableroValorPiezas"
+                            android:padding="10dp" />
+
+
+                    </LinearLayout>
+                </com.uni.learningchess.RectangleLinearLayout>
+
+                <com.uni.learningchess.RectangleLinearLayout
+                    android:id="@+id/cuadrado2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.5">
+
+                    <ImageView
+                        android:id="@+id/separador"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:src="@drawable/separador" />
+                </com.uni.learningchess.RectangleLinearLayout>
+
+                <com.uni.learningchess.RectangleLinearLayout
+                    android:id="@+id/cuadrado3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="@dimen/separacion_pieza_pizarra"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:id="@+id/marcoDerecha"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        android:padding="@dimen/marco_pieza_valoresPiezas">
+
+                        <Button
+                            android:id="@+id/button6"
+                            style="@style/boton.1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:onClick="SeleccionaNombrePieza"
+                            android:tag="rey"
+                            android:text="REY" />
+
+                        <Button
+                            android:id="@+id/button5"
+                            style="@style/boton.rojo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:onClick="SeleccionaNombrePieza"
+                            android:tag="dama"
+                            android:text="DAMA" />
+
+                        <Button
+                            android:id="@+id/button4"
+                            style="@style/boton.verde"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:onClick="SeleccionaNombrePieza"
+                            android:tag="caballo"
+                            android:text="CABALLO" />
+
+                        <Button
+                            android:id="@+id/button3"
+                            style="@style/boton.azul"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:onClick="SeleccionaNombrePieza"
+                            android:tag="torre"
+                            android:text="TORRE" />
+
+                        <Button
+                            android:id="@+id/button2"
+                            style="@style/boton.amarillo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:onClick="SeleccionaNombrePieza"
+                            android:tag="alfil"
+                            android:text="ALFIL" />
+
+                        <Button
+                            android:id="@+id/button1"
+                            style="@style/boton.morado"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:onClick="SeleccionaNombrePieza"
+                            android:tag="peon"
+                            android:text="PEON" />
+                    </LinearLayout>
+                </com.uni.learningchess.RectangleLinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

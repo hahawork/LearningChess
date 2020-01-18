@@ -122,6 +122,7 @@ public class userManejarUsuarios extends AppCompatActivity {
                             editor = setting.edit();
                             editor.putString("spIdUsurioActual", id);
                             editor.putString("spNombreUsuarioActual", nombre);
+                            editor.putString("spEdadUsuarioActual", edad);
                             editor.commit();
                             Toast.makeText(userManejarUsuarios.this, String.format("%s es ahora el usuario seleccionado.", nombre), Toast.LENGTH_LONG).show();
 
@@ -176,21 +177,27 @@ public class userManejarUsuarios extends AppCompatActivity {
                         !TextUtils.isEmpty(etEdad.getText().toString().replace(" ", ""))) {
 
                     if (guardar == GUARDAR.GUARDAR) {
-                        ContentValues values = new ContentValues();
-                        values.put("iduser", (byte[]) null);
-                        values.put("Nombre", etNombre.getText().toString());
-                        values.put("Edad", etEdad.getText().toString());
-                        Long idInsert = BD.insertarRegistro(BaseDatos.iBaseDatos.TBL_USUARIO, values);
 
-                        if (idInsert != -1) {
-                            editor = setting.edit();
-                            editor.putString("spIdUsurioActual", String.valueOf(idInsert));
-                            editor.putString("spNombreUsuarioActual", etNombre.getText().toString());
-                            editor.commit();
-                            dialogIntro.dismiss();
-                            getData();
-                        } else {
-                            MG.MostrarAlertaError("No se guardó", "Error al guardar los datos");
+                        if (!BD.ExisteRegistro(BaseDatos.iBaseDatos.TBL_USUARIO,"Nombre",etNombre.getText().toString())) {
+                            ContentValues values = new ContentValues();
+                            values.put("iduser", (byte[]) null);
+                            values.put("Nombre", etNombre.getText().toString());
+                            values.put("Edad", etEdad.getText().toString());
+                            Long idInsert = BD.insertarRegistro(BaseDatos.iBaseDatos.TBL_USUARIO, values);
+
+                            if (idInsert != -1) {
+                                editor = setting.edit();
+                                editor.putString("spIdUsurioActual", String.valueOf(idInsert));
+                                editor.putString("spNombreUsuarioActual", etNombre.getText().toString());
+                                editor.putString("spEdadUsuarioActual", etEdad.getText().toString());
+                                editor.commit();
+                                dialogIntro.dismiss();
+                                getData();
+                            } else {
+                                MG.MostrarAlertaError("No se guardó", "Error al guardar los datos");
+                            }
+                        }else {
+                            MG.MostrarAlertaError("Alerta", "Este nombre ya existe.");
                         }
 
                     } else if (guardar == GUARDAR.EDITAR) {
@@ -204,6 +211,7 @@ public class userManejarUsuarios extends AppCompatActivity {
 
                             editor = setting.edit();
                             editor.putString("spNombreUsuarioActual", etNombre.getText().toString());
+                            editor.putString("spEdadUsuarioActual", etEdad.getText().toString());
                             editor.commit();
                             dialogIntro.dismiss();
                             getData();
@@ -247,6 +255,7 @@ public class userManejarUsuarios extends AppCompatActivity {
                                 editor = setting.edit();
                                 editor.putString("spIdUsurioActual", "1");
                                 editor.putString("spNombreUsuarioActual", "Invitado");
+                                editor.putString("spEdadUsuarioActual", "0");
                                 editor.commit();
 
                                 getData();

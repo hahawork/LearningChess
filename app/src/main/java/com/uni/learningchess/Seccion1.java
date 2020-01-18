@@ -60,11 +60,13 @@ public class Seccion1 extends AppCompatActivity {
         startActivity(i);
     }
 
-    public void boton2(View v) {
+    public void boton6(View v) {
         startActivity(new Intent(this, SenalarCasillas.class));
     }
-
-    public void boton3(View v) {
+    public void boton7(View v) {
+        startActivity(new Intent(this, ConocerPiezas.class));
+    }
+    public void boton8(View v) {
         startActivity(new Intent(this, ColocarPiezasActivity.class));
     }
 

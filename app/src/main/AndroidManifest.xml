@@ -22,55 +22,56 @@
         android:theme="@style/SplashTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".userProgreso"
-            android:screenOrientation="landscape"
-            ></activity>
-
+        <activity android:name=".ConocerPiezas"
+            android:screenOrientation="sensorLandscape"/>
+        <activity
+            android:name=".userProgreso"
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".Seccion5"
             android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".Seccion5Practica3"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".ProgresoPuntajeUsuarios"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".Seccion5Practica1"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".Seccion5Practica2"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".Ayuda"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".MovimientosCoronacion"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".Seccion4Ahogado"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".MovimientosCapturas"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".Seccion3Ejerc1"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".Seccion3Ejerc2"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".Seccion3Ejerc3"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".Seccion3Ejerc4"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".Seccion3Ejerc5"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="landscape">
+            android:screenOrientation="sensorLandscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -79,19 +80,19 @@
         </activity>
         <activity
             android:name=".EjercicioBaseActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".TareaA1Activity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".ColocarPiezasActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".MoverDamaActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".VerVideo"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".AcercaDeActivity"
             android:label="@string/acercadeLabel"
@@ -99,55 +100,55 @@
         <activity
             android:name=".userManejarUsuarios"
             android:label="@string/ManejarUsuarios"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".ValoresPiezasActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".Preferencias"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".Seccion1"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".Seccion2"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".Seccion3"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".Seccion4"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".MoverAlfilActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".MoverTorreActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".MoverReyActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".MoverCaballoActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".MoverPeonActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".SenalarCasillas"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".Seccion4SalvarReyDelJaque"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".Seccion4JaqueMateReyActivity"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".MovimientosEnroque"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".MovimientoPeonAlPaso"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
     </application>
 
 </manifest>

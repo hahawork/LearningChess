@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/fondoPrincipal"
     android:orientation="horizontal"
-    tools:context=".MainActivity">
+    tools:context=".Seccion1">
 
     <com.uni.learningchess.VistaAvatar
         android:id="@+id/vistaAvatar1"
@@ -87,7 +87,7 @@
                     style="@style/boton.1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="boton2"
+                    android:onClick="boton6"
                     android:text="@string/ej1Capitulo1Parte1" />
 
                 <Button
@@ -95,8 +95,17 @@
                     style="@style/boton.1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:onClick="boton3"
+                    android:onClick="boton7"
                     android:text="@string/ej2Capitulo1Parte1" />
+
+
+                <Button
+                    android:id="@+id/boton8"
+                    style="@style/boton.1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="boton8"
+                    android:text="@string/ej3Capitulo1Parte1" />
 
             </LinearLayout>
         </ScrollView>

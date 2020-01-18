@@ -114,6 +114,21 @@ public class BaseDatos extends SQLiteOpenHelper {
         }
     }
 
+    public boolean ExisteRegistro(String Tabla, String Campo, String Valor) {
+
+        try {
+
+            SQLiteDatabase db = this.getReadableDatabase();
+            Cursor cursor = db.rawQuery(String.format(
+                    "SELECT %s FROM %s WHERE %s = '%s'", Campo, Tabla, Campo, Valor), null);
+            return cursor.getCount()>0;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public void BorrarRegistroWhere(String nombreTabla, String where) {
         try {
             SQLiteDatabase db = this.getReadableDatabase();
