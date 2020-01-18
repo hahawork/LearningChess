@@ -178,7 +178,7 @@ public class userManejarUsuarios extends AppCompatActivity {
 
                     if (guardar == GUARDAR.GUARDAR) {
 
-                        if (!BD.ExisteRegistro(BaseDatos.iBaseDatos.TBL_USUARIO,"Nombre",etNombre.getText().toString())) {
+                        if (!BD.ExisteRegistro(BaseDatos.iBaseDatos.TBL_USUARIO, "Nombre", etNombre.getText().toString())) {
                             ContentValues values = new ContentValues();
                             values.put("iduser", (byte[]) null);
                             values.put("Nombre", etNombre.getText().toString());
@@ -196,7 +196,7 @@ public class userManejarUsuarios extends AppCompatActivity {
                             } else {
                                 MG.MostrarAlertaError("No se guardó", "Error al guardar los datos");
                             }
-                        }else {
+                        } else {
                             MG.MostrarAlertaError("Alerta", "Este nombre ya existe.");
                         }
 

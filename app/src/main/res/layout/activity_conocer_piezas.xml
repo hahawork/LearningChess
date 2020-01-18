@@ -33,8 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/fondoTableroValorPiezas"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
+                style="@style/boton.1"
                 android:text="Selecciona el nombre de la pieza mostrada"
                 android:textAlignment="center"
                 android:textAllCaps="true"
@@ -44,7 +43,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/fondoPrincipal"
+                android:padding="5dp"
+                android:background="@color/botonFondoAzul"
                 android:orientation="horizontal">
 
                 <com.uni.learningchess.RectangleLinearLayout
@@ -52,8 +52,6 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/separacion_pieza_pizarra"
-                    android:layout_marginLeft="@dimen/separacion_pieza_pizarra"
                     android:layout_weight="1">
 
                     <LinearLayout
@@ -77,23 +75,6 @@
                     </LinearLayout>
                 </com.uni.learningchess.RectangleLinearLayout>
 
-                <com.uni.learningchess.RectangleLinearLayout
-                    android:id="@+id/cuadrado2"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_weight="0.5">
-
-                    <ImageView
-                        android:id="@+id/separador"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:adjustViewBounds="true"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        android:src="@drawable/separador" />
-                </com.uni.learningchess.RectangleLinearLayout>
 
                 <com.uni.learningchess.RectangleLinearLayout
                     android:id="@+id/cuadrado3"
@@ -112,28 +93,46 @@
                         android:orientation="vertical"
                         android:padding="@dimen/marco_pieza_valoresPiezas">
 
-                        <Button
-                            android:id="@+id/button6"
-                            style="@style/boton.1"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:onClick="SeleccionaNombrePieza"
-                            android:tag="rey"
-                            android:text="REY" />
+                            android:orientation="horizontal">
 
-                        <Button
-                            android:id="@+id/button5"
-                            style="@style/boton.rojo"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:onClick="SeleccionaNombrePieza"
-                            android:tag="dama"
-                            android:text="DAMA" />
+                            <Button
+                                android:id="@+id/button6"
+                                style="@style/boton.1"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:onClick="SeleccionaNombrePieza"
+                                android:tag="rey"
+                                android:padding="1dp"
+                                android:text="REY" />
+
+                            <Button
+                                android:id="@+id/button5"
+                                style="@style/boton.rojo"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:padding="1dp"
+                                android:layout_height="wrap_content"
+                                android:onClick="SeleccionaNombrePieza"
+                                android:tag="dama"
+                                android:text="DAMA" />
+                        </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
                         <Button
                             android:id="@+id/button4"
                             style="@style/boton.verde"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
+                            android:padding="1dp"
+                            android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:onClick="SeleccionaNombrePieza"
                             android:tag="caballo"
@@ -141,17 +140,28 @@
 
                         <Button
                             android:id="@+id/button3"
+                            android:padding="1dp"
                             style="@style/boton.azul"
-                            android:layout_width="match_parent"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:onClick="SeleccionaNombrePieza"
                             android:tag="torre"
                             android:text="TORRE" />
 
-                        <Button
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                    <Button
                             android:id="@+id/button2"
+                        android:padding="1dp"
+                        android:layout_weight="1"
                             style="@style/boton.amarillo"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:onClick="SeleccionaNombrePieza"
                             android:tag="alfil"
@@ -159,12 +169,15 @@
 
                         <Button
                             android:id="@+id/button1"
+                            android:layout_weight="1"
+                            android:padding="1dp"
                             style="@style/boton.morado"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:onClick="SeleccionaNombrePieza"
                             android:tag="peon"
                             android:text="PEON" />
+                    </LinearLayout>
                     </LinearLayout>
                 </com.uni.learningchess.RectangleLinearLayout>
 

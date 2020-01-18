@@ -1,6 +1,8 @@
 package com.uni.learningchess;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Typeface;
@@ -42,8 +44,8 @@ public class userProgreso extends AppCompatActivity {
 		textoTituloApp.setTypeface(fuente1);
 
 		TextView tvNombreUsuario = findViewById(R.id.tvNombreUsuario);
-		tvNombreUsuario.setText(
-				setting.getString("spNombreUsuarioActual","Invitado.") +" .:. "+
+		tvNombreUsuario.setText("Usuario: "+
+				setting.getString("spNombreUsuarioActual","Invitado.") +"\nEdad: "+
 				setting.getString("spEdadUsuarioActual","5") +" años");
 		getData();
 	}
@@ -94,5 +96,22 @@ public class userProgreso extends AppCompatActivity {
 			e.printStackTrace();
 			MG.MostrarAlertaError("Error", "Ha ocurrido un error: " + e.getMessage() + " en: " + e.getLocalizedMessage());
 		}
+	}
+
+	public void LimpiarDatosUsuario(View view) {
+		new AlertDialog.Builder(this)
+				.setTitle("Borrar datos del usuario")
+				.setIcon(R.drawable.ic_delete)
+				.setMessage("Esta acción borrará definitivamente los datos  y no se puede revertir.\n\n" +
+						"¿Estas seguro de borrar?")
+				.setPositiveButton("SI, BORRAR", new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						//BD.BorrarRegistroWhere(BaseDatos.iBaseDatos.TBL_USUARIO_AVANCES, "iduser = " + stIdUsuarioSeleccionado);
+						//getData();
+					}
+				})
+				.setNegativeButton("NO, SALIR", null)
+				.show();
 	}
 }

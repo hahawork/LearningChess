@@ -99,6 +99,7 @@
             android:theme="@style/DialogCustom" />
         <activity
             android:name=".userManejarUsuarios"
+            android:imeOptions="flagNoExtractUi"
             android:label="@string/ManejarUsuarios"
             android:screenOrientation="sensorLandscape" />
         <activity

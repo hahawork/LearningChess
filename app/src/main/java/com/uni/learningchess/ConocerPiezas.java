@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -82,13 +84,19 @@ public class ConocerPiezas extends AppCompatActivity {
 	}
 
 	private void mostrarPiezas() {
-
-		int indice = random.nextInt(vectorPiezas.size());
-		String pieza = vectorPiezas.get(indice);
+		String pieza = "";
+		do {
+			int indice = random.nextInt(vectorPiezas.size());
+			pieza = vectorPiezas.get(indice);
+		} while (pieza.equalsIgnoreCase(piezaIzquierda));
+		
 		piezaIzquierda = pieza;
 
 		piezaIzquierda = piezaIzquierda.toLowerCase();
 		imagenPiezaIzquierda.setImageResource(getResources().getIdentifier(piezaIzquierda.toLowerCase() + "_blanco", "drawable", this.getPackageName()));
+		Animation animSequential;
+		animSequential = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animacion_rotar_elemento);
+		imagenPiezaIzquierda.startAnimation(animSequential);
 
 		//crearTagValorPieza(piezaIzquierda, imagenPiezaIzquierda);
 
