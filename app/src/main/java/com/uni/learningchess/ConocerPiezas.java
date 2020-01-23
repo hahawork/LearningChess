@@ -89,7 +89,7 @@ public class ConocerPiezas extends AppCompatActivity {
 			int indice = random.nextInt(vectorPiezas.size());
 			pieza = vectorPiezas.get(indice);
 		} while (pieza.equalsIgnoreCase(piezaIzquierda));
-		
+
 		piezaIzquierda = pieza;
 
 		piezaIzquierda = piezaIzquierda.toLowerCase();
