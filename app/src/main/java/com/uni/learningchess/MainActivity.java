@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
             runnable = new Runnable() {
                 @Override
                 public void run() {
-                    avatar.habla(R.raw.presentacion, new VistaAvatar.OnAvatarHabla() {
+                    avatar.habla(R.raw.present, new VistaAvatar.OnAvatarHabla() {
                         @Override
                         public void onTerminaHabla() {
                             if (musicaActivada) {

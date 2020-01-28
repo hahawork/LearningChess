@@ -68,12 +68,8 @@
                         android:id="@+id/boton1"
                         style="@style/boton.rojo"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:drawablePadding="1dp"
-                        android:drawingCacheQuality="auto"
-                        android:duplicateParentState="true"
-                        android:elevation="1dp"
                         android:onClick="boton1"
                         android:text="@string/seccion1" />
 
@@ -83,7 +79,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:elevation="1dp"
                         android:onClick="boton2"
                         android:text="@string/seccion2" />
                 </LinearLayout>
@@ -110,10 +105,10 @@
                 <Button
                     android:id="@+id/boton5"
                     style="@style/boton.morado"
-                    android:onClick="boton5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:onClick="boton5"
                     android:text="@string/seccion5" />
 
             </LinearLayout>

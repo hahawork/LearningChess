@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,71 +11,77 @@
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <LinearLayout
-            android:id="@+id/piezas"
+        <ScrollView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0"
-            android:orientation="vertical"
-            android:padding="5dp">
+            android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/botonAyudaIntro"
-                style="@style/boton.1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="verPdfPagina"
-                android:text="Prólogo" />
+            <LinearLayout
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:orientation="vertical"
+                android:padding="5dp">
 
-            <Button
-                android:id="@+id/botonAyudaSecc1"
-                style="@style/boton.rojo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="verPdfPagina"
-                android:text="Tablero" />
+                <Button
+                    android:id="@+id/botonAyudaIntro"
+                    style="@style/boton.1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="verPdfPagina"
+                    android:text="Prólogo" />
 
-
-            <Button
-                android:id="@+id/botonAyudaSecc2"
-                style="@style/boton.verde"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="verPdfPagina"
-                android:text="Piezas" />
+                <Button
+                    android:id="@+id/botonAyudaSecc1"
+                    style="@style/boton.rojo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="verPdfPagina"
+                    android:text="Tablero" />
 
 
-            <Button
-                android:id="@+id/botonAyudaSecc3"
-                style="@style/boton.azul"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="verPdfPagina"
-                android:text="Notación" />
+                <Button
+                    android:id="@+id/botonAyudaSecc2"
+                    style="@style/boton.verde"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="verPdfPagina"
+                    android:text="Piezas" />
 
 
-            <Button
-                android:id="@+id/botonAyudaSecc4"
-                style="@style/boton.amarillo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="verPdfPagina"
-                android:text="Jaque/Mate" />
+                <Button
+                    android:id="@+id/botonAyudaSecc3"
+                    style="@style/boton.azul"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="verPdfPagina"
+                    android:text="Notación" />
 
-            <Button
-                android:id="@+id/botonAyudaSecc5"
-                style="@style/boton.morado"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="verPdfPagina"
-                android:text="Prácticas" />
-        </LinearLayout>
+
+                <Button
+                    android:id="@+id/botonAyudaSecc4"
+                    style="@style/boton.amarillo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="verPdfPagina"
+                    android:text="Jaque/Mate" />
+
+                <Button
+                    android:id="@+id/botonAyudaSecc5"
+                    style="@style/boton.morado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="verPdfPagina"
+                    android:text="Prácticas" />
+            </LinearLayout>
+
+        </ScrollView>
 
         <LinearLayout
             android:layout_width="0dp"
