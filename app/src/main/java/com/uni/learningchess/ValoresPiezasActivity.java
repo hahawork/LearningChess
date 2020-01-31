@@ -87,10 +87,14 @@ public class ValoresPiezasActivity extends AppCompatActivity implements View.OnC
 
     @Override
     public void onPause() {
-        cancelaCuentaAtras();
-        avatar.pausar();
+        avatar.habla(R.raw.aplausos, new VistaAvatar.OnAvatarHabla() {
+            @Override
+            public void onTerminaHabla() {
+                cancelaCuentaAtras();
+                avatar.pausar();
+            }
+        });
         super.onPause();
-
     }
 
 
@@ -237,7 +241,7 @@ public class ValoresPiezasActivity extends AppCompatActivity implements View.OnC
                         avatar.lanzaAnimacion(VistaAvatar.Animacion.EJERCICIO_SUPERADO);
                         marco.setBackgroundResource(R.drawable.animacion_marco_correcto);
                         animar(marco);
-                        avatar.habla(R.raw.ok_superado, new VistaAvatar.OnAvatarHabla() {
+                        avatar.habla(R.raw.excelente_completaste_ejercicios, new VistaAvatar.OnAvatarHabla() {
                             @Override
                             public void onTerminaHabla() {
                                 finish();
@@ -251,6 +255,7 @@ public class ValoresPiezasActivity extends AppCompatActivity implements View.OnC
                 marco.setBackgroundResource(R.drawable.animacion_marco_incorrecto);
                 animar(marco);
                 avatar.mueveCejas(VistaAvatar.MovimientoCejas.FRUNCIR);
+                avatar.habla(R.raw.incorrecto);
                 hacerPregunta();
             }
         }

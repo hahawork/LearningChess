@@ -273,7 +273,7 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
                 _coordenada);
 
         tvTituloEjercicio.setText("¿Qué significa la notación abreviada " + _notacion + "?");
-        ((TextView) findViewById(R.id.tvTituloNotacion_as3e2)).setVisibility(View.GONE);//setText("¿Qué significa la notación abreviada " + _notacion + "?");
+        findViewById(R.id.tvTituloNotacion_as3e2).setVisibility(View.GONE);//setText("¿Qué significa la notación abreviada " + _notacion + "?");
         opcion1 = findViewById(R.id.botonOpcion1);
         opcion2 = findViewById(R.id.botonOpcion2);
         opcion3 = findViewById(R.id.botonOpcion3);
@@ -328,7 +328,7 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
         boolean esCuadriculaNegra = esCuadriculaNegra(casilla);
 
         tvTituloEjercicio.setText(String.format(getResources().getString(R.string.seccion3Ejerc3Titulo), coordenadaSolicitada));
-        ((TextView) findViewById(R.id.textoSeccion3Ejerc3Titulo)).setVisibility(View.GONE);//setText(String.format(getResources().getString(R.string.seccion3Ejerc3Titulo), coordenadaSolicitada));
+        findViewById(R.id.textoSeccion3Ejerc3Titulo).setVisibility(View.GONE);//setText(String.format(getResources().getString(R.string.seccion3Ejerc3Titulo), coordenadaSolicitada));
         opcion1 = findViewById(R.id.botonBlanca);
         opcion1.setText("Blanca");
         opcion1.setTag(esCuadriculaNegra ? "0" : "1");
@@ -373,11 +373,11 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
     public void MoverPieza() {
         LinearLayout piezas = findViewById(R.id.piezas);
         piezas.setVisibility(View.VISIBLE);
-        ((ImageView) findViewById(R.id.torre)).setVisibility(View.GONE);
-        ((ImageView) findViewById(R.id.rey)).setVisibility(View.GONE);
-        ((ImageView) findViewById(R.id.caballo)).setVisibility(View.GONE);
-        ((ImageView) findViewById(R.id.dama)).setVisibility(View.GONE);
-        ((ImageView) findViewById(R.id.alfil)).setVisibility(View.GONE);
+        findViewById(R.id.torre).setVisibility(View.GONE);
+        findViewById(R.id.rey).setVisibility(View.GONE);
+        findViewById(R.id.caballo).setVisibility(View.GONE);
+        findViewById(R.id.dama).setVisibility(View.GONE);
+        findViewById(R.id.alfil).setVisibility(View.GONE);
 
         //TextView titulo = findViewById(R.id.tvTituloEjerciciosPracticas);
         tvTituloEjercicio.setText(String.format(getResources().getString(R.string.seccion3Ejerc4Titulo), coordenadaSolicitada));
@@ -456,7 +456,7 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
                 avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_CORRECTO);
                 avatar.lanzaAnimacion(VistaAvatar.Animacion.EJERCICIO_SUPERADO);
                 avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.EJERCICIO_SUPERADO);
-                avatar.habla(R.raw.ok_superado, new VistaAvatar.OnAvatarHabla() {
+                avatar.habla(R.raw.excelente_completaste_ejercicios, new VistaAvatar.OnAvatarHabla() {
                     @Override
                     public void onTerminaHabla() {
                         baseDatos.IncrementaAcierto(idUsuario, "3");
@@ -504,7 +504,7 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
             if (salida) {
                 avatar.lanzaAnimacion(VistaAvatar.Animacion.EJERCICIO_SUPERADO);
                 avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.EJERCICIO_SUPERADO);
-                avatar.habla(R.raw.ok_superado, new VistaAvatar.OnAvatarHabla() {
+                avatar.habla(R.raw.excelente_completaste_ejercicios, new VistaAvatar.OnAvatarHabla() {
                     @Override
                     public void onTerminaHabla() {
 

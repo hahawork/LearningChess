@@ -113,7 +113,7 @@ public class MovimientoPeonAlPaso extends EjercicioBaseActivity {
     }
 
     protected void retiraPiezas() {
-        LinearLayout tabla = (LinearLayout) findViewById(R.id.tabla);
+        LinearLayout tabla = findViewById(R.id.tabla);
         for (int f = 1, iMax = tabla.getChildCount() - 1; f < iMax; f++) {
             View vista = tabla.getChildAt(f);
             if (vista instanceof LinearLayout) {
@@ -171,7 +171,7 @@ public class MovimientoPeonAlPaso extends EjercicioBaseActivity {
 
     public void colocaPieza(Pieza pieza) {
         int idImageView = getResources().getIdentifier(pieza.getCoordenada(), "id", getPackageName());
-        ImageView imageView = (ImageView) findViewById(idImageView);
+        ImageView imageView = findViewById(idImageView);
         int idDrawablePieza = getDrawablePieza(pieza);
         imageView.setImageResource(idDrawablePieza);
         Log.d("Ajedrez", "tipo=" + pieza.getTipo() + " color=" + pieza.getColor() + " coordenada=" + pieza.getCoordenada() + " getResourceName(idImageView)=" + getResources().getResourceName(idImageView));
@@ -388,7 +388,7 @@ public class MovimientoPeonAlPaso extends EjercicioBaseActivity {
             } else {
                 avatar.lanzaAnimacion(VistaAvatar.Animacion.EJERCICIO_SUPERADO);
                 avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.EJERCICIO_SUPERADO);
-                avatar.habla(R.raw.ok_superado, new VistaAvatar.OnAvatarHabla() {
+                avatar.habla(R.raw.excelente_completaste_ejercicios, new VistaAvatar.OnAvatarHabla() {
                     @Override
                     public void onTerminaHabla() {
                         finish();

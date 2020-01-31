@@ -43,7 +43,7 @@ public class Seccion3Ejerc1 extends Seccion3BaseActivity {
         if (view == botonTh8) {
             avatar.lanzaAnimacion(VistaAvatar.Animacion.EJERCICIO_SUPERADO);
             avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.EJERCICIO_SUPERADO);
-            avatar.habla(R.raw.ok_superado, new VistaAvatar.OnAvatarHabla() {
+            avatar.habla(R.raw.excelente_completaste_ejercicios, new VistaAvatar.OnAvatarHabla() {
                 @Override
                 public void onTerminaHabla() {
                     startActivity(new Intent(Seccion3Ejerc1.this, Seccion3Ejerc2.class));

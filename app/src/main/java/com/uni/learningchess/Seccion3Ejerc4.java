@@ -7,7 +7,6 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -28,13 +27,13 @@ public class Seccion3Ejerc4 extends EjercicioBaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        LinearLayout piezas = (LinearLayout) findViewById(R.id.piezas);
+        LinearLayout piezas = findViewById(R.id.piezas);
         piezas.setVisibility(View.VISIBLE);
-        ( (ImageView)findViewById(R.id.torre)).setVisibility(View.GONE);
-        ( (ImageView)findViewById(R.id.rey)).setVisibility(View.GONE);
-        ( (ImageView)findViewById(R.id.caballo)).setVisibility(View.GONE);
-        ( (ImageView)findViewById(R.id.dama)).setVisibility(View.GONE);
-        ( (ImageView)findViewById(R.id.alfil)).setVisibility(View.GONE);
+        findViewById(R.id.torre).setVisibility(View.GONE);
+        findViewById(R.id.rey).setVisibility(View.GONE);
+        findViewById(R.id.caballo).setVisibility(View.GONE);
+        findViewById(R.id.dama).setVisibility(View.GONE);
+        findViewById(R.id.alfil).setVisibility(View.GONE);
 
 
         avatar = getAvatar();
@@ -93,7 +92,7 @@ public class Seccion3Ejerc4 extends EjercicioBaseActivity {
 
             avatar.lanzaAnimacion(VistaAvatar.Animacion.EJERCICIO_SUPERADO);
             avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.EJERCICIO_SUPERADO);
-            avatar.habla(R.raw.ok_superado, new VistaAvatar.OnAvatarHabla() {
+            avatar.habla(R.raw.excelente_completaste_ejercicios, new VistaAvatar.OnAvatarHabla() {
                 @Override
                 public void onTerminaHabla() {
                     startActivity(new Intent(Seccion3Ejerc4.this, Seccion3Ejerc5.class));

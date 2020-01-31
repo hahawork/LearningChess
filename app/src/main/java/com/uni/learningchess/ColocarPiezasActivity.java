@@ -12,7 +12,7 @@ public class ColocarPiezasActivity extends EjercicioBaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        LinearLayout piezas = (LinearLayout)findViewById(R.id.piezas);
+        LinearLayout piezas = findViewById(R.id.piezas);
         piezas.setVisibility(View.VISIBLE);
         avatar = getAvatar();
         avatar.habla(R.raw.colocar_piezas_presentacion);
@@ -45,7 +45,7 @@ public class ColocarPiezasActivity extends EjercicioBaseActivity {
             if (aciertos < 16) {
                 avatar.habla(R.raw.colocar_piezas_bien);
             } else {
-                avatar.habla(R.raw.ok_superado,
+                avatar.habla(R.raw.excelente_completaste_ejercicios,
                         new VistaAvatar.OnAvatarHabla() {
                             @Override
                             public void onTerminaHabla() { finish();   }

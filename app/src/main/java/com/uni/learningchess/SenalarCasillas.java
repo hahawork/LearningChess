@@ -20,14 +20,11 @@ public class SenalarCasillas extends EjercicioBaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         vectorCoordenadas = new Vector<String>();
-        vectorCoordenadas.add("A3");
-        vectorCoordenadas.add("B4");
-        vectorCoordenadas.add("C8");
-        vectorCoordenadas.add("D1");
-        vectorCoordenadas.add("E3");
-        vectorCoordenadas.add("F2");
-        vectorCoordenadas.add("G6");
-        vectorCoordenadas.add("H5");
+        vectorCoordenadas.add("E4");
+        vectorCoordenadas.add("E6");
+        vectorCoordenadas.add("B7");
+        vectorCoordenadas.add("D5");
+        vectorCoordenadas.add("G7");
         random = new Random(System.currentTimeMillis());
         avatar = getAvatar();
         coordenadasAcertadas = 0;
@@ -77,6 +74,20 @@ public class SenalarCasillas extends EjercicioBaseActivity {
     }
 
     @Override
+    public void onPause() {
+        avatar.habla(R.raw.aplausos, new VistaAvatar.OnAvatarHabla() {
+            @Override
+            public void onTerminaHabla() {
+                cancelaCuentaAtras();
+                avatar.pausar();
+            }
+        });
+
+        super.onPause();
+
+    }
+
+    @Override
     protected boolean onPulsar(ImageView imageView) {
         if (coordenadaSolicitada == null) return false;
         cancelaCuentaAtras();
@@ -117,7 +128,7 @@ public class SenalarCasillas extends EjercicioBaseActivity {
                 case 3:
                     avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.EJERCICIO_SUPERADO);
                     avatar.lanzaAnimacion(VistaAvatar.Animacion.EJERCICIO_SUPERADO);
-                    avatar.habla(R.raw.ok_superado, new VistaAvatar.OnAvatarHabla() {
+                    avatar.habla(R.raw.excelente_completaste_ejercicios, new VistaAvatar.OnAvatarHabla() {
                         @Override
                         public void onTerminaHabla() {
                             finish();

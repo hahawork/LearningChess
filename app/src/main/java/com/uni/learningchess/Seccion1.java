@@ -23,21 +23,21 @@ public class Seccion1 extends AppCompatActivity {
         // Typeface fuente = Typeface.createFromAsset(getAssets(), "fonts/BungeeShade-Regular.ttf");
         // Typeface fuente = Typeface.createFromAsset(getAssets(), "fonts/HoltwoodOneSC.ttf");
         Typeface fuente1 = Typeface.createFromAsset(getAssets(),"fonts/Gorditas-Bold.ttf");
-        Button boton1 = (Button) findViewById(R.id.boton5);
-        boton1.setTypeface(fuente);
-        Button boton2 = (Button) findViewById(R.id.boton6);
-        boton2.setTypeface(fuente);
-        Button boton3 = (Button) findViewById(R.id.boton7);
-        boton3.setTypeface(fuente);
+        Button boton6 = findViewById(R.id.boton6);
+        boton6.setTypeface(fuente);
+        Button boton7 = findViewById(R.id.boton7);
+        boton7.setTypeface(fuente);
+        Button boton8 = findViewById(R.id.boton8);
+        boton8.setTypeface(fuente);
 
-        TextView textoCapitulo1 = (TextView)findViewById(R.id.textoCapitulo1);
+        TextView textoCapitulo1 = findViewById(R.id.textoCapitulo1);
         textoCapitulo1.setTypeface(fuente1);
-        TextView textoLeccion = (TextView)findViewById(R.id.textoLeccion);
+        TextView textoLeccion = findViewById(R.id.textoLeccion);
         textoLeccion.setTypeface(fuente);
-        TextView textoEjercicios = (TextView)findViewById(R.id.textoEjercicios);
+        TextView textoEjercicios = findViewById(R.id.textoEjercicios);
         textoEjercicios.setTypeface(fuente);
 
-        avatar = (VistaAvatar) findViewById(R.id.vistaAvatar1);
+        avatar = findViewById(R.id.vistaAvatar1);
         avatar.setActividad(this);
        // presentacion();
     }

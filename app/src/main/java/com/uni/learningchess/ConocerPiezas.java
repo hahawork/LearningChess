@@ -9,7 +9,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Random;
 import java.util.Vector;
@@ -53,7 +52,7 @@ public class ConocerPiezas extends AppCompatActivity {
 		int TIEMPO_CUENTA_ATRAS = 8000;
 		configuraCuentaAtras(TIEMPO_CUENTA_ATRAS);
 
-		avatar.habla(R.raw.valorespiezas_presentacion, new VistaAvatar.OnAvatarHabla() {
+		avatar.habla(R.raw.conocer_las_piezas, new VistaAvatar.OnAvatarHabla() {
 			@Override
 			public void onTerminaHabla() {
 				mostrarPiezas();
@@ -91,6 +90,7 @@ public class ConocerPiezas extends AppCompatActivity {
 		} while (pieza.equalsIgnoreCase(piezaIzquierda));
 
 		piezaIzquierda = pieza;
+		vectorPiezas.remove(pieza);
 
 		piezaIzquierda = piezaIzquierda.toLowerCase();
 		imagenPiezaIzquierda.setImageResource(getResources().getIdentifier(piezaIzquierda.toLowerCase() + "_blanco", "drawable", this.getPackageName()));
@@ -125,7 +125,7 @@ public class ConocerPiezas extends AppCompatActivity {
 
 
 	protected void onFinalCuentaAtras() {
-		avatar.habla(R.raw.valorespiezas_presentacion, new VistaAvatar.OnAvatarHabla() {
+		avatar.habla(R.raw.conocer_las_piezas, new VistaAvatar.OnAvatarHabla() {
 			@Override
 			public void onTerminaHabla() {
 				avatar.mueveOjos(VistaAvatar.MovimientoOjos.DERECHA);
@@ -141,19 +141,20 @@ public class ConocerPiezas extends AppCompatActivity {
 		String botonTag = view.getTag().toString();
 
 		if (botonTag.equalsIgnoreCase(piezaIzquierda)){
-			Toast.makeText(this,"correcto", Toast.LENGTH_LONG).show();
 			avatar.lanzaAnimacion(VistaAvatar.Animacion.EJERCICIO_SUPERADO);
 			avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.EJERCICIO_SUPERADO);
-			avatar.habla(R.raw.ok_intenta_otra_vez, new VistaAvatar.OnAvatarHabla() {
+			avatar.habla(R.raw.ok_muy_bien, new VistaAvatar.OnAvatarHabla() {
 				@Override
 				public void onTerminaHabla() {
 
-					mostrarPiezas();
-
+					if (vectorPiezas.size() > 0) {
+						mostrarPiezas();
+					}else{
+						finish();
+					}
 				}
 			});
 		}else {
-			Toast.makeText(this,"Tas mal.",Toast.LENGTH_LONG).show();
 			avatar.habla(R.raw.incorrecto);
 			avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_INCORRECTO);
 			avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_INCORRECTO);

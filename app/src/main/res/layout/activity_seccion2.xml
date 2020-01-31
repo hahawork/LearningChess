@@ -52,17 +52,19 @@
 
             <Button
                 android:id="@+id/botonVerVideo"
-                style="@style/boton.1"
+                style="@style/boton.morado"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:textStyle="bold"
                 android:onClick="botonVerVideo"
                 android:text="@string/verVideo" />
 
             <Button
                 android:id="@+id/botonValorPiezas"
-                style="@style/boton.2"
+                style="@style/boton.amarillo"
                 android:layout_width="0dp"
+                android:textStyle="bold"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="botonValorPiezas"
@@ -76,25 +78,28 @@
 
             <Button
                 android:id="@+id/botonMovimientos"
-                style="@style/boton.1"
+                style="@style/boton.rojo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="botonMovimientos"
+                android:textStyle="bold"
                 android:text="@string/movimientos" />
 
             <Button
                 android:id="@+id/botonCaptura"
-                style="@style/boton.2"
+                style="@style/boton.verde"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="botonCaptura"
+                android:textStyle="bold"
                 android:text="@string/capturas" />
 
             <Button
                 android:id="@+id/botonJugadasEspeciales"
-                style="@style/boton.1"
+                style="@style/boton.azul"
                 android:layout_width="0dp"
+                android:textStyle="bold"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="botonJugadasEspeciales"
@@ -141,7 +146,7 @@
 
                         <Button
                             android:id="@+id/boton13"
-                            style="@style/boton.1"
+                            style="@style/boton.rojo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:onClick="botonMoverPeon"
@@ -149,7 +154,7 @@
 
                         <Button
                             android:id="@+id/boton12"
-                            style="@style/boton.1"
+                            style="@style/boton.rojo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:onClick="botonMoverCaballo"
@@ -157,7 +162,7 @@
 
                         <Button
                             android:id="@+id/boton9"
-                            style="@style/boton.1"
+                            style="@style/boton.rojo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:onClick="botonMoverTorre"
@@ -172,7 +177,7 @@
 
                         <Button
                             android:id="@+id/boton10"
-                            style="@style/boton.1"
+                            style="@style/boton.rojo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:onClick="botonMoverAlfil"
@@ -180,7 +185,7 @@
 
                         <Button
                             android:id="@+id/boton11"
-                            style="@style/boton.1"
+                            style="@style/boton.rojo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:onClick="botonMoverDama"
@@ -188,7 +193,7 @@
 
                         <Button
                             android:id="@+id/boton14"
-                            style="@style/boton.1"
+                            style="@style/boton.rojo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:onClick="botonMoverRey"
@@ -212,7 +217,7 @@
 
                         <Button
                             android:id="@+id/botonCapturaPeon"
-                            style="@style/boton.2"
+                            style="@style/boton.verde"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:onClick="botonCapturar"
@@ -220,7 +225,7 @@
 
                         <Button
                             android:id="@+id/botonCapturaCaballo"
-                            style="@style/boton.2"
+                            style="@style/boton.verde"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:onClick="botonCapturar"
@@ -229,7 +234,7 @@
 
                         <Button
                             android:id="@+id/botonCapturaTorre"
-                            style="@style/boton.2"
+                            style="@style/boton.verde"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:onClick="botonCapturar"
@@ -245,7 +250,7 @@
 
                         <Button
                             android:id="@+id/botonCapturaAlfil"
-                            style="@style/boton.2"
+                            style="@style/boton.verde"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:onClick="botonCapturar"
@@ -253,7 +258,7 @@
 
                         <Button
                             android:id="@+id/botonCapturaDama"
-                            style="@style/boton.2"
+                            style="@style/boton.verde"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:onClick="botonCapturar"
@@ -262,7 +267,7 @@
 
                         <Button
                             android:id="@+id/botonCapturaRey"
-                            style="@style/boton.2"
+                            style="@style/boton.verde"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:onClick="botonCapturar"
@@ -287,7 +292,7 @@
 
                         <Button
                             android:id="@+id/botonjugEspec1"
-                            style="@style/boton.1"
+                            style="@style/boton.azul"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:onClick="botonjugEspec1"
@@ -295,7 +300,7 @@
 
                         <Button
                             android:id="@+id/botonjugEspec2"
-                            style="@style/boton.1"
+                            style="@style/boton.azul"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:onClick="botonjugEspec2"
@@ -303,7 +308,7 @@
 
                         <Button
                             android:id="@+id/botonjugEspec3"
-                            style="@style/boton.1"
+                            style="@style/boton.azul"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:onClick="botonjugEspec3"

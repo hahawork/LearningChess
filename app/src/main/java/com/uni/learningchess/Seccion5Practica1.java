@@ -174,7 +174,7 @@ public class Seccion5Practica1 extends EjercicioBaseActivity {
                         break;
 
                     case 2:
-                        avatar.habla(R.raw.ok_superado, new VistaAvatar.OnAvatarHabla() {
+                        avatar.habla(R.raw.excelente_completaste_ejercicios, new VistaAvatar.OnAvatarHabla() {
                             @Override
                             public void onTerminaHabla() {
                                 seleccionaCoordenada();

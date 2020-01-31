@@ -25,30 +25,39 @@ public class Seccion2 extends AppCompatActivity {
         // Typeface fuente = Typeface.createFromAsset(getAssets(), "fonts/BungeeShade-Regular.ttf");
         // Typeface fuente = Typeface.createFromAsset(getAssets(), "fonts/HoltwoodOneSC.ttf");
         Typeface fuente1 = Typeface.createFromAsset(getAssets(), "fonts/Gorditas-Bold.ttf");
-        Button boton9 = (Button) findViewById(R.id.boton9);
+
+        Button boton9 = findViewById(R.id.boton9);
         boton9.setTypeface(fuente);
-        Button boton10 = (Button) findViewById(R.id.boton10);
+
+        Button boton10 = findViewById(R.id.boton10);
         boton10.setTypeface(fuente);
-        Button boton11 = (Button) findViewById(R.id.boton11);
+
+        Button boton11 = findViewById(R.id.boton11);
         boton11.setTypeface(fuente);
-        Button boton12 = (Button) findViewById(R.id.boton12);
+
+        Button boton12 = findViewById(R.id.boton12);
         boton12.setTypeface(fuente);
-        Button boton13 = (Button) findViewById(R.id.boton13);
+
+        Button boton13 = findViewById(R.id.boton13);
         boton13.setTypeface(fuente);
-        Button boton14 = (Button) findViewById(R.id.boton14);
+
+        Button boton14 = findViewById(R.id.boton14);
         boton14.setTypeface(fuente);
+
         Button botonVerVideo = findViewById(R.id.botonVerVideo);
         botonVerVideo.setTypeface(fuente);
 
 
-        TextView textoCapitulo12 = (TextView) findViewById(R.id.textoCapitulo12);
+        TextView textoCapitulo12 = findViewById(R.id.textoCapitulo12);
         textoCapitulo12.setTypeface(fuente1);
-        TextView textoLeccion = (TextView) findViewById(R.id.textoLeccion);
+
+        TextView textoLeccion = findViewById(R.id.textoLeccion);
         textoLeccion.setTypeface(fuente);
-        TextView textoEjercicios = (TextView) findViewById(R.id.textoEjercicios);
+
+        TextView textoEjercicios = findViewById(R.id.textoEjercicios);
         textoEjercicios.setTypeface(fuente);
 
-        avatar = (VistaAvatar) findViewById(R.id.vistaAvatar1);
+        avatar = findViewById(R.id.vistaAvatar1);
         avatar.setActividad(this);
         // presentacion();
     }

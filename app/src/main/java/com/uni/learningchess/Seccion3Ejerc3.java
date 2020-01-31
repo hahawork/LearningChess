@@ -83,7 +83,7 @@ public class Seccion3Ejerc3 extends Seccion3BaseActivity {
         if (botonBlanca && casillaBlanca) {
             avatar.lanzaAnimacion(VistaAvatar.Animacion.EJERCICIO_SUPERADO);
             avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.EJERCICIO_SUPERADO);
-            avatar.habla(R.raw.ok_superado, new VistaAvatar.OnAvatarHabla() {
+            avatar.habla(R.raw.excelente_completaste_ejercicios, new VistaAvatar.OnAvatarHabla() {
                 @Override
                 public void onTerminaHabla() {
                     startActivity(new Intent(Seccion3Ejerc3.this,Seccion3Ejerc4.class));
@@ -95,7 +95,7 @@ public class Seccion3Ejerc3 extends Seccion3BaseActivity {
         else if (botonNegra && casillaNegra) {
             avatar.lanzaAnimacion(VistaAvatar.Animacion.EJERCICIO_SUPERADO);
             avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.EJERCICIO_SUPERADO);
-            avatar.habla(R.raw.ok_superado, new VistaAvatar.OnAvatarHabla() {
+            avatar.habla(R.raw.excelente_completaste_ejercicios, new VistaAvatar.OnAvatarHabla() {
                 @Override
                 public void onTerminaHabla() {
                     startActivity(new Intent(Seccion3Ejerc3.this,Seccion3Ejerc4.class));

@@ -1,10 +1,6 @@
 package com.uni.learningchess;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,10 +10,7 @@ import java.util.Random;
 import java.util.Vector;
 
 import static com.uni.learningchess.Pieza.Color.BLANCO;
-import static com.uni.learningchess.Pieza.Color.NEGRO;
 import static com.uni.learningchess.Pieza.Tipo.PEON;
-import static com.uni.learningchess.Pieza.Tipo.REY;
-import static com.uni.learningchess.Pieza.Tipo.TORRE;
 
 public class MovimientosCoronacion extends EjercicioBaseActivity implements DialogoSeleccionarCoronacion.ObtenerPiezaSeleccionada {
 
@@ -95,7 +88,7 @@ public class MovimientosCoronacion extends EjercicioBaseActivity implements Dial
     }
 
     protected void retiraPiezas() {
-        LinearLayout tabla = (LinearLayout) findViewById(R.id.tabla);
+        LinearLayout tabla = findViewById(R.id.tabla);
         for (int f = 1, iMax = tabla.getChildCount() - 1; f < iMax; f++) {
             View vista = tabla.getChildAt(f);
             if (vista instanceof LinearLayout) {
@@ -138,7 +131,7 @@ public class MovimientosCoronacion extends EjercicioBaseActivity implements Dial
 
     public void colocaPieza(Pieza pieza) {
         int idImageView = getResources().getIdentifier(pieza.getCoordenada(), "id", getPackageName());
-        ImageView imageView = (ImageView) findViewById(idImageView);
+        ImageView imageView = findViewById(idImageView);
         int idDrawablePieza = getDrawablePieza(pieza);
         imageView.setImageResource(idDrawablePieza);
         Log.d("Ajedrez", "tipo=" + pieza.getTipo() + " color=" + pieza.getColor() + " coordenada=" + pieza.getCoordenada() + " getResourceName(idImageView)=" + getResources().getResourceName(idImageView));
@@ -269,7 +262,7 @@ public class MovimientosCoronacion extends EjercicioBaseActivity implements Dial
         } else {
             avatar.lanzaAnimacion(VistaAvatar.Animacion.EJERCICIO_SUPERADO);
             avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.EJERCICIO_SUPERADO);
-            avatar.habla(R.raw.ok_superado, new VistaAvatar.OnAvatarHabla() {
+            avatar.habla(R.raw.excelente_completaste_ejercicios, new VistaAvatar.OnAvatarHabla() {
                 @Override
                 public void onTerminaHabla() {
                     finish();

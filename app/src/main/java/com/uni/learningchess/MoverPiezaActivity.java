@@ -58,7 +58,7 @@ public abstract class MoverPiezaActivity extends EjercicioBaseActivity {
             if (contadorMovimientos > 3) {
                 avatar.lanzaAnimacion(VistaAvatar.Animacion.EJERCICIO_SUPERADO);
                 avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.EJERCICIO_SUPERADO);
-                avatar.habla(R.raw.ok_superado, new VistaAvatar.OnAvatarHabla() {
+                avatar.habla(R.raw.excelente_completaste_ejercicios, new VistaAvatar.OnAvatarHabla() {
                     @Override
                     public void onTerminaHabla() {
                         finish();
