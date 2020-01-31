@@ -17,7 +17,7 @@ public class MoverCaballoActivity extends MoverPiezaActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        inicializa(validadorCaballo, R.drawable.caballo_blanco, R.raw.mover_dama_presentacion);
+        inicializa(validadorCaballo, R.drawable.caballo_blanco, R.raw.mover_pieza_presentacion);
         super.onCreate(savedInstanceState);
     }
 

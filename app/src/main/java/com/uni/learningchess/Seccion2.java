@@ -5,7 +5,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.media.AudioManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -76,18 +78,23 @@ public class Seccion2 extends AppCompatActivity {
 
     public void botonMovimientos(View view) {
         ((TextView) findViewById(R.id.textoEjercicios)).setText(getResources().getString(R.string.ejercicios) + " Movimientos.");
-        findViewById(R.id.tlMovimientos).setVisibility(View.VISIBLE);
+        View tblLayout = findViewById(R.id.tlMovimientos);
+        tblLayout.setVisibility(View.VISIBLE);
+
         findViewById(R.id.tlCapturas).setVisibility(View.GONE);
         findViewById(R.id.tlJugadasEspeciales).setVisibility(View.GONE);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void botonCaptura(View view) {
+
         ((TextView) findViewById(R.id.textoEjercicios)).setText(getResources().getString(R.string.ejercicios) + " Capturas.");
         findViewById(R.id.tlMovimientos).setVisibility(View.GONE);
         findViewById(R.id.tlCapturas).setVisibility(View.VISIBLE);
         findViewById(R.id.tlJugadasEspeciales).setVisibility(View.GONE);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void botonJugadasEspeciales(View view) {
         ((TextView) findViewById(R.id.textoEjercicios)).setText(getResources().getString(R.string.ejercicios) + " Jugadas Especiales.");
         findViewById(R.id.tlMovimientos).setVisibility(View.GONE);
@@ -131,7 +138,7 @@ public class Seccion2 extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
 
                 startActivity(new Intent(Seccion2.this, MovimientosEnroque.class)
-                        .putExtra("tipoEnroque",which));
+                        .putExtra("tipoEnroque", which));
              /*   switch (which) {
                     case 0: // largo
 
@@ -166,25 +173,25 @@ public class Seccion2 extends AppCompatActivity {
 
     public void botonCapturar(View view) {
 
-        Intent intent = new Intent(this,MovimientosCapturas.class);
+        Intent intent = new Intent(this, MovimientosCapturas.class);
 
-        if (view == findViewById(R.id.botonCapturaRey)){
-            intent.putExtra("pieza",Pieza.Tipo.REY.ordinal());
+        if (view == findViewById(R.id.botonCapturaRey)) {
+            intent.putExtra("pieza", Pieza.Tipo.REY.ordinal());
         }
-        if (view == findViewById(R.id.botonCapturaDama)){
-            intent.putExtra("pieza",Pieza.Tipo.DAMA.ordinal());
+        if (view == findViewById(R.id.botonCapturaDama)) {
+            intent.putExtra("pieza", Pieza.Tipo.DAMA.ordinal());
         }
-        if (view == findViewById(R.id.botonCapturaTorre)){
-            intent.putExtra("pieza",Pieza.Tipo.TORRE.ordinal());
+        if (view == findViewById(R.id.botonCapturaTorre)) {
+            intent.putExtra("pieza", Pieza.Tipo.TORRE.ordinal());
         }
-        if (view == findViewById(R.id.botonCapturaCaballo)){
-            intent.putExtra("pieza",Pieza.Tipo.CABALLO.ordinal());
+        if (view == findViewById(R.id.botonCapturaCaballo)) {
+            intent.putExtra("pieza", Pieza.Tipo.CABALLO.ordinal());
         }
-        if (view == findViewById(R.id.botonCapturaAlfil)){
-            intent.putExtra("pieza",Pieza.Tipo.ALFIL.ordinal());
+        if (view == findViewById(R.id.botonCapturaAlfil)) {
+            intent.putExtra("pieza", Pieza.Tipo.ALFIL.ordinal());
         }
-        if (view == findViewById(R.id.botonCapturaPeon)){
-            intent.putExtra("pieza",Pieza.Tipo.PEON.ordinal());
+        if (view == findViewById(R.id.botonCapturaPeon)) {
+            intent.putExtra("pieza", Pieza.Tipo.PEON.ordinal());
         }
 
         startActivity(intent);

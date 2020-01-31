@@ -92,7 +92,7 @@ public class Seccion3Ejerc4 extends EjercicioBaseActivity {
 
             avatar.lanzaAnimacion(VistaAvatar.Animacion.EJERCICIO_SUPERADO);
             avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.EJERCICIO_SUPERADO);
-            avatar.habla(R.raw.excelente_completaste_ejercicios, new VistaAvatar.OnAvatarHabla() {
+            avatar.habla(R.raw.ok_has_acertado, new VistaAvatar.OnAvatarHabla() {
                 @Override
                 public void onTerminaHabla() {
                     startActivity(new Intent(Seccion3Ejerc4.this, Seccion3Ejerc5.class));
@@ -119,6 +119,7 @@ public class Seccion3Ejerc4 extends EjercicioBaseActivity {
             avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_INCORRECTO);
             avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_INCORRECTO);
             avatar.mueveCejas(VistaAvatar.MovimientoCejas.FRUNCIR);
+            avatar.habla(R.raw.mal_intenta_otra_vez);
 
             // cambia aleatoria las nuevas cordenadas
             fila = new Random();

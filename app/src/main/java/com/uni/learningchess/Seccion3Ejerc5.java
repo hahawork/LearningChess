@@ -38,7 +38,7 @@ public class Seccion3Ejerc5 extends Seccion3BaseActivity {
         linearLayout.setVisibility(View.VISIBLE);
 
         avatar = getAvatar();
-        avatar.habla(R.raw.colocar_piezas_presentacion);
+        avatar.habla(R.raw.presentacion);
 
         SelecionarUbicacionPieza();
     }
@@ -161,11 +161,11 @@ public class Seccion3Ejerc5 extends Seccion3BaseActivity {
             //verifica repuesta correcta
             if (NumFila == (filaSeleccionada + 1) && col.equalsIgnoreCase(Columnas[columnaSeleccionada])) {
 
-                if (aciertos <= 2) {
+                if (aciertos < 2) {
                     avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_CORRECTO);
                     avatar.mueveCejas(VistaAvatar.MovimientoCejas.ARQUEAR);
                     avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_CORRECTO);
-                    avatar.habla(R.raw.ok_intenta_otra_vez, new VistaAvatar.OnAvatarHabla() {
+                    avatar.habla(R.raw.ok_has_acertado, new VistaAvatar.OnAvatarHabla() {
                         @Override
                         public void onTerminaHabla() {
                             avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.TIC_TAC);
@@ -233,5 +233,25 @@ public class Seccion3Ejerc5 extends Seccion3BaseActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        avatar.reanudar();
+
+    }
+
+    @Override
+    public void onPause() {
+        avatar.habla(R.raw.aplausos, new VistaAvatar.OnAvatarHabla() {
+            @Override
+            public void onTerminaHabla() {
+                avatar.pausar();
+            }
+        });
+
+        super.onPause();
+
     }
 }

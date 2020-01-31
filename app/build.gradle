@@ -24,9 +24,7 @@ android {
         }
     }
     productFlavors {
-        es {
-            resConfigs "es"
-        }
+
         /*x86 {
             resConfigs "es"
             ndk {

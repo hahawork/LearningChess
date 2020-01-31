@@ -16,7 +16,7 @@ public class MoverTorreActivity extends MoverPiezaActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        inicializa(validadorTorre, R.drawable.torre_blanca, R.raw.mover_dama_presentacion); //Todo: reemplazar mover_dama_presentacion
+        inicializa(validadorTorre, R.drawable.torre_blanca, R.raw.mover_pieza_presentacion); //Todo: reemplazar mover_dama_presentacion
         super.onCreate(savedInstanceState);
     }
 

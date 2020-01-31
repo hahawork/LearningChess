@@ -38,7 +38,7 @@ public class MovimientosCapturas extends MoverPiezaActivity {
         inicializaJugada(PiezaBlanca.getTipo());
 
         avatar = getAvatar();
-        avatar.habla(R.raw.mover_rey_en_jaque, new VistaAvatar.OnAvatarHabla() {
+        avatar.habla(R.raw.captura_pieza_presentacion, new VistaAvatar.OnAvatarHabla() {
             @Override
             public void onTerminaHabla() {
                 avatar.mueveOjos(VistaAvatar.MovimientoOjos.DERECHA);
@@ -481,7 +481,7 @@ public class MovimientosCapturas extends MoverPiezaActivity {
 
     @Override
     protected void onFinalCuentaAtras() {
-        avatar.habla(R.raw.mover_rey_en_jaque, new VistaAvatar.OnAvatarHabla() {
+        avatar.habla(R.raw.captura_pieza_presentacion, new VistaAvatar.OnAvatarHabla() {
             @Override
             public void onTerminaHabla() {
                 avatar.mueveOjos(VistaAvatar.MovimientoOjos.DERECHA);
@@ -520,7 +520,7 @@ public class MovimientosCapturas extends MoverPiezaActivity {
             avatar.mueveCejas(VistaAvatar.MovimientoCejas.ARQUEAR);
             if (contadorMovimientos < 4) {
                 avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_CORRECTO);
-                avatar.habla(R.raw.ok_intenta_otra_vez, new VistaAvatar.OnAvatarHabla() {
+                avatar.habla(R.raw.ok_has_acertado, new VistaAvatar.OnAvatarHabla() {
                     @Override
                     public void onTerminaHabla() {
                         avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.TIC_TAC);
@@ -542,7 +542,7 @@ public class MovimientosCapturas extends MoverPiezaActivity {
             avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_INCORRECTO);
             avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_INCORRECTO);
             avatar.mueveCejas(VistaAvatar.MovimientoCejas.FRUNCIR);
-            avatar.habla(R.raw.mover_rey_en_jaque_mal, new VistaAvatar.OnAvatarHabla() {
+            avatar.habla(R.raw.captura_pieza_mal, new VistaAvatar.OnAvatarHabla() {
                 @Override
                 public void onTerminaHabla() {
                     avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.TIC_TAC);

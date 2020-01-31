@@ -24,6 +24,23 @@ public class Seccion3Ejerc3 extends Seccion3BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        iniciar();
+
+        avatar = getAvatar();
+        avatar.habla(R.raw.presentacion, new VistaAvatar.OnAvatarHabla() {
+            @Override
+            public void onTerminaHabla() {
+                avatar.mueveOjos(VistaAvatar.MovimientoOjos.DERECHA);
+                avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.TIC_TAC);
+                empiezaCuentaAtras();
+            }
+        });
+
+
+    }
+
+    protected void iniciar() {
+
         LinearLayout linearLayout = findViewById(R.id.ejercicio3);
         linearLayout.setVisibility(View.VISIBLE);
 
@@ -57,18 +74,6 @@ public class Seccion3Ejerc3 extends Seccion3BaseActivity {
         botonOpcion1.setTypeface(fuente);
         botonOpcion2 = findViewById(R.id.botonNegra);
         botonOpcion2.setTypeface(fuente);
-
-        avatar = getAvatar();
-        avatar.habla(R.raw.mover_rey_en_jaque, new VistaAvatar.OnAvatarHabla() {
-            @Override
-            public void onTerminaHabla() {
-                avatar.mueveOjos(VistaAvatar.MovimientoOjos.DERECHA);
-                avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.TIC_TAC);
-                empiezaCuentaAtras();
-            }
-        });
-
-
     }
 
     public void EventosBotones(View view) {
@@ -83,7 +88,7 @@ public class Seccion3Ejerc3 extends Seccion3BaseActivity {
         if (botonBlanca && casillaBlanca) {
             avatar.lanzaAnimacion(VistaAvatar.Animacion.EJERCICIO_SUPERADO);
             avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.EJERCICIO_SUPERADO);
-            avatar.habla(R.raw.excelente_completaste_ejercicios, new VistaAvatar.OnAvatarHabla() {
+            avatar.habla(R.raw.ok_has_acertado, new VistaAvatar.OnAvatarHabla() {
                 @Override
                 public void onTerminaHabla() {
                     startActivity(new Intent(Seccion3Ejerc3.this,Seccion3Ejerc4.class));
@@ -95,7 +100,7 @@ public class Seccion3Ejerc3 extends Seccion3BaseActivity {
         else if (botonNegra && casillaNegra) {
             avatar.lanzaAnimacion(VistaAvatar.Animacion.EJERCICIO_SUPERADO);
             avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.EJERCICIO_SUPERADO);
-            avatar.habla(R.raw.excelente_completaste_ejercicios, new VistaAvatar.OnAvatarHabla() {
+            avatar.habla(R.raw.ok_has_acertado, new VistaAvatar.OnAvatarHabla() {
                 @Override
                 public void onTerminaHabla() {
                     startActivity(new Intent(Seccion3Ejerc3.this,Seccion3Ejerc4.class));
@@ -106,12 +111,12 @@ public class Seccion3Ejerc3 extends Seccion3BaseActivity {
             avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_INCORRECTO);
             avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_INCORRECTO);
             avatar.mueveCejas(VistaAvatar.MovimientoCejas.FRUNCIR);
-            avatar.habla(R.raw.incorrecto, new VistaAvatar.OnAvatarHabla() {
+            avatar.habla(R.raw.mal_intenta_otra_vez, new VistaAvatar.OnAvatarHabla() {
                 @Override
                 public void onTerminaHabla() {
                     avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.TIC_TAC);
                     empiezaCuentaAtras();
-                    Seccion3Ejerc3.this.recreate();
+                    iniciar(); //recrea otro ejercicio.
                 }
             });
         }

@@ -14,7 +14,7 @@ public class MoverPeonActivity extends MoverPiezaActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        inicializa(validadorPeon, R.drawable.peon_blanco, R.raw.mover_dama_presentacion);
+        inicializa(validadorPeon, R.drawable.peon_blanco, R.raw.mover_pieza_presentacion);
         super.onCreate(savedInstanceState);
     }
 

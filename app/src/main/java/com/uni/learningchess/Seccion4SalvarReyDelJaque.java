@@ -44,7 +44,8 @@ public class Seccion4SalvarReyDelJaque extends EjercicioBaseActivity {
         inicializaJugada(contadorMovimientos);
 
         avatar = getAvatar();
-        avatar.habla(R.raw.mover_rey_en_jaque, new VistaAvatar.OnAvatarHabla() {
+//        avatar.habla(R.raw.mover_rey_en_jaque, new VistaAvatar.OnAvatarHabla() {
+        avatar.habla(R.raw.presentacion, new VistaAvatar.OnAvatarHabla() {
             @Override
             public void onTerminaHabla() {
                 avatar.mueveOjos(VistaAvatar.MovimientoOjos.DERECHA);
@@ -491,7 +492,7 @@ public class Seccion4SalvarReyDelJaque extends EjercicioBaseActivity {
 
     @Override
     protected void onFinalCuentaAtras() {
-        avatar.habla(R.raw.mover_rey_en_jaque, new VistaAvatar.OnAvatarHabla() {
+        avatar.habla(R.raw.presentacion, new VistaAvatar.OnAvatarHabla() {
             @Override
             public void onTerminaHabla() {
                 avatar.mueveOjos(VistaAvatar.MovimientoOjos.DERECHA);
@@ -528,7 +529,7 @@ public class Seccion4SalvarReyDelJaque extends EjercicioBaseActivity {
             avatar.mueveCejas(VistaAvatar.MovimientoCejas.ARQUEAR);
             if (contadorMovimientos < 3) {
                 avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_CORRECTO);
-                avatar.habla(R.raw.ok_intenta_otra_vez, new VistaAvatar.OnAvatarHabla() {
+                avatar.habla(R.raw.ok_has_acertado, new VistaAvatar.OnAvatarHabla() {
                     @Override
                     public void onTerminaHabla() {
                         avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.TIC_TAC);
@@ -550,7 +551,7 @@ public class Seccion4SalvarReyDelJaque extends EjercicioBaseActivity {
             avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_INCORRECTO);
             avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_INCORRECTO);
             avatar.mueveCejas(VistaAvatar.MovimientoCejas.FRUNCIR);
-            avatar.habla(R.raw.mover_rey_en_jaque_mal, new VistaAvatar.OnAvatarHabla() {
+            avatar.habla(R.raw.mal_intenta_otra_vez, new VistaAvatar.OnAvatarHabla() {
                 @Override
                 public void onTerminaHabla() {
                     avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.TIC_TAC);

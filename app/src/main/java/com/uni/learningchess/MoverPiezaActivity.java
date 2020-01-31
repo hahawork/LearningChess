@@ -67,7 +67,7 @@ public abstract class MoverPiezaActivity extends EjercicioBaseActivity {
             }
             else {
                 avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_CORRECTO);
-                avatar.habla(R.raw.ok_intenta_otra_vez, new VistaAvatar.OnAvatarHabla() {
+                avatar.habla(R.raw.ok_has_acertado, new VistaAvatar.OnAvatarHabla() {
                     @Override
                     public void onTerminaHabla() {
                         avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.TIC_TAC);
@@ -80,7 +80,7 @@ public abstract class MoverPiezaActivity extends EjercicioBaseActivity {
             avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_INCORRECTO);
             avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_INCORRECTO);
             avatar.mueveCejas(VistaAvatar.MovimientoCejas.FRUNCIR);
-            avatar.habla(R.raw.mover_dama_mal, new VistaAvatar.OnAvatarHabla() {
+            avatar.habla(R.raw.mover_pieza_mal, new VistaAvatar.OnAvatarHabla() {
                 @Override
                 public void onTerminaHabla() {
                     avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.TIC_TAC);

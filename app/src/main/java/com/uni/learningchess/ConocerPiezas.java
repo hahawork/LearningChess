@@ -159,6 +159,7 @@ public class ConocerPiezas extends AppCompatActivity {
 			avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_INCORRECTO);
 			avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_INCORRECTO);
 			avatar.mueveCejas(VistaAvatar.MovimientoCejas.FRUNCIR);
+            avatar.habla(R.raw.mal_intenta_otra_vez);
 		}
 	}
 }

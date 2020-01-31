@@ -107,6 +107,8 @@
             android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".Preferencias"
+            android:theme="@style/PreferencesTheme"
+            android:label="Configuración"
             android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".Seccion1"

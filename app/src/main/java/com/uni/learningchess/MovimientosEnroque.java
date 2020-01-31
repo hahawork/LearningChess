@@ -94,7 +94,7 @@ public class MovimientosEnroque extends EjercicioBaseActivity {
         getExtra();
 
         avatar = getAvatar();
-        avatar.habla(R.raw.mover_rey_en_jaque, new VistaAvatar.OnAvatarHabla() {
+        avatar.habla(R.raw.enroque, new VistaAvatar.OnAvatarHabla() {
             @Override
             public void onTerminaHabla() {
                 avatar.mueveOjos(VistaAvatar.MovimientoOjos.DERECHA);
@@ -138,7 +138,7 @@ public class MovimientosEnroque extends EjercicioBaseActivity {
             avatar.mueveCejas(VistaAvatar.MovimientoCejas.ARQUEAR);
             if (contadorMovimientos < 2) {
                 avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_CORRECTO);
-                avatar.habla(R.raw.ok_intenta_otra_vez, new VistaAvatar.OnAvatarHabla() {
+                avatar.habla(R.raw.ok_has_acertado, new VistaAvatar.OnAvatarHabla() {
                     @Override
                     public void onTerminaHabla() {
                         avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.TIC_TAC);
@@ -164,7 +164,7 @@ public class MovimientosEnroque extends EjercicioBaseActivity {
             avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_INCORRECTO);
             avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_INCORRECTO);
             avatar.mueveCejas(VistaAvatar.MovimientoCejas.FRUNCIR);
-            avatar.habla(R.raw.mover_rey_en_jaque_mal, new VistaAvatar.OnAvatarHabla() {
+            avatar.habla(R.raw.mal_intenta_otra_vez, new VistaAvatar.OnAvatarHabla() {
                 @Override
                 public void onTerminaHabla() {
                     avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.TIC_TAC);

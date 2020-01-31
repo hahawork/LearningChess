@@ -188,7 +188,6 @@ public class ValoresPiezasActivity extends AppCompatActivity implements View.OnC
                 avatar.mueveOjos(VistaAvatar.MovimientoOjos.DERECHA);
                 avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.TIC_TAC);
                 empiezaCuentaAtras();
-
             }
         });
     }
@@ -256,7 +255,7 @@ public class ValoresPiezasActivity extends AppCompatActivity implements View.OnC
                 animar(marco);
                 avatar.mueveCejas(VistaAvatar.MovimientoCejas.FRUNCIR);
                 avatar.habla(R.raw.incorrecto);
-                hacerPregunta();
+                //hacerPregunta();
             }
         }
     }
@@ -308,6 +307,7 @@ public class ValoresPiezasActivity extends AppCompatActivity implements View.OnC
             marco.setBackgroundResource(R.drawable.animacion_marco_incorrecto);
             animar(marco);
             avatar.mueveCejas(VistaAvatar.MovimientoCejas.FRUNCIR);
+            avatar.habla(R.raw.mal_intenta_otra_vez);
         }
 
         return EsCorrecto;

@@ -287,7 +287,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         if (requestCode == SOLICITUD_GRABAR_AUDIO) {
-            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 presentacion();
             } else {
                 Snackbar snackbar = Snackbar.make(avatar, "Sin el permiso grabación de audio,\n"

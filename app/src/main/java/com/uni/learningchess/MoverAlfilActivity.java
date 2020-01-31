@@ -16,7 +16,7 @@ public class MoverAlfilActivity extends MoverPiezaActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        inicializa(validadorAlfil, R.drawable.alfil_blanco, R.raw.mover_dama_presentacion); //Todo: reemplazar mover_dama_presentacion
+        inicializa(validadorAlfil, R.drawable.alfil_blanco, R.raw.mover_pieza_presentacion); //Todo: reemplazar mover_dama_presentacion
         super.onCreate(savedInstanceState);
     }
 

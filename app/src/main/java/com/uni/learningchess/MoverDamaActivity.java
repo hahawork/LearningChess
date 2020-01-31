@@ -16,7 +16,7 @@ public class MoverDamaActivity extends MoverPiezaActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        inicializa(validadorDama, R.drawable.dama_blanca, R.raw.mover_dama_presentacion);
+        inicializa(validadorDama, R.drawable.dama_blanca, R.raw.mover_pieza_presentacion);
         super.onCreate(savedInstanceState);
     }
 
