@@ -26,6 +26,7 @@ public class MovimientosCapturas extends MoverPiezaActivity {
     private Random random;
     public static MetodosGenerales MG;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +47,7 @@ public class MovimientosCapturas extends MoverPiezaActivity {
                 empiezaCuentaAtras();
             }
         });
+
     }
 
     public void MetodoPracticaSeccion5(MetodosGenerales mg) {
@@ -54,10 +56,10 @@ public class MovimientosCapturas extends MoverPiezaActivity {
 
     private void getExtra() {
         Bundle bundle = getIntent().getExtras();
-            if (bundle != null) {
-                int count = bundle.getInt("pieza", 0);
-                Pieza.Tipo VienePieza = Pieza.Tipo.values()[count];
-                PiezaBlanca = new Pieza(VienePieza, BLANCO, "E4");
+        if (bundle != null) {
+            int count = bundle.getInt("pieza", 0);
+            Pieza.Tipo VienePieza = Pieza.Tipo.values()[count];
+            PiezaBlanca = new Pieza(VienePieza, BLANCO, "E4");
         } else {
             PiezaBlanca = new Pieza(PEON, BLANCO, "B4");
         }
@@ -534,7 +536,14 @@ public class MovimientosCapturas extends MoverPiezaActivity {
                 avatar.habla(R.raw.excelente_completaste_ejercicios, new VistaAvatar.OnAvatarHabla() {
                     @Override
                     public void onTerminaHabla() {
-                        finish();
+                        avatar.habla(R.raw.aplausos, new VistaAvatar.OnAvatarHabla() {
+                            @Override
+                            public void onTerminaHabla() {
+                                avatar.pausar();
+                                finish();
+                            }
+                        });
+
                     }
                 });
             }
@@ -553,4 +562,22 @@ public class MovimientosCapturas extends MoverPiezaActivity {
             Pieza pieza = MG.getPieza(colOrigen, filaOrigen);
         }
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        avatar.reanudar();
+
+    }
+
+    @Override
+    public void onPause() {
+
+        cancelaCuentaAtras();
+        avatar.pausar();
+
+        super.onPause();
+
+    }
+
 }

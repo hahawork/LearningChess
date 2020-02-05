@@ -394,67 +394,72 @@ public abstract class EjercicioBaseActivity extends AppCompatActivity {
     class MiDragListener implements View.OnDragListener {
         @Override
         public boolean onDrag(View v, DragEvent event) {
-            ImageView vistaDestino = (ImageView) v;
-            ImageView vistaOrigen = (ImageView) event.getLocalState();
-            int accion = event.getAction();
-            switch (accion) {
-                case DragEvent.ACTION_DRAG_STARTED:
-                    if (vistaOrigen.getDrawable() != null
-                            && vistaOrigen.getTag() != null
-                            && vistaOrigen.getTag().toString().charAt(0) != 'P')
-                        vistaOrigen.getDrawable().setAlpha(0);
-                    break;
-                case DragEvent.ACTION_DRAG_LOCATION:
-                    break;
-                case DragEvent.ACTION_DRAG_EXITED:
-                    break;
-                case DragEvent.ACTION_DRAG_ENTERED:
-                    break;
-                case DragEvent.ACTION_DROP:
-                    //Log.i("Script", vistaDestino.getTag() + "- ACTION_DROP");
-                    String origen, destino;
-                    int colOrigen = 0, filaOrigen = 0, colDestino = 0, filaDestino = 0;
-                    boolean movimientoValido;
-                    if ((vistaOrigen.getTag() == null) ||
-                            (vistaDestino.getTag() == null)) {
-                        movimientoValido = true;     // No podemos aplicar validación de movimiento
-                    } else {
-                        origen = vistaOrigen.getTag().toString();
-                        destino = vistaDestino.getTag().toString();
-                        colDestino = destino.charAt(0) - 'A';
-                        filaDestino = destino.charAt(1) - '1';
-                        if (origen.charAt(0) == 'P') { //Arrastramos una pieza de fuera al tablero
-                            movimientoValido = (vistaDestino.getDrawable() == null) &&  //No hay una pieza ya colocada
-                                    onColocar(origen.charAt(1), colDestino, filaDestino); //La posición es correcta
-                        } else {                      // Arrastramos una pieza del tablero al tablero
-                            colOrigen = origen.charAt(0) - 'A';
-                            filaOrigen = origen.charAt(1) - '1';
-                            movimientoValido = (vistaOrigen.getDrawable() != null)  //Estamos moviendo una ficha
-                                    && onMovimiento(colOrigen, filaOrigen, colDestino, filaDestino);
+            try {
+                ImageView vistaDestino = (ImageView) v;
+                ImageView vistaOrigen = (ImageView) event.getLocalState();
+                int accion = event.getAction();
+                switch (accion) {
+                    case DragEvent.ACTION_DRAG_STARTED:
+                        if (vistaOrigen.getDrawable() != null
+                                && vistaOrigen.getTag() != null
+                                && vistaOrigen.getTag().toString().charAt(0) != 'P')
+                            vistaOrigen.getDrawable().setAlpha(0);
+                        break;
+                    case DragEvent.ACTION_DRAG_LOCATION:
+                        break;
+                    case DragEvent.ACTION_DRAG_EXITED:
+                        break;
+                    case DragEvent.ACTION_DRAG_ENTERED:
+                        break;
+                    case DragEvent.ACTION_DROP:
+                        //Log.i("Script", vistaDestino.getTag() + "- ACTION_DROP");
+                        String origen, destino;
+                        int colOrigen = 0, filaOrigen = 0, colDestino = 0, filaDestino = 0;
+                        boolean movimientoValido;
+                        if ((vistaOrigen.getTag() == null) ||
+                                (vistaDestino.getTag() == null)) {
+                            movimientoValido = true;     // No podemos aplicar validación de movimiento
+                        } else {
+                            origen = vistaOrigen.getTag().toString();
+                            destino = vistaDestino.getTag().toString();
+                            colDestino = destino.charAt(0) - 'A';
+                            filaDestino = destino.charAt(1) - '1';
+                            if (origen.charAt(0) == 'P') { //Arrastramos una pieza de fuera al tablero
+                                movimientoValido = (vistaDestino.getDrawable() == null) &&  //No hay una pieza ya colocada
+                                        onColocar(origen.charAt(1), colDestino, filaDestino); //La posición es correcta
+                            } else {                      // Arrastramos una pieza del tablero al tablero
+                                colOrigen = origen.charAt(0) - 'A';
+                                filaOrigen = origen.charAt(1) - '1';
+                                movimientoValido = (vistaOrigen.getDrawable() != null)  //Estamos moviendo una ficha
+                                        && onMovimiento(colOrigen, filaOrigen, colDestino, filaDestino);
+                            }
                         }
-                    }
-                    if (movimientoValido && (vistaOrigen != vistaDestino)) {
-                        if (vistaOrigen.getDrawable() != null) {
-                            Drawable clone = vistaOrigen.getDrawable().getConstantState().newDrawable(); // Clonamos el Drawable para que las piezas se comporten independientemente.
-                            clone.setAlpha(255);
-                            vistaDestino.setImageDrawable(clone);
+                        if (movimientoValido && (vistaOrigen != vistaDestino)) {
+                            if (vistaOrigen.getDrawable() != null) {
+                                Drawable clone = vistaOrigen.getDrawable().getConstantState().newDrawable(); // Clonamos el Drawable para que las piezas se comporten independientemente.
+                                clone.setAlpha(255);
+                                vistaDestino.setImageDrawable(clone);
+                            }
+                            if ((vistaOrigen.getTag() != null) &&
+                                    (vistaOrigen.getTag().toString().charAt(0) != 'P')) {
+                                vistaOrigen.setImageDrawable(null);
+                            }
+                            vistaDestino.invalidate();
+                        } else {
+                            if (vistaOrigen.getDrawable() != null)
+                                vistaOrigen.getDrawable().setAlpha(255);
+                            vistaOrigen.invalidate();
                         }
-                        if ((vistaOrigen.getTag() != null) &&
-                                (vistaOrigen.getTag().toString().charAt(0) != 'P')) {
-                            vistaOrigen.setImageDrawable(null);
-                        }
-                        vistaDestino.invalidate();
-                    } else {
+                        onMovimiento(movimientoValido, colOrigen, filaOrigen, colDestino, filaDestino);
+                    case DragEvent.ACTION_DRAG_ENDED:
+                        //Log.i("Script", "- ACTION_DRAG_ENDED");
+                    default:
                         if (vistaOrigen.getDrawable() != null)
                             vistaOrigen.getDrawable().setAlpha(255);
-                        vistaOrigen.invalidate();
-                    }
-                    onMovimiento(movimientoValido, colOrigen, filaOrigen, colDestino, filaDestino);
-                case DragEvent.ACTION_DRAG_ENDED:
-                    //Log.i("Script", "- ACTION_DRAG_ENDED");
-                default:
-                    if (vistaOrigen.getDrawable() != null) vistaOrigen.getDrawable().setAlpha(255);
-                    break;
+                        break;
+                }
+            } catch (Exception e) {
+                return false;
             }
             return true;
         }
