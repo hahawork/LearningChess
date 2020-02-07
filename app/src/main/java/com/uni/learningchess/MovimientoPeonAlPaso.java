@@ -359,7 +359,7 @@ public class MovimientoPeonAlPaso extends EjercicioBaseActivity {
             } else {
 
                 boolean movimientoNegra = validadorPeonNegroPractica2.movimientoValido(colOrigen, filaOrigen, colDestino, filaDestino);
-                practica2MovioPeonNegro= movimientoNegra;
+                practica2MovioPeonNegro = movimientoNegra;
                 return movimientoNegra;
             }
         } else return false;
@@ -396,17 +396,19 @@ public class MovimientoPeonAlPaso extends EjercicioBaseActivity {
                 });
             }
         } else {
-            avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_INCORRECTO);
-            avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_INCORRECTO);
-            avatar.mueveCejas(VistaAvatar.MovimientoCejas.FRUNCIR);
-            avatar.habla(R.raw.mal_intenta_otra_vez, new VistaAvatar.OnAvatarHabla() {
-                @Override
-                public void onTerminaHabla() {
-                    avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.TIC_TAC);
-                    empiezaCuentaAtras();
-                }
-            });
-
+            if (contadorMovimientos >= 4) {
+            } else {
+                avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_INCORRECTO);
+                avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_INCORRECTO);
+                avatar.mueveCejas(VistaAvatar.MovimientoCejas.FRUNCIR);
+                avatar.habla(R.raw.mal_intenta_otra_vez, new VistaAvatar.OnAvatarHabla() {
+                    @Override
+                    public void onTerminaHabla() {
+                        avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.TIC_TAC);
+                        empiezaCuentaAtras();
+                    }
+                });
+            }
         }
     }
 }

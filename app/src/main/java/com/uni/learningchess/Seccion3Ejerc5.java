@@ -38,7 +38,7 @@ public class Seccion3Ejerc5 extends Seccion3BaseActivity {
         linearLayout.setVisibility(View.VISIBLE);
 
         avatar = getAvatar();
-        avatar.habla(R.raw.presentacion);
+        avatar.habla(R.raw.ingresacoordenada);
 
         SelecionarUbicacionPieza();
     }
@@ -161,7 +161,7 @@ public class Seccion3Ejerc5 extends Seccion3BaseActivity {
             //verifica repuesta correcta
             if (NumFila == (filaSeleccionada + 1) && col.equalsIgnoreCase(Columnas[columnaSeleccionada])) {
 
-                if (aciertos < 2) {
+                if (aciertos < 1) {
                     avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_CORRECTO);
                     avatar.mueveCejas(VistaAvatar.MovimientoCejas.ARQUEAR);
                     avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_CORRECTO);
@@ -244,14 +244,7 @@ public class Seccion3Ejerc5 extends Seccion3BaseActivity {
 
     @Override
     public void onPause() {
-        avatar.habla(R.raw.aplausos, new VistaAvatar.OnAvatarHabla() {
-            @Override
-            public void onTerminaHabla() {
-                avatar.pausar();
-            }
-        });
 
         super.onPause();
-
     }
 }

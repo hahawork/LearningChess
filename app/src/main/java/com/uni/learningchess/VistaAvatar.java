@@ -125,10 +125,10 @@ public class VistaAvatar extends FrameLayout {
     public VistaAvatar(Context context, AttributeSet attrs) {
         super(context, attrs);
         LayoutInflater.from(context).inflate(R.layout.avatar, this, true);
-        imageViewCara = (ImageView) findViewById(R.id.imageViewCara);
-        imageViewCejas = (ImageView) findViewById(R.id.imageViewCejas);
-        imageViewOjos = (ImageView) findViewById(R.id.imageViewOjos);
-        imageViewBoca = (ImageView) findViewById(R.id.imageViewBoca);
+        imageViewCara = findViewById(R.id.imageViewCara);
+        imageViewCejas = findViewById(R.id.imageViewCejas);
+        imageViewOjos = findViewById(R.id.imageViewOjos);
+        imageViewBoca = findViewById(R.id.imageViewBoca);
         mediaPlayerVoz = new MediaPlayer();
         random = new Random(System.currentTimeMillis());
 
@@ -223,17 +223,17 @@ public class VistaAvatar extends FrameLayout {
             int idStream = 0;
             switch (efectoSonido) {
                 case TIC_TAC:
-                    idStream = soundPool.play(idInteger.intValue(), 0, 0, 1, -1, 1);
+                    idStream = soundPool.play(idInteger.intValue(), 1, 0, 1, -1, 1);
                     idStreamTicTac = idStream;
                     break;
                 case MOVIMIENTO_INCORRECTO:
-                    idStream = soundPool.play(idInteger.intValue(), 0, 0, 1, 0, 1);
+                    idStream = soundPool.play(idInteger.intValue(), 1, 1, 1, 0, 1);
                     break;
                 case MOVIMIENTO_CORRECTO:
-                    idStream = soundPool.play(idInteger.intValue(), 0, 0, 1, 0, 1);
+                    idStream = soundPool.play(idInteger.intValue(), 1, 1, 1, 0, 1);
                     break;
                 case EJERCICIO_SUPERADO:
-                    idStream = soundPool.play(idInteger.intValue(), 0, 0, 1, 0, 1);
+                    idStream = soundPool.play(idInteger.intValue(), 1, 1, 1, 0, 1);
                     break;
             }
         }

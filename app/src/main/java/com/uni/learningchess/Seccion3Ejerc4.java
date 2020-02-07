@@ -37,7 +37,7 @@ public class Seccion3Ejerc4 extends EjercicioBaseActivity {
 
 
         avatar = getAvatar();
-        avatar.habla(R.raw.colocar_piezas_presentacion);
+        avatar.habla(R.raw.arrastralapieza);
 
         fila = new Random();
         filaSeleccionada = fila.nextInt(8);//8 filas

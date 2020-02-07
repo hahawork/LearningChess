@@ -27,7 +27,7 @@ public class Seccion3Ejerc3 extends Seccion3BaseActivity {
         iniciar();
 
         avatar = getAvatar();
-        avatar.habla(R.raw.presentacion, new VistaAvatar.OnAvatarHabla() {
+        avatar.habla(R.raw.colorcasilla, new VistaAvatar.OnAvatarHabla() {
             @Override
             public void onTerminaHabla() {
                 avatar.mueveOjos(VistaAvatar.MovimientoOjos.DERECHA);

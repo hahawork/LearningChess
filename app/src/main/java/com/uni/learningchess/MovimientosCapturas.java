@@ -536,14 +536,7 @@ public class MovimientosCapturas extends MoverPiezaActivity {
                 avatar.habla(R.raw.excelente_completaste_ejercicios, new VistaAvatar.OnAvatarHabla() {
                     @Override
                     public void onTerminaHabla() {
-                        avatar.habla(R.raw.aplausos, new VistaAvatar.OnAvatarHabla() {
-                            @Override
-                            public void onTerminaHabla() {
-                                avatar.pausar();
-                                finish();
-                            }
-                        });
-
+                        finish();
                     }
                 });
             }

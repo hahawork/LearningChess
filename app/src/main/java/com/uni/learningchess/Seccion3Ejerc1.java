@@ -28,7 +28,7 @@ public class Seccion3Ejerc1 extends Seccion3BaseActivity {
         botonDd6.setTypeface(fuente);
 
         avatar = getAvatar();
-        avatar.habla(R.raw.presentacion, new VistaAvatar.OnAvatarHabla() {
+        avatar.habla(R.raw.presentacion_notacion, new VistaAvatar.OnAvatarHabla() {
             @Override
             public void onTerminaHabla() {
                 avatar.mueveOjos(VistaAvatar.MovimientoOjos.DERECHA);

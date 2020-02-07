@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import java.util.Random;
 import java.util.Vector;
@@ -24,10 +25,10 @@ public class MovimientosCoronacion extends EjercicioBaseActivity implements Dial
         public boolean movimientoValido(int colOrigen, int filaOrigen, int colDestino, int filaDestino) {
             boolean esPeon = (getTipoPieza(colOrigen, filaOrigen) == PEON);
             boolean esBlanco = (getColorPieza(colOrigen, filaOrigen) == BLANCO);
-            boolean ColumnaVal = (Math.abs(colDestino - colOrigen) == 1) || ((colDestino - colOrigen) == 0);
+            boolean mismaColumna = (colOrigen == colDestino);
             //boolean diferenteCasilla = (colOrigen == colDestino) && (filaOrigen < filaDestino);
             boolean avanzaUno = (esBlanco && (filaDestino == filaOrigen + 1)
-                    && ColumnaVal);
+                    && mismaColumna);
             return (esPeon && avanzaUno);
         }
     };
@@ -177,10 +178,14 @@ public class MovimientosCoronacion extends EjercicioBaseActivity implements Dial
 
     @Override
     protected boolean onMovimiento(int colOrigen, int filaOrigen, int colDestino, int filaDestino) {
-        Pieza piezaDestino = getPieza(colDestino, filaDestino);
+        Pieza pieza = getPieza(colDestino, filaDestino);
         boolean movimientoPiezaBlanca = (getColorPieza(colOrigen, filaOrigen) == BLANCO);
         boolean movimientoValido = validadorPeonBlanco.movimientoValido(colOrigen, filaOrigen, colDestino, filaDestino);
         boolean movimientoCorrecto = movimientoPiezaBlanca && movimientoValido;
+        if (filaOrigen == 7) {
+            Toast.makeText(this, "Ya estabas en la fila 8.", Toast.LENGTH_LONG).show();
+            inicializaJugada(1);
+        }
         return movimientoCorrecto;
     }
 
