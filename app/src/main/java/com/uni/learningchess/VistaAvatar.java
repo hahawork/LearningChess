@@ -261,12 +261,14 @@ public class VistaAvatar extends FrameLayout {
     public void habla(int idRecurso, OnAvatarHabla escuchador) {
         onAvatarHabla = escuchador;
         try {
-            mediaPlayerVoz.reset();
-            Log.w("RecursoAudio", "android.resource://" + activity.getPackageName() + "/" + idRecurso);
-            mediaPlayerVoz.setDataSource(activity, Uri.parse("android.resource://" + activity.getPackageName() + "/" + idRecurso));
-            mediaPlayerVoz.prepare();
-            sincronizaBoca();
-            habla();
+        	if (idRecurso > 0) {
+				mediaPlayerVoz.reset();
+				Log.w("RecursoAudio", "android.resource://" + activity.getPackageName() + "/" + idRecurso);
+				mediaPlayerVoz.setDataSource(activity, Uri.parse("android.resource://" + activity.getPackageName() + "/" + idRecurso));
+				mediaPlayerVoz.prepare();
+				sincronizaBoca();
+				habla();
+			}
         } catch (Exception e) {
             e.printStackTrace();
             Log.e("AjedrezEjercicioBase", e.toString());

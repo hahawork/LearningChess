@@ -31,6 +31,9 @@
             android:name=".Seccion5"
             android:screenOrientation="sensorLandscape" />
         <activity
+            android:name=".Seccion5Practica4"
+            android:screenOrientation="sensorLandscape" />
+        <activity
             android:name=".Seccion5Practica3"
             android:screenOrientation="sensorLandscape" />
         <activity

@@ -1,17 +1,14 @@
 package com.uni.learningchess;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.github.barteksc.pdfviewer.PDFView;
-import com.github.barteksc.pdfviewer.listener.OnRenderListener;
 import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle;
 import com.github.barteksc.pdfviewer.util.FitPolicy;
-
-import java.io.IOException;
 
 public class Ayuda extends AppCompatActivity {
 
@@ -36,7 +33,7 @@ public class Ayuda extends AppCompatActivity {
         pdfView.fromSource(DocumentSource)
         */
         try {
-            pdfView.fromAsset("csa.pdf")
+            pdfView.fromAsset("instrucciones.pdf")
                     .defaultPage(0)
                     .onPageChange(null)
                     .onLoad(null)
@@ -87,19 +84,19 @@ public class Ayuda extends AppCompatActivity {
             LeerPdf(0);
         }
         if (view == findViewById(R.id.botonAyudaSecc1)) {
-            LeerPdf(1);
+            LeerPdf(1, 2);
         }
         if (view == findViewById(R.id.botonAyudaSecc2)) {
-            LeerPdf(2);
+            LeerPdf(3,4,5,6,7,8,9,10);
         }
         if (view == findViewById(R.id.botonAyudaSecc3)) {
-            LeerPdf(3, 4);
+            LeerPdf(11);
         }
         if (view == findViewById(R.id.botonAyudaSecc4)) {
-            LeerPdf(5, 6);
+            LeerPdf(12);
         }
         if (view == findViewById(R.id.botonAyudaSecc5)) {
-            LeerPdf(7, 8);
+            LeerPdf(13);
         }
     }
 }
