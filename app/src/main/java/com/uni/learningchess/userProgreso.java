@@ -107,8 +107,8 @@ public class userProgreso extends AppCompatActivity {
 				.setPositiveButton("SI, BORRAR", new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-						//BD.BorrarRegistroWhere(BaseDatos.iBaseDatos.TBL_USUARIO_AVANCES, "iduser = " + stIdUsuarioSeleccionado);
-						//getData();
+						BD.BorrarRegistroWhere(BaseDatos.iBaseDatos.TBL_USUARIO_AVANCES, "iduser = " + stIdUsuarioSeleccionado);
+						getData();
 					}
 				})
 				.setNegativeButton("NO, SALIR", null)
