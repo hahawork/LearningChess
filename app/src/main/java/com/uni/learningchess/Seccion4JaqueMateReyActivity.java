@@ -43,7 +43,7 @@ public class Seccion4JaqueMateReyActivity extends EjercicioBaseActivity implemen
 
         avatar = getAvatar();
 //        avatar.habla(R.raw.mover_rey_en_jaque, new VistaAvatar.OnAvatarHabla() {
-        avatar.habla(R.raw.presentacion, new VistaAvatar.OnAvatarHabla() {
+        avatar.habla(R.raw.presentacion_jaque, new VistaAvatar.OnAvatarHabla() {
             @Override
             public void onTerminaHabla() {
                 avatar.mueveOjos(VistaAvatar.MovimientoOjos.DERECHA);
@@ -446,7 +446,7 @@ public class Seccion4JaqueMateReyActivity extends EjercicioBaseActivity implemen
 
     @Override
     protected void onFinalCuentaAtras() {
-        avatar.habla(R.raw.presentacion, new VistaAvatar.OnAvatarHabla() {
+        avatar.habla(R.raw.presentacion_jaque, new VistaAvatar.OnAvatarHabla() {
             @Override
             public void onTerminaHabla() {
                 avatar.mueveOjos(VistaAvatar.MovimientoOjos.DERECHA);

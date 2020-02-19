@@ -45,7 +45,7 @@ public class Seccion4SalvarReyDelJaque extends EjercicioBaseActivity {
 
         avatar = getAvatar();
 //        avatar.habla(R.raw.mover_rey_en_jaque, new VistaAvatar.OnAvatarHabla() {
-        avatar.habla(R.raw.presentacion, new VistaAvatar.OnAvatarHabla() {
+        avatar.habla(R.raw.presentacion_jaquemate, new VistaAvatar.OnAvatarHabla() {
             @Override
             public void onTerminaHabla() {
                 avatar.mueveOjos(VistaAvatar.MovimientoOjos.DERECHA);
@@ -492,7 +492,7 @@ public class Seccion4SalvarReyDelJaque extends EjercicioBaseActivity {
 
     @Override
     protected void onFinalCuentaAtras() {
-        avatar.habla(R.raw.presentacion, new VistaAvatar.OnAvatarHabla() {
+        avatar.habla(R.raw.presentacion_jaquemate, new VistaAvatar.OnAvatarHabla() {
             @Override
             public void onTerminaHabla() {
                 avatar.mueveOjos(VistaAvatar.MovimientoOjos.DERECHA);
