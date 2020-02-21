@@ -453,9 +453,9 @@ public class Seccion4Ahogado extends EjercicioBaseActivity {
                 }
             });
             for (int i = 0; i < vectorPiezasBlancasAtacantes.size(); i++) {
-                Toast.makeText(this, "Jaque de "
+                /*Toast.makeText(this, "Jaque de "
                         + vectorPiezasBlancasAtacantes.get(i).getTipo().toString().toLowerCase()
-                        + " al rey", Toast.LENGTH_SHORT).show();
+                        + " al rey", Toast.LENGTH_SHORT).show();*/
             }
         }
     }

@@ -45,7 +45,7 @@ public class Seccion4SalvarReyDelJaque extends EjercicioBaseActivity {
 
         avatar = getAvatar();
 //        avatar.habla(R.raw.mover_rey_en_jaque, new VistaAvatar.OnAvatarHabla() {
-        avatar.habla(R.raw.presentacion_jaquemate, new VistaAvatar.OnAvatarHabla() {
+        avatar.habla(R.raw.presentacion_jaque, new VistaAvatar.OnAvatarHabla() {
             @Override
             public void onTerminaHabla() {
                 avatar.mueveOjos(VistaAvatar.MovimientoOjos.DERECHA);
@@ -492,7 +492,7 @@ public class Seccion4SalvarReyDelJaque extends EjercicioBaseActivity {
 
     @Override
     protected void onFinalCuentaAtras() {
-        avatar.habla(R.raw.presentacion_jaquemate, new VistaAvatar.OnAvatarHabla() {
+        avatar.habla(R.raw.presentacion_jaque, new VistaAvatar.OnAvatarHabla() {
             @Override
             public void onTerminaHabla() {
                 avatar.mueveOjos(VistaAvatar.MovimientoOjos.DERECHA);
@@ -559,9 +559,9 @@ public class Seccion4SalvarReyDelJaque extends EjercicioBaseActivity {
                 }
             });
             for (int i = 0; i < vectorPiezasNegrasAtacantes.size(); i++) {
-                Toast.makeText(this, "Jaque de "
+                /*Toast.makeText(this, "Jaque de "
                         + vectorPiezasNegrasAtacantes.get(i).getTipo().toString().toLowerCase()
-                        + " al rey", Toast.LENGTH_SHORT).show();
+                        + " al rey", Toast.LENGTH_SHORT).show();*/
             }
             Pieza pieza = MG.getPieza(colOrigen, filaOrigen);
             if (!reyEnJaqueMate()) {

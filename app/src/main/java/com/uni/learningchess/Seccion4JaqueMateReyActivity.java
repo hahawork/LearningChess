@@ -43,7 +43,7 @@ public class Seccion4JaqueMateReyActivity extends EjercicioBaseActivity implemen
 
         avatar = getAvatar();
 //        avatar.habla(R.raw.mover_rey_en_jaque, new VistaAvatar.OnAvatarHabla() {
-        avatar.habla(R.raw.presentacion_jaque, new VistaAvatar.OnAvatarHabla() {
+        avatar.habla(R.raw.presentacion_jaquemate, new VistaAvatar.OnAvatarHabla() {
             @Override
             public void onTerminaHabla() {
                 avatar.mueveOjos(VistaAvatar.MovimientoOjos.DERECHA);
@@ -446,7 +446,7 @@ public class Seccion4JaqueMateReyActivity extends EjercicioBaseActivity implemen
 
     @Override
     protected void onFinalCuentaAtras() {
-        avatar.habla(R.raw.presentacion_jaque, new VistaAvatar.OnAvatarHabla() {
+        avatar.habla(R.raw.presentacion_jaquemate, new VistaAvatar.OnAvatarHabla() {
             @Override
             public void onTerminaHabla() {
                 avatar.mueveOjos(VistaAvatar.MovimientoOjos.DERECHA);
@@ -519,9 +519,9 @@ public class Seccion4JaqueMateReyActivity extends EjercicioBaseActivity implemen
                 }
             });
             for (int i = 0; i < vectorPiezasBlancasAtacantes.size(); i++) {
-                Toast.makeText(this, "Jaque de "
+                /*Toast.makeText(this, "Jaque de "
                         + vectorPiezasBlancasAtacantes.get(i).getTipo().toString().toLowerCase()
-                        + " al rey", Toast.LENGTH_SHORT).show();
+                        + " al rey", Toast.LENGTH_SHORT).show();*/
             }
         }
     }

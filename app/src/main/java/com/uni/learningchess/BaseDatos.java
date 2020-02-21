@@ -178,7 +178,7 @@ public class BaseDatos extends SQLiteOpenHelper {
                 insertarRegistro(TBL_USUARIO_AVANCES,values);
             }
 
-            Toast.makeText(context,"Incremeta acierto en la DB",Toast.LENGTH_LONG).show();
+            //Toast.makeText(context,"Incremeta acierto en la DB",Toast.LENGTH_LONG).show();
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -207,7 +207,7 @@ public class BaseDatos extends SQLiteOpenHelper {
                 insertarRegistro(TBL_USUARIO_AVANCES,values);
             }
 
-            Toast.makeText(context,"Incremeta falla en la DB",Toast.LENGTH_LONG).show();
+            //Toast.makeText(context,"Incremeta falla en la DB",Toast.LENGTH_LONG).show();
         } catch (Exception e) {
             e.printStackTrace();
         }

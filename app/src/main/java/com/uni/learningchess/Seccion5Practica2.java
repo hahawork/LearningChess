@@ -27,7 +27,7 @@ public class Seccion5Practica2 extends MoverPiezaActivity implements TextToSpeec
     @Override
     public void onInit(int status) {
         if (status == TextToSpeech.LANG_MISSING_DATA | status == TextToSpeech.LANG_NOT_SUPPORTED) {
-            Toast.makeText(this, "ERROR LANG_MISSING_DATA | LANG_NOT_SUPPORTED", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "ERROR LANG_MISSING_DATA | LANG_NOT_SUPPORTED", Toast.LENGTH_SHORT).show();
 
             // check for TTS data
             Intent checkTTSIntent = new Intent();
@@ -40,7 +40,7 @@ public class Seccion5Practica2 extends MoverPiezaActivity implements TextToSpeec
             if (textToSpeech.isLanguageAvailable(Locale.US) == TextToSpeech.LANG_AVAILABLE)
                 textToSpeech.setLanguage(Locale.US);
         } else if (status == TextToSpeech.ERROR) {
-            Toast.makeText(this, "Sorry! Text To Speech failed...",
+            //Toast.makeText(this, "Sorry! Text To Speech failed...",
                     Toast.LENGTH_LONG).show();
         }
 

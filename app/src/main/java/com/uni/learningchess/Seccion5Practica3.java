@@ -388,7 +388,7 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
         retiraPiezas();
 
         Pieza pieza = new Pieza(randomEnum(Pieza.Tipo.class), randomEnum(Pieza.Color.class), coordenadaSolicitada);
-        Toast.makeText(this, coordenadaSolicitada, Toast.LENGTH_LONG).show();
+       // Toast.makeText(this, coordenadaSolicitada, Toast.LENGTH_LONG).show();
         MG.colocaPieza(pieza);
         colocarColumna();
         colocarFila();

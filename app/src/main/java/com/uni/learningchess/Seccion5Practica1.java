@@ -80,7 +80,7 @@ public class Seccion5Practica1 extends EjercicioBaseActivity {
     }
 
     public void preguntaCoordenada() {
-        Toast.makeText(this, coordenadaSolicitada, Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, coordenadaSolicitada, Toast.LENGTH_LONG).show();
     }
 
     public void seleccionaTipoJuego() {

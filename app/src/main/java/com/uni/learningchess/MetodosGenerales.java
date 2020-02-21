@@ -99,7 +99,7 @@ public class MetodosGenerales {
             }
 
         } else {
-            Toast.makeText(mActivity,"No hay vector de piezas",Toast.LENGTH_LONG).show();
+            //Toast.makeText(mActivity,"No hay vector de piezas",Toast.LENGTH_LONG).show();
         }
         return pieza;
     }

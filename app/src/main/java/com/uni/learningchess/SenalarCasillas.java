@@ -50,7 +50,7 @@ public class SenalarCasillas extends EjercicioBaseActivity {
     }
 
     public void preguntaCoordenada() {
-        Toast.makeText(this,coordenadaSolicitada,Toast.LENGTH_LONG).show();
+        //Toast.makeText(this,coordenadaSolicitada,Toast.LENGTH_LONG).show();
 
         avatar.habla(audioCoordenadaSolicitada, new VistaAvatar.OnAvatarHabla() {
             @Override
