@@ -50,7 +50,7 @@ public class Seccion5Practica1 extends EjercicioBaseActivity {
         });
 
         avatar = getAvatar();
-        avatar.habla(R.raw.senyala_casilla_presentacion, new VistaAvatar.OnAvatarHabla() {
+        avatar.habla(R.raw.seccion5_tablero, new VistaAvatar.OnAvatarHabla() {
             @Override
             public void onTerminaHabla() {
                 seleccionaCoordenada();

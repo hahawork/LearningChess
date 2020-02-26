@@ -41,7 +41,7 @@ public class Seccion5Practica2 extends MoverPiezaActivity implements TextToSpeec
                 textToSpeech.setLanguage(Locale.US);
         } else if (status == TextToSpeech.ERROR) {
             //Toast.makeText(this, "Sorry! Text To Speech failed...",
-                    Toast.LENGTH_LONG).show();
+                    //Toast.LENGTH_LONG).show();
         }
 
     }
@@ -92,7 +92,7 @@ public class Seccion5Practica2 extends MoverPiezaActivity implements TextToSpeec
         tvTituloEjercicio.setTypeface(fuente);
 
         avatar = getAvatar();
-        avatar.habla(R.raw.senyala_casilla_presentacion, new VistaAvatar.OnAvatarHabla() {
+        avatar.habla(R.raw.seccion5_piezas, new VistaAvatar.OnAvatarHabla() {
             @Override
             public void onTerminaHabla() {
                 seleccionaCoordenada();

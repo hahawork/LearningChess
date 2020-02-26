@@ -34,6 +34,9 @@ public class userProgreso extends AppCompatActivity {
 		BD = new BaseDatos(this);
 		MG = new MetodosGenerales(this);
 		setting = PreferenceManager.getDefaultSharedPreferences(this);
+		stIdUsuarioSeleccionado = setting.getString("spIdUsurioActual", "1");
+		stNombreUsuarioSeleccionado = setting.getString("spNombreUsuarioActual", "Invitado");
+		stEdadUsuarioSeleccionado = setting.getString("spEdadUsuarioActual", "0");
 
 		avatar = findViewById(R.id.vistaAvatar);
 		avatar.setActividad(this);
@@ -52,6 +55,9 @@ public class userProgreso extends AppCompatActivity {
 
 	public void getData(){
 		try {
+				LinearLayout llDetalle = findViewById(R.id.llDatos_UP);
+				llDetalle.removeAllViews();
+
 			Cursor cdata = BD.obtenerDatosRawQuery("SELECT *  FROM " + BaseDatos.iBaseDatos.TBL_USUARIO_AVANCES
 					+ " AS T1 INNER JOIN " + BaseDatos.iBaseDatos.TBL_CAT_SECCIONES + " AS T2 ON T1.idSeccion = T2.idSecc	INNER JOIN " +
 					BaseDatos.iBaseDatos.TBL_USUARIO + " AS T3 ON  T1.iduser = T3.iduser WHERE T1.iduser = " + setting.getString("spIdUsurioActual", "1"));
@@ -59,8 +65,6 @@ public class userProgreso extends AppCompatActivity {
 			if (cdata.getCount() > 0) {
 
 				//obtiene los datos de los usuarios.
-				LinearLayout llDetalle = findViewById(R.id.llDatos_UP);
-				llDetalle.removeAllViews();
 
 				for (cdata.moveToFirst(); !cdata.isAfterLast(); cdata.moveToNext()) {
 

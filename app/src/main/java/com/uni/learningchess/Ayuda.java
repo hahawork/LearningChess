@@ -87,16 +87,16 @@ public class Ayuda extends AppCompatActivity {
             LeerPdf(1, 2);
         }
         if (view == findViewById(R.id.botonAyudaSecc2)) {
-            LeerPdf(3,4,5,6,7,8,9,10);
+            LeerPdf(3,4,5,6,7,8,9,10,11);
         }
         if (view == findViewById(R.id.botonAyudaSecc3)) {
-            LeerPdf(11);
-        }
-        if (view == findViewById(R.id.botonAyudaSecc4)) {
             LeerPdf(12);
         }
-        if (view == findViewById(R.id.botonAyudaSecc5)) {
+        if (view == findViewById(R.id.botonAyudaSecc4)) {
             LeerPdf(13);
+        }
+        if (view == findViewById(R.id.botonAyudaSecc5)) {
+            LeerPdf(14,15,16,17,18,19);
         }
     }
 }
