@@ -12,6 +12,13 @@ import android.widget.TextView;
 import java.util.Random;
 import java.util.Vector;
 
+import static com.uni.learningchess.Pieza.Color.BLANCO;
+import static com.uni.learningchess.Pieza.Color.NEGRO;
+import static com.uni.learningchess.Pieza.Tipo.ALFIL;
+import static com.uni.learningchess.Pieza.Tipo.DAMA;
+import static com.uni.learningchess.Pieza.Tipo.PEON;
+import static com.uni.learningchess.Pieza.Tipo.REY;
+
 public class Seccion5Practica4 extends MoverPiezaActivity {
 
 	private enum MODO {AHOGADO, MATEENUNO, SALVARDELJAQUE}
@@ -21,7 +28,7 @@ public class Seccion5Practica4 extends MoverPiezaActivity {
     TextView tvTituloEjercicio;
     ImageView ivSaltarEjercicio;
     MODO tipoJuego;
-    MetodosGenerales MG;
+    MetodosGenerales mg;
     Vector<Pieza> vectorPiezasBlancas;
     Vector<Pieza> vectorPiezasNegras;
 
@@ -44,7 +51,7 @@ public class Seccion5Practica4 extends MoverPiezaActivity {
         setting = PreferenceManager.getDefaultSharedPreferences(this);
         idUsuario = setting.getString("spIdUsurioActual", "1");
 
-        MG = new MetodosGenerales(this);
+        mg = new MetodosGenerales(this);
         vectorPiezasBlancas = new Vector<>();
         vectorPiezasNegras = new Vector<>();
 
@@ -78,6 +85,7 @@ public class Seccion5Practica4 extends MoverPiezaActivity {
         tvTituloEjercicio.setVisibility(View.VISIBLE);
         ivSaltarEjercicio.setVisibility(View.VISIBLE);
         seleccionaTipoJuego();
+        inicializaJugada1();
     }
 
 	public void seleccionaTipoJuego() {
@@ -125,4 +133,44 @@ public class Seccion5Practica4 extends MoverPiezaActivity {
 	public  void Tipo_Ahogado (){
 
 	}
+
+    private void inicializaJugada1() {
+        vectorPiezasBlancas.removeAllElements();
+        vectorPiezasNegras.removeAllElements();
+        int variante = random.nextInt(2);
+        switch (variante) {
+            case 0:
+
+                vectorPiezasBlancas.add(new Pieza(ALFIL, BLANCO, "E5"));
+                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "A5", true, "A6"));
+                vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "C4"));
+
+                vectorPiezasNegras.add(new Pieza(PEON, NEGRO, "A7"));
+                vectorPiezasNegras.add(new Pieza(REY, NEGRO, "A8"));
+                break;
+            case 1:
+                vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "D5"));
+                vectorPiezasBlancas.add(new Pieza(DAMA, BLANCO, "E7", true, "C7"));
+
+                vectorPiezasNegras.add(new Pieza(REY, NEGRO, "A8"));
+                break;
+        }
+        colocaPiezas();
+    }
+
+    private void colocaPiezas() {
+
+        Vector<Pieza> vectorPiezas = new Vector<>();
+        vectorPiezas.addAll(vectorPiezasBlancas);
+        vectorPiezas.addAll(vectorPiezasNegras);
+        mg.setVectorPiezas(vectorPiezas);
+
+        for (Pieza pieza : vectorPiezasBlancas) {
+            mg.colocaPieza(pieza);
+        }
+        for (Pieza pieza : vectorPiezasNegras) {
+            mg.colocaPieza(pieza);
+        }
+
+    }
 }
