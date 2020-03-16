@@ -10,117 +10,6 @@
     android:padding="3dp"
     tools:context=".SquaredLinearLayout">
 
-    <LinearLayout
-        android:id="@+id/piezas"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="0"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <com.uni.learningchess.SquaredLinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-
-            <ImageView
-                android:id="@+id/torre"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="2dp"
-                android:layout_weight="1"
-                android:background="@drawable/boton_pieza"
-                android:scaleType="fitXY"
-                android:tag="PTorre"
-                app:srcCompat="@drawable/torre_blanca" />
-        </com.uni.learningchess.SquaredLinearLayout>
-
-        <com.uni.learningchess.SquaredLinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-
-            <ImageView
-                android:id="@+id/alfil"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="2dp"
-                android:layout_weight="1"
-                android:background="@drawable/boton_pieza"
-                android:scaleType="fitXY"
-                android:tag="PAlfil"
-                app:srcCompat="@drawable/alfil_blanco" />
-        </com.uni.learningchess.SquaredLinearLayout>
-
-        <com.uni.learningchess.SquaredLinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-
-            <ImageView
-                android:id="@+id/dama"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="2dp"
-                android:layout_weight="1"
-                android:background="@drawable/boton_pieza"
-                android:scaleType="fitXY"
-                android:tag="PDama"
-                app:srcCompat="@drawable/dama_blanca" />
-        </com.uni.learningchess.SquaredLinearLayout>
-
-        <com.uni.learningchess.SquaredLinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-
-            <ImageView
-                android:id="@+id/caballo"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                android:background="@drawable/boton_pieza"
-                android:scaleType="fitXY"
-                android:tag="PCaballo"
-                app:srcCompat="@drawable/caballo_blanco" />
-        </com.uni.learningchess.SquaredLinearLayout>
-
-        <com.uni.learningchess.SquaredLinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-
-            <ImageView
-                android:id="@+id/peon"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                android:background="@drawable/boton_pieza"
-                android:scaleType="fitXY"
-                android:tag="PPeon"
-                app:srcCompat="@drawable/peon_blanco" />
-        </com.uni.learningchess.SquaredLinearLayout>
-
-        <com.uni.learningchess.SquaredLinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-
-            <ImageView
-                android:id="@+id/rey"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="3dp"
-                android:layout_weight="1"
-                android:background="@drawable/boton_pieza"
-                android:scaleType="fitXY"
-                android:tag="PRey"
-                app:srcCompat="@drawable/rey_blanco" />
-        </com.uni.learningchess.SquaredLinearLayout>
-    </LinearLayout>
-
     <com.uni.learningchess.VistaAvatar
         android:id="@+id/vistaAvatar"
         android:layout_width="0dp"
@@ -128,7 +17,6 @@
         android:layout_weight="1" />
 
     <LinearLayout
-
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="2"
@@ -174,7 +62,7 @@
                 android:id="@+id/include_tablero"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <include
                     layout="@layout/tablero_sin_avatar"
@@ -182,41 +70,6 @@
                     android:layout_height="match_parent" />
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/include_notacion"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="gone">
-
-                <include
-                    layout="@layout/activity_seccion3ejerc2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/include_colorcasilla"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="gone">
-
-                <include
-                    layout="@layout/activity_seccion3ejerc3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/include_coordenadascasilla"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="gone">
-
-                <include
-                    layout="@layout/activity_seccion3ejerc5"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

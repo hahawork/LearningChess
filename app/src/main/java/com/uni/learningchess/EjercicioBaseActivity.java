@@ -94,13 +94,15 @@ public abstract class EjercicioBaseActivity extends AppCompatActivity {
         MiTouchListener touchListener = new MiTouchListener();
 
         piezas = findViewById(R.id.piezas);
+        if (piezas != null) {
 
-        for (int i = 0, iMax = piezas.getChildCount(); i < iMax; i++) {
-            LinearLayout linearLayout = (LinearLayout) piezas.getChildAt(i);
-            View vista = linearLayout.getChildAt(0);
-            if (vista instanceof ImageView) {
-                ImageView imagen = (ImageView) vista;
-                imagen.setOnTouchListener(touchListener);
+            for (int i = 0, iMax = piezas.getChildCount(); i < iMax; i++) {
+                LinearLayout linearLayout = (LinearLayout) piezas.getChildAt(i);
+                View vista = linearLayout.getChildAt(0);
+                if (vista instanceof ImageView) {
+                    ImageView imagen = (ImageView) vista;
+                    imagen.setOnTouchListener(touchListener);
+                }
             }
         }
 

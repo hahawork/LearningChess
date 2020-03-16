@@ -80,7 +80,7 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
         });
 
         avatar = getAvatar();
-        avatar.habla(R.raw.senyala_casilla_presentacion, new VistaAvatar.OnAvatarHabla() {
+        avatar.habla(R.raw.seccion5_notacion, new VistaAvatar.OnAvatarHabla() {
             @Override
             public void onTerminaHabla() {
                 coordenadaSolicitada = seleccionaCoordenada();
