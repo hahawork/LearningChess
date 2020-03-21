@@ -320,6 +320,9 @@ public abstract class EjercicioBaseActivity extends AppCompatActivity {
         boolean movimientoValido(int colOrigen, int filaOrigen, int colDestino, int filaDestino);
     }
 
+    /**
+     * @author CEO
+     */
     private static class MiDragShadowBuilder extends View.DragShadowBuilder {
 
         // The drag shadow image, defined as a drawable thing
