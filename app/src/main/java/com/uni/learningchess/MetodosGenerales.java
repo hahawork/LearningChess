@@ -6,7 +6,6 @@ import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.util.Vector;
 
@@ -185,7 +184,6 @@ public class MetodosGenerales {
         }
         return idDrawable;
     }
-
 
     public void MostrarAlertaError(String titulo, String mensaje){
         new AlertDialog.Builder(mActivity)

@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -19,7 +20,7 @@ import static com.uni.learningchess.Pieza.Tipo.DAMA;
 import static com.uni.learningchess.Pieza.Tipo.PEON;
 import static com.uni.learningchess.Pieza.Tipo.REY;
 
-public class Seccion5Practica4 extends MoverPiezaActivity {
+public class Seccion5Practica4 extends EjercicioBaseActivity {
 
     private enum MODO {AHOGADO, MATEENUNO, SALVARDELJAQUE}
 
@@ -35,6 +36,8 @@ public class Seccion5Practica4 extends MoverPiezaActivity {
     SharedPreferences setting;
     BaseDatos baseDatos;
     String idUsuario = "";
+
+    Seccion4Ahogado s4Ah;
 
     @Override
     protected int getLayoutResourceId() {
@@ -52,6 +55,8 @@ public class Seccion5Practica4 extends MoverPiezaActivity {
         idUsuario = setting.getString("spIdUsurioActual", "1");
 
         mg = new MetodosGenerales(this);
+        s4Ah = new Seccion4Ahogado();
+
         vectorPiezasBlancas = new Vector<>();
         vectorPiezasNegras = new Vector<>();
 
@@ -63,7 +68,7 @@ public class Seccion5Practica4 extends MoverPiezaActivity {
         avatar.habla(R.raw.seccion5_jaque, new VistaAvatar.OnAvatarHabla() {
             @Override
             public void onTerminaHabla() {
-                seleccionaCoordenada();
+                seleccionaTipoJuego();
             }
         });
 
@@ -73,18 +78,12 @@ public class Seccion5Practica4 extends MoverPiezaActivity {
             ivSaltarEjercicio.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    seleccionaCoordenada();
+                    seleccionaTipoJuego();
                 }
             });
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public void seleccionaCoordenada() {
-        tvTituloEjercicio.setVisibility(View.VISIBLE);
-        ivSaltarEjercicio.setVisibility(View.VISIBLE);
-        seleccionaTipoJuego();
     }
 
     public void seleccionaTipoJuego() {
@@ -171,6 +170,96 @@ public class Seccion5Practica4 extends MoverPiezaActivity {
         }
         for (Pieza pieza : vectorPiezasNegras) {
             mg.colocaPieza(pieza);
+        }
+    }
+
+    public void eliminaPieza(Pieza pieza) {
+        vectorPiezasBlancas.removeElement(pieza);
+        vectorPiezasNegras.removeElement(pieza);
+    }
+
+    private Validador validador = new Validador() {
+        @Override
+        public boolean movimientoValido(int colOrigen, int filaOrigen, int colDestino, int filaDestino) {
+            boolean validador = false;
+            Pieza pieza = mg.getPieza(colOrigen, filaOrigen);
+
+            if (pieza != null) {
+                try {
+                    boolean movimientoValidoBlancas = s4Ah.validadorGenerico.movimientoValido(colOrigen, filaOrigen, colDestino, filaDestino);
+                    Log.d("Ajedrez", "***movimientoValidoBlancas=" + movimientoValidoBlancas);
+                    Pieza piezaDestino = mg.getPieza(colDestino, filaDestino);
+                    if (piezaDestino != null && piezaDestino.getColor() == NEGRO) {
+                        vectorPiezasNegras.remove(piezaDestino);
+                    }
+
+
+                    pieza.setCoordenada(colDestino, filaDestino);
+                    //boolean reyEnJaque = reyEnJaque();
+                    validador = movimientoValidoBlancas;// && reyEnJaque;
+                    pieza.setCoordenada(colOrigen, filaOrigen);
+                    if (piezaDestino != null && piezaDestino.getColor() == NEGRO) {
+                        vectorPiezasNegras.add(piezaDestino);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            return (validador);
+        }
+    };
+
+    @Override
+    protected boolean onMovimiento(int colOrigen, int filaOrigen, int colDestino, int filaDestino) {
+
+        cancelaCuentaAtras();
+        Pieza piezaDestino = mg.getPieza(colDestino, filaDestino);
+        boolean movimientoPiezaBlanca = (mg.getColorPieza(colOrigen, filaOrigen) == BLANCO);
+        boolean movimientoValido = validador.movimientoValido(colOrigen, filaOrigen, colDestino, filaDestino);
+        boolean capturaPieza = (mg.capturaPieza(colOrigen, filaOrigen, colDestino, filaDestino));
+        boolean movimientoCorrecto = movimientoPiezaBlanca && movimientoValido;
+        boolean capturaReyNegro = capturaPieza && (mg.getColorPieza(colOrigen, filaOrigen) == NEGRO);
+        boolean esPiezaCorrectaJaqueMate = mg.getPieza(colOrigen, filaOrigen).isMoverDarJaqueMate();
+        boolean esCasillaCorrecta = mg.getPieza(colOrigen, filaOrigen).getColumnaCorrecta() == colDestino &&
+                mg.getPieza(colOrigen, filaOrigen).getFilaCorrecta() == filaDestino;
+
+        if (movimientoCorrecto && capturaPieza) eliminaPieza(piezaDestino);
+
+        return movimientoCorrecto && esPiezaCorrectaJaqueMate && esCasillaCorrecta && !capturaReyNegro;
+    }
+
+    @Override
+    protected void onMovimiento(boolean movimientoValido, int colOrigen, int filaOrigen, int colDestino, int filaDestino) {
+
+        avatar.mueveOjos(VistaAvatar.MovimientoOjos.DERECHA);
+        if (movimientoValido) {
+            avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_CORRECTO);
+            avatar.mueveCejas(VistaAvatar.MovimientoCejas.ARQUEAR);
+
+
+            avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_CORRECTO);
+            avatar.habla(R.raw.ok_has_acertado, new VistaAvatar.OnAvatarHabla() {
+                @Override
+                public void onTerminaHabla() {
+                    avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.TIC_TAC);
+                    empiezaCuentaAtras();
+                }
+            });
+
+            seleccionaTipoJuego();
+
+
+        } else {
+            avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_INCORRECTO);
+            avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_INCORRECTO);
+            avatar.mueveCejas(VistaAvatar.MovimientoCejas.FRUNCIR);
+            avatar.habla(R.raw.mal_intenta_otra_vez, new VistaAvatar.OnAvatarHabla() {
+                @Override
+                public void onTerminaHabla() {
+                    avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.TIC_TAC);
+                    empiezaCuentaAtras();
+                }
+            });
         }
     }
 }

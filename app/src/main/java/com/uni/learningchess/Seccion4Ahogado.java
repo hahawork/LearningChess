@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Random;
 import java.util.Vector;
@@ -65,7 +64,7 @@ public class Seccion4Ahogado extends EjercicioBaseActivity {
         return R.layout.tablero;
     }
 
-    private Validador validadorPeon = new Validador() {
+    public Validador validadorPeon = new Validador() {
         @Override
         public boolean movimientoValido(int colOrigen, int filaOrigen, int colDestino, int filaDestino) {
             boolean esPeon = (mg.getTipoPieza(colOrigen, filaOrigen) == PEON);
@@ -78,7 +77,7 @@ public class Seccion4Ahogado extends EjercicioBaseActivity {
         }
     };
 
-    private Validador validadorCaballo = new Validador() {
+    public Validador validadorCaballo = new Validador() {
         @Override
         public boolean movimientoValido(int colOrigen, int filaOrigen, int colDestino, int filaDestino) {
             boolean esCaballo = (mg.getTipoPieza(colOrigen, filaOrigen) == CABALLO);
@@ -138,7 +137,7 @@ public class Seccion4Ahogado extends EjercicioBaseActivity {
         }
     };
 
-    private Validador validadorGenerico = new Validador() {
+    public Validador validadorGenerico = new Validador() {
         @Override
         public boolean movimientoValido(int colOrigen, int filaOrigen, int colDestino, int filaDestino) {
             boolean movimientoValidoBlancas = false;
@@ -168,7 +167,7 @@ public class Seccion4Ahogado extends EjercicioBaseActivity {
         }
     };
 
-    private Validador validador = new Validador() {
+    public Validador validador = new Validador() {
         @Override
         public boolean movimientoValido(int colOrigen, int filaOrigen, int colDestino, int filaDestino) {
             boolean validador = false;
