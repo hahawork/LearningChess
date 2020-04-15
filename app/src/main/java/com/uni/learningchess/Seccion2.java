@@ -1,6 +1,7 @@
 package com.uni.learningchess;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -10,7 +11,9 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class Seccion2 extends AppCompatActivity {
@@ -103,27 +106,33 @@ public class Seccion2 extends AppCompatActivity {
     }
 
     public void botonMoverTorre(View v) {
-        startActivity(new Intent(this, MoverTorreActivity.class));
+        MostrarDialogoVideo_Practica("d_1ZNqL8ZCA","MoverTorreActivity");
+        // startActivity(new Intent(this, MoverTorreActivity.class));
     }
 
     public void botonMoverAlfil(View v) {
-        startActivity(new Intent(this, MoverAlfilActivity.class));
+        MostrarDialogoVideo_Practica("0WmPWFOhkOY","MoverAlfilActivity");
+        //startActivity(new Intent(this, MoverAlfilActivity.class));
     }
 
     public void botonMoverDama(View v) {
-        startActivity(new Intent(this, MoverDamaActivity.class));
+        MostrarDialogoVideo_Practica("Q6bAgnOVSSM","MoverDamaActivity");
+        //startActivity(new Intent(this, MoverDamaActivity.class));
     }
 
     public void botonMoverCaballo(View v) {
-        startActivity(new Intent(this, MoverCaballoActivity.class));
+        MostrarDialogoVideo_Practica("sq7TlC8IVm4","MoverCaballoActivity");
+        //startActivity(new Intent(this, MoverCaballoActivity.class));
     }
 
     public void botonMoverPeon(View v) {
-        startActivity(new Intent(this, MoverPeonActivity.class));
+        MostrarDialogoVideo_Practica("Y2fOHkq6Ke0","MoverPeonActivity");
+        //startActivity(new Intent(this, MoverPeonActivity.class));
     }
 
     public void botonMoverRey(View v) {
-        startActivity(new Intent(this, MoverReyActivity.class));
+        MostrarDialogoVideo_Practica("KfW9070tQx0","MoverReyActivity");
+        //startActivity(new Intent(this, MoverReyActivity.class));
     }
 
     public void botonjugEspec1(View view) {
@@ -196,4 +205,53 @@ public class Seccion2 extends AppCompatActivity {
 
         startActivity(intent);
     }
+
+
+    public void MostrarDialogoVideo_Practica(final String URL, final String Activit) {
+
+
+
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.dialogo_movim_piezas_video_practica);
+
+        ImageButton Practicar = dialog.findViewById(R.id.ibtnPracticar_dlgmpvp);
+        Practicar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String NombrePaquete = getApplicationContext().getPackageName() + "." + Activit;
+                try {
+                    Class<?> c = Class.forName(NombrePaquete);
+                    Intent intent = new Intent(getApplicationContext(), c);
+                    startActivity(intent);
+                } catch (ClassNotFoundException ignored) {
+                }
+            }
+        });
+
+        ImageButton VerVideo = dialog.findViewById(R.id.ibtnVerVideo_dlgmpvp);
+        VerVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Seccion2.this, VerVideo.class);
+                i.putExtra("video_id", URL);
+                startActivity(i);
+            }
+        });
+
+
+        ImageButton dialogButton = dialog.findViewById(R.id.ibtnCerrar_dlgmpvp);
+        dialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+
+        dialog.show();
+
+    }
+
 }
