@@ -4,8 +4,12 @@ import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -16,9 +20,11 @@ import java.util.Vector;
 import static com.uni.learningchess.Pieza.Color.BLANCO;
 import static com.uni.learningchess.Pieza.Color.NEGRO;
 import static com.uni.learningchess.Pieza.Tipo.ALFIL;
+import static com.uni.learningchess.Pieza.Tipo.CABALLO;
 import static com.uni.learningchess.Pieza.Tipo.DAMA;
 import static com.uni.learningchess.Pieza.Tipo.PEON;
 import static com.uni.learningchess.Pieza.Tipo.REY;
+import static com.uni.learningchess.Pieza.Tipo.TORRE;
 
 public class Seccion5Practica4 extends EjercicioBaseActivity {
 
@@ -64,6 +70,7 @@ public class Seccion5Practica4 extends EjercicioBaseActivity {
         Typeface fuente = Typeface.createFromAsset(getAssets(), "fonts/BalooPaaji-Regular.ttf");
         tvTituloEjercicio.setTypeface(fuente);
 
+
         avatar = getAvatar();
         avatar.habla(R.raw.seccion5_jaque, new VistaAvatar.OnAvatarHabla() {
             @Override
@@ -72,6 +79,25 @@ public class Seccion5Practica4 extends EjercicioBaseActivity {
             }
         });
 
+
+        tvTituloEjercicio.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Animation animSequential;
+                animSequential = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.animacion_rotar_elemento);
+                tvTituloEjercicio.startAnimation(animSequential);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         try {
             ivSaltarEjercicio = findViewById(R.id.ivSaltarEjercicio);
@@ -84,6 +110,10 @@ public class Seccion5Practica4 extends EjercicioBaseActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        tvTituloEjercicio.setVisibility(View.VISIBLE);
+        tvTituloEjercicio.setText("Ejercicios de prácticas");
+        ivSaltarEjercicio.setVisibility(View.VISIBLE);
     }
 
     public void seleccionaTipoJuego() {
@@ -97,11 +127,12 @@ public class Seccion5Practica4 extends EjercicioBaseActivity {
 
         switch (tipoJuego) {
             case AHOGADO:
+
                 Tipo_Ahogado();
                 break;
             case MATEENUNO:
-                Tipo_Ahogado();
-                //ColorDeCasilla();
+
+                Tipo_MateEnUno();
                 break;
             case SALVARDELJAQUE:
                 Tipo_Ahogado();
@@ -131,13 +162,19 @@ public class Seccion5Practica4 extends EjercicioBaseActivity {
     }
 
     public void Tipo_Ahogado() {
+        tvTituloEjercicio.setText("Ahogado");
         inicializaJugada1();
+    }
+    public void Tipo_MateEnUno()
+    {
+        tvTituloEjercicio.setText("Jaque mate en 1 movimiento");
+        inicializaJugada2();
     }
 
     private void inicializaJugada1() {
         vectorPiezasBlancas.removeAllElements();
         vectorPiezasNegras.removeAllElements();
-        int variante = random.nextInt(2);
+        int variante = random.nextInt(6);
         switch (variante) {
             case 0:
 
@@ -154,7 +191,157 @@ public class Seccion5Practica4 extends EjercicioBaseActivity {
 
                 vectorPiezasNegras.add(new Pieza(REY, NEGRO, "A8"));
                 break;
+            case 2:
+
+                vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "D1"));
+                vectorPiezasBlancas.add(new Pieza(TORRE, BLANCO, "A4", true, "A5"));
+                vectorPiezasBlancas.add(new Pieza(TORRE, BLANCO, "B7"));
+                vectorPiezasBlancas.add(new Pieza(DAMA, BLANCO, "D1"));
+                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "F6"));
+                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "G5"));
+
+                vectorPiezasNegras.add(new Pieza(PEON, NEGRO, "F7"));
+                vectorPiezasNegras.add(new Pieza(REY, NEGRO, "E6"));
+                break;
+            case 3:
+                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "D7"));
+                vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "C6", true, "D6"));
+
+                vectorPiezasNegras.add(new Pieza(REY, NEGRO, "D8"));
+                break;
+
+            case 4:
+
+                vectorPiezasBlancas.add(new Pieza(CABALLO, BLANCO, "A6"));
+                vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "C6", true, "B6"));
+
+                vectorPiezasNegras.add(new Pieza(REY, NEGRO, "A8"));
+                break;
+            case 5:
+                vectorPiezasBlancas.add(new Pieza(DAMA, BLANCO, "D4", true, "C4"));
+                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "F4"));
+                vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "B1"));
+
+                vectorPiezasNegras.add(new Pieza(REY, NEGRO, "A3"));
+                vectorPiezasNegras.add(new Pieza(PEON, NEGRO, "F5"));
+                break;
         }
+        colocaPiezas();
+    }
+
+    private void inicializaJugada2() {
+        vectorPiezasBlancas.removeAllElements();
+        vectorPiezasNegras.removeAllElements();
+        int variante = random.nextInt(9);
+
+        switch (variante) {
+            case 0: // tablero 1 segun documento
+                vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "H1"));
+                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "A3"));
+                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "B2"));
+                vectorPiezasBlancas.add(new Pieza(DAMA, BLANCO, "B3"));
+                vectorPiezasBlancas.add(new Pieza(TORRE, BLANCO, "D1", true, "D8"));
+                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "E4"));
+                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "G2"));
+                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "H2"));
+
+                vectorPiezasNegras.add(new Pieza(REY, NEGRO, "G8"));
+                vectorPiezasNegras.add(new Pieza(PEON, NEGRO, "A7"));
+                vectorPiezasNegras.add(new Pieza(PEON, NEGRO, "C5"));
+                vectorPiezasNegras.add(new Pieza(PEON, NEGRO, "C7"));
+                vectorPiezasNegras.add(new Pieza(PEON, NEGRO, "G7"));
+                vectorPiezasNegras.add(new Pieza(PEON, NEGRO, "H7"));
+                vectorPiezasNegras.add(new Pieza(DAMA, NEGRO, "B6"));
+                vectorPiezasNegras.add(new Pieza(TORRE, NEGRO, "F7"));
+                break;
+            case 1://tablero 2
+                vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "C1"));
+                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "A2"));
+                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "B2"));
+                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "C2"));
+                vectorPiezasBlancas.add(new Pieza(TORRE, BLANCO, "H1"));
+                vectorPiezasBlancas.add(new Pieza(CABALLO, BLANCO, "E5", true, "G6"));
+                vectorPiezasBlancas.add(new Pieza(ALFIL, BLANCO, "B3"));
+
+                vectorPiezasNegras.add(new Pieza(REY, NEGRO, "H8"));
+                vectorPiezasNegras.add(new Pieza(PEON, NEGRO, "A7"));
+                vectorPiezasNegras.add(new Pieza(PEON, NEGRO, "H7"));
+                vectorPiezasNegras.add(new Pieza(PEON, NEGRO, "G7"));
+                vectorPiezasNegras.add(new Pieza(TORRE, NEGRO, "A8"));
+                vectorPiezasNegras.add(new Pieza(CABALLO, NEGRO, "B8"));
+                vectorPiezasNegras.add(new Pieza(ALFIL, NEGRO, "C8"));
+                break;
+            case 2: //tablero 13
+                vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "G1"));
+                vectorPiezasBlancas.add(new Pieza(ALFIL, BLANCO, "A5"));
+                vectorPiezasBlancas.add(new Pieza(DAMA, BLANCO, "F4", true, "C7"));
+
+                vectorPiezasNegras.add(new Pieza(REY, NEGRO, "D7"));
+                vectorPiezasNegras.add(new Pieza(ALFIL, NEGRO, "E8"));
+                vectorPiezasNegras.add(new Pieza(DAMA, NEGRO, "E6"));
+                break;
+
+            case 3://tablero 12
+                vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "F1"));
+                vectorPiezasBlancas.add(new Pieza(TORRE, BLANCO, "B7"));
+                vectorPiezasBlancas.add(new Pieza(CABALLO, BLANCO, "E6", true, "G7"));
+
+                vectorPiezasNegras.add(new Pieza(REY, NEGRO, "E8"));
+                vectorPiezasNegras.add(new Pieza(DAMA, NEGRO, "D8"));
+                vectorPiezasNegras.add(new Pieza(CABALLO, NEGRO, "F8"));
+                break;
+            case 4://tablero 6
+                vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "G2"));
+                vectorPiezasBlancas.add(new Pieza(ALFIL, BLANCO, "G3"));
+                vectorPiezasBlancas.add(new Pieza(DAMA, BLANCO, "A4", true, "C6"));
+
+                vectorPiezasNegras.add(new Pieza(REY, NEGRO, "C8"));
+                vectorPiezasNegras.add(new Pieza(TORRE, NEGRO, "D8"));
+                break;
+            case 5://tablero 7
+                vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "H1"));
+                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "E6"));
+                vectorPiezasBlancas.add(new Pieza(CABALLO, BLANCO, "C5", true, "A6"));
+                vectorPiezasBlancas.add(new Pieza(TORRE, BLANCO, "C2"));
+
+                vectorPiezasNegras.add(new Pieza(REY, NEGRO, "C7"));
+                vectorPiezasNegras.add(new Pieza(PEON, NEGRO, "B7"));
+                vectorPiezasNegras.add(new Pieza(PEON, NEGRO, "D6"));
+                vectorPiezasNegras.add(new Pieza(TORRE, NEGRO, "D8"));
+                break;
+
+            case 6://tablero 8
+                vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "G1"));
+                vectorPiezasBlancas.add(new Pieza(DAMA, BLANCO, "A1"));
+                vectorPiezasBlancas.add(new Pieza(TORRE, BLANCO, "D1"));
+                vectorPiezasBlancas.add(new Pieza(CABALLO, BLANCO, "D4", true, "C6"));
+                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "E2"));
+                vectorPiezasBlancas.add(new Pieza(ALFIL, BLANCO, "F7"));
+
+                vectorPiezasNegras.add(new Pieza(REY, NEGRO, "E5"));
+                vectorPiezasNegras.add(new Pieza(PEON, NEGRO, "E4"));
+                vectorPiezasNegras.add(new Pieza(PEON, NEGRO, "E6"));
+                vectorPiezasNegras.add(new Pieza(PEON, NEGRO, "F5"));
+                break;
+            case 7://tablero 9
+                vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "C1"));
+                vectorPiezasBlancas.add(new Pieza(ALFIL, BLANCO, "B2"));
+                vectorPiezasBlancas.add(new Pieza(CABALLO, BLANCO, "G5"));
+                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "H6", true, "H7"));
+
+                vectorPiezasNegras.add(new Pieza(REY, NEGRO, "G8"));
+                vectorPiezasNegras.add(new Pieza(TORRE, NEGRO, "F8"));
+                break;
+            case 8://tablero 10
+                vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "H1"));
+                vectorPiezasBlancas.add(new Pieza(TORRE, BLANCO, "B1"));
+                vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "D6"));
+                vectorPiezasBlancas.add(new Pieza(TORRE, BLANCO, "G7",true,"C7"));
+
+                vectorPiezasNegras.add(new Pieza(REY, NEGRO, "C8"));
+                vectorPiezasNegras.add(new Pieza(TORRE, NEGRO, "D8"));
+                vectorPiezasNegras.add(new Pieza(PEON, NEGRO, "C7"));
+                break;        }
         colocaPiezas();
     }
 
@@ -186,7 +373,7 @@ public class Seccion5Practica4 extends EjercicioBaseActivity {
 
             if (pieza != null) {
                 try {
-                    boolean movimientoValidoBlancas = s4Ah.validadorGenerico.movimientoValido(colOrigen, filaOrigen, colDestino, filaDestino);
+                    boolean movimientoValidoBlancas = mg.validadorGenerico.movimientoValido(colOrigen, filaOrigen, colDestino, filaDestino);
                     Log.d("Ajedrez", "***movimientoValidoBlancas=" + movimientoValidoBlancas);
                     Pieza piezaDestino = mg.getPieza(colDestino, filaDestino);
                     if (piezaDestino != null && piezaDestino.getColor() == NEGRO) {
@@ -246,8 +433,8 @@ public class Seccion5Practica4 extends EjercicioBaseActivity {
                 }
             });
 
+            baseDatos.IncrementaAcierto(idUsuario, "4");
             seleccionaTipoJuego();
-
 
         } else {
             avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_INCORRECTO);
@@ -260,6 +447,7 @@ public class Seccion5Practica4 extends EjercicioBaseActivity {
                     empiezaCuentaAtras();
                 }
             });
+            baseDatos.IncrementaEjercicioFalla(idUsuario, "4");
         }
     }
 }

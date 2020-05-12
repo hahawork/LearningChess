@@ -4,7 +4,9 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
 import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -49,10 +51,6 @@ public class Seccion2 extends AppCompatActivity {
         Button boton14 = findViewById(R.id.boton14);
         boton14.setTypeface(fuente);
 
-        Button botonVerVideo = findViewById(R.id.botonVerVideo);
-        botonVerVideo.setTypeface(fuente);
-
-
         TextView textoCapitulo12 = findViewById(R.id.textoCapitulo12);
         textoCapitulo12.setTypeface(fuente1);
 
@@ -80,7 +78,7 @@ public class Seccion2 extends AppCompatActivity {
     }
 
     public void botonMovimientos(View view) {
-        ((TextView) findViewById(R.id.textoEjercicios)).setText(getResources().getString(R.string.ejercicios) + " Movimientos.");
+        ((TextView) findViewById(R.id.textoEjercicios)).setText(getResources().getString(R.string.ejercicios) + " Movimientos");
         View tblLayout = findViewById(R.id.tlMovimientos);
         tblLayout.setVisibility(View.VISIBLE);
 
@@ -91,7 +89,7 @@ public class Seccion2 extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public void botonCaptura(View view) {
 
-        ((TextView) findViewById(R.id.textoEjercicios)).setText(getResources().getString(R.string.ejercicios) + " Capturas.");
+        ((TextView) findViewById(R.id.textoEjercicios)).setText(getResources().getString(R.string.ejercicios) + " Capturas");
         findViewById(R.id.tlMovimientos).setVisibility(View.GONE);
         findViewById(R.id.tlCapturas).setVisibility(View.VISIBLE);
         findViewById(R.id.tlJugadasEspeciales).setVisibility(View.GONE);
@@ -99,7 +97,7 @@ public class Seccion2 extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void botonJugadasEspeciales(View view) {
-        ((TextView) findViewById(R.id.textoEjercicios)).setText(getResources().getString(R.string.ejercicios) + " Jugadas Especiales.");
+        ((TextView) findViewById(R.id.textoEjercicios)).setText(getResources().getString(R.string.ejercicios) + " Jugadas Especiales");
         findViewById(R.id.tlMovimientos).setVisibility(View.GONE);
         findViewById(R.id.tlCapturas).setVisibility(View.GONE);
         findViewById(R.id.tlJugadasEspeciales).setVisibility(View.VISIBLE);
@@ -138,10 +136,10 @@ public class Seccion2 extends AppCompatActivity {
     public void botonjugEspec1(View view) {
         // setup the alert builder
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Tipo de Enroque.");
+        builder.setTitle("Tipo de Enroque");
         builder.setIcon(R.mipmap.ic_launcher);
         // add a list
-        String[] enroques = {"Enroque largo.", "Enroque corto."};
+        String[] enroques = {"Enroque largo", "Enroque corto"};
         builder.setItems(enroques, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -159,7 +157,6 @@ public class Seccion2 extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
 
-
     }
 
     public void botonjugEspec2(View view) {
@@ -168,12 +165,6 @@ public class Seccion2 extends AppCompatActivity {
 
     public void botonjugEspec3(View view) {
         startActivity(new Intent(this, MovimientosCoronacion.class));
-    }
-
-    public void botonVerVideo(View view) {
-        Intent i = new Intent(Seccion2.this, VerVideo.class);
-        i.putExtra("video_id", "Z6_uYARH_Vo");
-        startActivity(i);
     }
 
     public void botonValorPiezas(View view) {
@@ -209,11 +200,10 @@ public class Seccion2 extends AppCompatActivity {
 
     public void MostrarDialogoVideo_Practica(final String URL, final String Activit) {
 
-
-
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCancelable(false);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        //dialog.setCancelable(false);
         dialog.setContentView(R.layout.dialogo_movim_piezas_video_practica);
 
         ImageButton Practicar = dialog.findViewById(R.id.ibtnPracticar_dlgmpvp);

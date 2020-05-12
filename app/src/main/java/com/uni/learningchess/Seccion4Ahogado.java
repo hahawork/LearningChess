@@ -54,7 +54,7 @@ public class Seccion4Ahogado extends EjercicioBaseActivity {
         });
 
         TextView tvNotas= findViewById(R.id.tvTituloEjerciciosPracticas);
-        tvNotas.setText("Nota: Esto es con el fin de practicar y quedar claro que es el ahogado, pero te recomendamos utilizar este recurso en una posicion donde te ecuentres en desventaja.");
+        tvNotas.setText("Nota: Esto es con el fin de practicar y quedar claro que es el ahogado, pero te recomendamos utilizar este recurso en una posicion donde te ecuentres en desventaja");
         tvNotas.setTextSize(12);
         tvNotas.setVisibility(View.VISIBLE);
     }

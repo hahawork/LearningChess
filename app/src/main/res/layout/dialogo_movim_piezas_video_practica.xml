@@ -1,89 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:color/transparent"
-    android:elevation="10dp"
-    android:minWidth="400dp"
-    app:cardBackgroundColor="@android:color/transparent"
-    app:cardCornerRadius="10dp">
+    android:background="@drawable/dialogo_fondo"
+    android:minWidth="300dp"
+    android:gravity="right"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+    <ImageButton
+        android:id="@+id/ibtnCerrar_dlgmpvp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:background="@android:color/transparent"
+        android:tint="@color/botonFondoRojo"
+        app:srcCompat="@android:drawable/btn_dialog" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:gravity="right"
-        android:minWidth="380dp"
-        android:orientation="vertical">
-
-        <ImageButton
-            android:id="@+id/ibtnCerrar_dlgmpvp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:tint="@color/botonFondoRojo"
-            app:srcCompat="@android:drawable/btn_dialog" />
+        android:gravity="center"
+        android:minWidth="400dp"
+        android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="0dp"
+            <ImageButton
+                android:id="@+id/ibtnVerVideo_dlgmpvp"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@android:color/transparent"
+                android:minWidth="100dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/bg_btn_ver_video" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:id="@+id/ibtnVerVideo_dlgmpvp"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:background="@android:color/transparent"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/bg_btn_ver_video" />
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:autoText="true"
-                    android:gravity="center"
-                    android:text="@string/verVideo"
-                    android:textColor="@android:color/black"
-                    android:textScaleX="2"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:id="@+id/ibtnPracticar_dlgmpvp"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:background="@android:color/transparent"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/bg_btn_practicar" />
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:autoText="true"
-                    android:gravity="center"
-                    android:text="Practicar"
-                    android:textColor="@android:color/black"
-                    android:textScaleX="2"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                android:background="@drawable/boton_azul"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/verVideo"
+                android:textColor="@android:color/black"
+                android:textScaleX="2"
+                android:textStyle="bold" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/ibtnPracticar_dlgmpvp"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@android:color/transparent"
+                android:minWidth="100dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/bg_btn_practicar" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/boton_azul"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Practicar"
+                android:textColor="@android:color/black"
+                android:textScaleX="2"
+                android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
 
-</android.support.v7.widget.CardView>
+</LinearLayout>

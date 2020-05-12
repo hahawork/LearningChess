@@ -183,7 +183,7 @@ public class MovimientosCoronacion extends EjercicioBaseActivity implements Dial
         boolean movimientoValido = validadorPeonBlanco.movimientoValido(colOrigen, filaOrigen, colDestino, filaDestino);
         boolean movimientoCorrecto = movimientoPiezaBlanca && movimientoValido;
         if (filaOrigen == 7) {
-            Toast.makeText(this, "Ya estabas en la fila 8.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Ya estabas en la fila 8", Toast.LENGTH_LONG).show();
             inicializaJugada(1);
         }
         return movimientoCorrecto;

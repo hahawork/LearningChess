@@ -76,7 +76,7 @@ public class ProgresoPuntajeUsuarios extends AppCompatActivity {
                     llDetalle.addView(rowView);
                 }
             } else {
-                Toast.makeText(this, "no hay registros aún.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "no hay registros aún", Toast.LENGTH_SHORT).show();
             }
 
         } catch (Exception e) {

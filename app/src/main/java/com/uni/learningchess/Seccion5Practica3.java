@@ -16,7 +16,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Random;
 import java.util.Vector;
@@ -251,7 +250,7 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
         cadena.append(_captura ? " y hace captura a " : " a ");
         cadena.append("la casilla ");
         cadena.append(_coordenada);
-        cadena.append((_jaque ? " con jaque." : (_jaquemate ? " con jaque mate." : "")));
+        cadena.append((_jaque ? " con jaque" : (_jaquemate ? " con jaque mate" : "")));
 
         Pieza.Tipo pieza1 = Pieza.Tipo.values()[random.nextInt(Pieza.Tipo.values().length)];
         String _coordenadafake1 = seleccionaCoordenada().toLowerCase();

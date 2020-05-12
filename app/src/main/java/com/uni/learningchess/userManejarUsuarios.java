@@ -65,7 +65,7 @@ public class userManejarUsuarios extends AppCompatActivity {
                 if (!stIdUsuarioSeleccionado.equals("1")) {
                     DialogoGuardarUsuario(GUARDAR.EDITAR, stIdUsuarioSeleccionado, stNombreUsuarioSeleccionado, stEdadUsuarioSeleccionado);
                 } else {
-                    MG.MostrarAlertaError("Editar", "El usuario Invitado no se debe modificar.");
+                    MG.MostrarAlertaError("Editar", "El usuario Invitado no se debe modificar");
                 }
 
             } else {
@@ -124,7 +124,7 @@ public class userManejarUsuarios extends AppCompatActivity {
                             editor.putString("spNombreUsuarioActual", nombre);
                             editor.putString("spEdadUsuarioActual", edad);
                             editor.commit();
-                            Toast.makeText(userManejarUsuarios.this, String.format("%s es ahora el usuario seleccionado.", nombre), Toast.LENGTH_LONG).show();
+                            Toast.makeText(userManejarUsuarios.this, String.format("%s es ahora el usuario seleccionado", nombre), Toast.LENGTH_LONG).show();
 
                             getData();
                         }
@@ -133,7 +133,7 @@ public class userManejarUsuarios extends AppCompatActivity {
                     llDetalle.addView(rowView);
                 }
             } else {
-                Toast.makeText(this, "no hay registros aún.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "no hay registros aún", Toast.LENGTH_SHORT).show();
             }
 
         } catch (Exception e) {
@@ -197,7 +197,7 @@ public class userManejarUsuarios extends AppCompatActivity {
                                 MG.MostrarAlertaError("No se guardó", "Error al guardar los datos");
                             }
                         } else {
-                            MG.MostrarAlertaError("Alerta", "Este nombre ya existe.");
+                            MG.MostrarAlertaError("Alerta", "Este nombre ya existe");
                         }
 
                     } else if (guardar == GUARDAR.EDITAR) {
@@ -221,7 +221,7 @@ public class userManejarUsuarios extends AppCompatActivity {
                     }
 
                 } else {
-                    MG.MostrarAlertaError("No permitido", "Debes llenar los dos campos de texto.");
+                    MG.MostrarAlertaError("No permitido", "Debes llenar los dos campos de texto");
                 }
             }
         });
@@ -264,7 +264,7 @@ public class userManejarUsuarios extends AppCompatActivity {
                         .setNegativeButton("NO, SALIR", null)
                         .show();
             } else {
-                MG.MostrarAlertaError("Borrar", "El usuario Invitado no se debe borrar.");
+                MG.MostrarAlertaError("Borrar", "El usuario Invitado no se debe borrar");
             }
         } else {
             MG.MostrarAlertaError("Borrar", "Primero selecciona un usuario");

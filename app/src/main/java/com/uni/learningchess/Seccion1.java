@@ -54,12 +54,6 @@ public class Seccion1 extends AppCompatActivity {
         super.onPause();
     }
 
-    public void boton1(View v) {
-        Intent i = new Intent(Seccion1.this, VerVideo.class);
-        i.putExtra("video_id", "Z6_uYARH_Vo");
-        startActivity(i);
-    }
-
     public void boton6(View v) {
         startActivity(new Intent(this, SenalarCasillas.class));
     }

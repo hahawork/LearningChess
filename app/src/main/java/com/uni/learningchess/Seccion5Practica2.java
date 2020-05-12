@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -262,7 +261,7 @@ public class Seccion5Practica2 extends MoverPiezaActivity implements TextToSpeec
         Pieza pieza = new Pieza(piezaSeleccionada, Pieza.Color.BLANCO, coordenadaSolicitada);
         vectorPiezasBlancas.add(pieza);
         colocaPiezas();
-        tvTituloEjercicio.setText("¡La pieza " + pieza.getTipo() + " está en " + coordenadaSolicitada + "!, realizá un movimiento válido.");
+        tvTituloEjercicio.setText("¡La pieza " + pieza.getTipo() + " está en " + coordenadaSolicitada + "!, realizá un movimiento válido");
         speak(tvTituloEjercicio.getText().toString());
     }
     //endregion
@@ -277,7 +276,7 @@ public class Seccion5Practica2 extends MoverPiezaActivity implements TextToSpeec
         } while (filaAleatoria == 7 && piezaSeleccionada == Pieza.Tipo.PEON);
 
         Pieza pieza = new Pieza(piezaSeleccionada, Pieza.Color.BLANCO, coordenadaSolicitada);
-        tvTituloEjercicio.setText(pieza.getTipo() + " en " + coordenadaSolicitada + ", CAPTURA una pieza negra.");
+        tvTituloEjercicio.setText(pieza.getTipo() + " en " + coordenadaSolicitada + ", CAPTURA una pieza negra");
         speak(tvTituloEjercicio.getText().toString());
 
         vectorPiezasBlancas.add(pieza);

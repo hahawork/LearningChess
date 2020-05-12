@@ -48,7 +48,7 @@ public class userProgreso extends AppCompatActivity {
 
 		TextView tvNombreUsuario = findViewById(R.id.tvNombreUsuario);
 		tvNombreUsuario.setText("Usuario: "+
-				setting.getString("spNombreUsuarioActual","Invitado.") +"\nEdad: "+
+				setting.getString("spNombreUsuarioActual","Invitado") +"\nEdad: "+
 				setting.getString("spEdadUsuarioActual","5") +" años");
 		getData();
 	}
@@ -93,7 +93,7 @@ public class userProgreso extends AppCompatActivity {
 					llDetalle.addView(rowView);
 				}
 			} else {
-				Toast.makeText(this, "no hay registros aún.", Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, "no hay registros aún", Toast.LENGTH_SHORT).show();
 			}
 
 		} catch (Exception e) {
