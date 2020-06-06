@@ -51,7 +51,7 @@ public class Seccion3 extends AppCompatActivity {
 
     public void boton12(View v) {
         Intent i = new Intent(Seccion3.this, VerVideo.class);
-        i.putExtra("video_id", "Z6_uYARH_Vo");
+        i.putExtra("video_id", "XqO5Ck-Fm4E");
         startActivity(i);
     }
 

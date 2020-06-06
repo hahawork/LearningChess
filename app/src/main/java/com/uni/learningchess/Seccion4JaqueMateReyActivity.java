@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import java.util.Random;
 import java.util.Vector;
@@ -373,7 +372,7 @@ public class Seccion4JaqueMateReyActivity extends EjercicioBaseActivity implemen
             case 2://tablero 7
                 vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "H1"));
                 vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "E6"));
-                vectorPiezasBlancas.add(new Pieza(CABALLO, BLANCO, "C5", true, "A6"));
+                vectorPiezasBlancas.add(new Pieza(CABALLO, BLANCO, "C5", true, "D7"));
                 vectorPiezasBlancas.add(new Pieza(TORRE, BLANCO, "C2"));
 
 
@@ -397,7 +396,7 @@ public class Seccion4JaqueMateReyActivity extends EjercicioBaseActivity implemen
                 vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "G1"));
                 vectorPiezasBlancas.add(new Pieza(DAMA, BLANCO, "A1"));
                 vectorPiezasBlancas.add(new Pieza(TORRE, BLANCO, "D1"));
-                vectorPiezasBlancas.add(new Pieza(CABALLO, BLANCO, "D4", true, "C6"));
+                vectorPiezasBlancas.add(new Pieza(CABALLO, BLANCO, "D4", true, "E6"));
                 vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "E2"));
                 vectorPiezasBlancas.add(new Pieza(ALFIL, BLANCO, "F7"));
 

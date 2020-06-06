@@ -39,25 +39,6 @@
             android:textStyle="normal|bold" />
 
         <TextView
-            android:id="@+id/textoLeccion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="start|center_vertical"
-            android:text="@string/leccion"
-            android:textAllCaps="false"
-            android:textColor="@color/tituloCapitulo2"
-            android:textSize="@dimen/textSizeSubTituloCapitulos"
-            android:textStyle="italic" />
-
-        <Button
-            android:id="@+id/botonVerVideo"
-            style="@style/boton.1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="botonVerVideo"
-            android:text="@string/verVideo" />
-
-        <TextView
             android:id="@+id/textoEjercicios"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

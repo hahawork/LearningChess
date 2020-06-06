@@ -32,8 +32,6 @@ public class Seccion1 extends AppCompatActivity {
 
         TextView textoCapitulo1 = findViewById(R.id.textoCapitulo1);
         textoCapitulo1.setTypeface(fuente1);
-        TextView textoLeccion = findViewById(R.id.textoLeccion);
-        textoLeccion.setTypeface(fuente);
         TextView textoEjercicios = findViewById(R.id.textoEjercicios);
         textoEjercicios.setTypeface(fuente);
 

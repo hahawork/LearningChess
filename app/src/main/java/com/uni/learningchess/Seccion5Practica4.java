@@ -89,7 +89,7 @@ public class Seccion5Practica4 extends EjercicioBaseActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 Animation animSequential;
-                animSequential = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.animacion_rotar_elemento);
+                animSequential = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.animacion_rotar_elemento);
                 tvTituloEjercicio.startAnimation(animSequential);
             }
 
@@ -165,8 +165,8 @@ public class Seccion5Practica4 extends EjercicioBaseActivity {
         tvTituloEjercicio.setText("Ahogado");
         inicializaJugada1();
     }
-    public void Tipo_MateEnUno()
-    {
+
+    public void Tipo_MateEnUno() {
         tvTituloEjercicio.setText("Jaque mate en 1 movimiento");
         inicializaJugada2();
     }
@@ -301,7 +301,7 @@ public class Seccion5Practica4 extends EjercicioBaseActivity {
             case 5://tablero 7
                 vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "H1"));
                 vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "E6"));
-                vectorPiezasBlancas.add(new Pieza(CABALLO, BLANCO, "C5", true, "A6"));
+                vectorPiezasBlancas.add(new Pieza(CABALLO, BLANCO, "C5", true, "D7"));
                 vectorPiezasBlancas.add(new Pieza(TORRE, BLANCO, "C2"));
 
                 vectorPiezasNegras.add(new Pieza(REY, NEGRO, "C7"));
@@ -314,7 +314,7 @@ public class Seccion5Practica4 extends EjercicioBaseActivity {
                 vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "G1"));
                 vectorPiezasBlancas.add(new Pieza(DAMA, BLANCO, "A1"));
                 vectorPiezasBlancas.add(new Pieza(TORRE, BLANCO, "D1"));
-                vectorPiezasBlancas.add(new Pieza(CABALLO, BLANCO, "D4", true, "C6"));
+                vectorPiezasBlancas.add(new Pieza(CABALLO, BLANCO, "D4", true, "E6"));
                 vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "E2"));
                 vectorPiezasBlancas.add(new Pieza(ALFIL, BLANCO, "F7"));
 
@@ -336,12 +336,13 @@ public class Seccion5Practica4 extends EjercicioBaseActivity {
                 vectorPiezasBlancas.add(new Pieza(REY, BLANCO, "H1"));
                 vectorPiezasBlancas.add(new Pieza(TORRE, BLANCO, "B1"));
                 vectorPiezasBlancas.add(new Pieza(PEON, BLANCO, "D6"));
-                vectorPiezasBlancas.add(new Pieza(TORRE, BLANCO, "G7",true,"C7"));
+                vectorPiezasBlancas.add(new Pieza(TORRE, BLANCO, "G7", true, "C7"));
 
                 vectorPiezasNegras.add(new Pieza(REY, NEGRO, "C8"));
                 vectorPiezasNegras.add(new Pieza(TORRE, NEGRO, "D8"));
                 vectorPiezasNegras.add(new Pieza(PEON, NEGRO, "C7"));
-                break;        }
+                break;
+        }
         colocaPiezas();
     }
 

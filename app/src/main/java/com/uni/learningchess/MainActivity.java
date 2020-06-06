@@ -206,6 +206,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void showPopupMenu(View view) {
         // inflate menu
+        //Context wrapper = new ContextThemeWrapper(this, R.style.DialogCustomUsuarios);
         PopupMenu popup = new PopupMenu(this, view);
         try {
             // Reflection apis to enforce show icon

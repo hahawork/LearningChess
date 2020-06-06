@@ -2,10 +2,17 @@ package com.uni.learningchess;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.Vector;
 
@@ -124,7 +131,7 @@ public class MetodosGenerales {
 
     public void colocaPieza(Pieza pieza) {
         int idImageView = mActivity.getResources().getIdentifier(pieza.getCoordenada(), "id", mContext.getPackageName());
-        ImageView imageView = (ImageView) mActivity.findViewById(idImageView);
+        ImageView imageView = mActivity.findViewById(idImageView);
         int idDrawablePieza = getDrawablePieza(pieza);
         if (imageView.getVisibility() == View.VISIBLE) {
             // Its visible
@@ -185,7 +192,62 @@ public class MetodosGenerales {
         return idDrawable;
     }
 
+
+    public void MostrarDialogoVideo_Practica(final String URL, final String Activit) {
+
+        final Dialog dialog = new Dialog(mContext);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        //dialog.setCancelable(false);
+        dialog.setContentView(R.layout.dialogo_movim_piezas_video_practica);
+
+        View.OnClickListener PracticarListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String NombrePaquete = mContext.getPackageName() + "." + Activit;
+                try {
+                    Class<?> c = Class.forName(NombrePaquete);
+                    Intent intent = new Intent(mContext, c);
+                    mContext.startActivity(intent);
+                    dialog.dismiss();
+                } catch (ClassNotFoundException ignored) {
+                }
+            }
+        };
+
+        TextView tvPracticar = dialog.findViewById(R.id.tvPracticar_dlgmpvp);
+        ImageButton Practicar = dialog.findViewById(R.id.ibtnPracticar_dlgmpvp);
+        Practicar.setOnClickListener(PracticarListener);
+        tvPracticar.setOnClickListener(PracticarListener);
+
+
+        View.OnClickListener VerVideoListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(mContext, VerVideo.class);
+                i.putExtra("video_id", URL);
+                mContext.startActivity(i);
+                dialog.dismiss();
+            }
+        };
+
+        ImageButton VerVideo = dialog.findViewById(R.id.ibtnVerVideo_dlgmpvp);
+        TextView tvVerVideo = dialog.findViewById(R.id.tvVerVideo_dlgmpvp);
+        VerVideo.setOnClickListener(VerVideoListener);
+        tvVerVideo.setOnClickListener(VerVideoListener);
+
+        ImageButton dialogButton = dialog.findViewById(R.id.ibtnCerrar_dlgmpvp);
+        dialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+
     public void MostrarAlertaError(String titulo, String mensaje){
+
         new AlertDialog.Builder(mActivity)
                 .setTitle(titulo)
                 .setIcon(android.R.drawable.ic_dialog_alert)

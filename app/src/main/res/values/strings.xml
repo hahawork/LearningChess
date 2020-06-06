@@ -76,12 +76,12 @@
     <string name="respOpc2Reyes">2 reyes</string>
     <string name="respOpc3Reyes">8 reyes</string>
 
-    <string name="secciones">Secciones:</string>
-    <string name="leccion">Lección:</string>
-    <string name="ejercicios">Ejercicios:</string>
-    <string name="movimientos">Movimientos:</string>
-    <string name="capturas">Capturas:</string>
-    <string name="jugadasEspeciales">Jugadas Especiales:</string>
+    <string name="secciones">Secciones</string>
+    <string name="leccion">Lección</string>
+    <string name="ejercicios">Ejercicios</string>
+    <string name="movimientos">Movimientos</string>
+    <string name="capturas">Capturas</string>
+    <string name="jugadasEspeciales">Jugadas Especiales</string>
     <string name="valorPiezas">Los valores de las piezas</string>
 
     <string name="seccion3Ejerc1Titulo">Selecciona la notación correcta</string>
