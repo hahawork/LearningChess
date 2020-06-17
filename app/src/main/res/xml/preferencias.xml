@@ -9,13 +9,6 @@
         android:defaultValue="false"
         android:key="sonidos"
         android:summary="Reproducción de sonidos de fondo, tic-tac, etc.."
-        android:title="Reproducir sonidos"></CheckBoxPreference>
-
-    <SeekBarPreference
-        android:key="volume"
-        android:title="Volumen de la voz"
-        android:summary="Establece el volume de los audios del avatar"
-        android:max="10"
-        android:defaultValue="0" />
+        android:title="Reproducir sonidos"/>
 
 </PreferenceScreen>

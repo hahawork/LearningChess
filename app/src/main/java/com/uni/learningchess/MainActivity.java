@@ -310,8 +310,7 @@ public class MainActivity extends AppCompatActivity {
             if (!this.musicaActivada) {
                 this.musicaActivada = musicaActivada;
 
-                int volumen = preferencias.getInt("volume", 0);
-                modificaVolumenMusica(0, (volumen * 10), 0, 30);
+                modificaVolumenMusica(0, 100, 0, 30);
             }
         }
         avatar.setSonidosActivados(preferencias.getBoolean("sonidos", true));

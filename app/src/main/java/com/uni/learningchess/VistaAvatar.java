@@ -293,9 +293,8 @@ public class VistaAvatar extends FrameLayout {
     public void habla() {
         paraEfectoSonido(EfectoSonido.TIC_TAC);
         if (mediaPlayerVoz != null) {
-            float nivelVolume = setting.getInt("volume", 0);
-            nivelVolume = nivelVolume == 0 ? 0 : nivelVolume / 10;
-            mediaPlayerVoz.setVolume(nivelVolume, nivelVolume);
+
+            mediaPlayerVoz.setVolume(1, 1);
             mediaPlayerVoz.start();
         }
         if (visualizerVoz != null) {

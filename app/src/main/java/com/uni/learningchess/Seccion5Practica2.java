@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
@@ -13,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.HashMap;
 import java.util.Locale;
 import java.util.Random;
 import java.util.Vector;
@@ -209,7 +207,6 @@ public class Seccion5Practica2 extends MoverPiezaActivity implements TextToSpeec
         piezaDerecha = piezaDerecha.toLowerCase();
 
         tvTituloEjercicio.setText(String.format("¿Qué vale más?, ¿%s o %s?", piezaIzquierda, piezaDerecha));
-        speak(tvTituloEjercicio.getText().toString());
 
         imagenPiezaDerecha = findViewById(R.id.piezaDerecha);
         imagenPiezaIzquierda = findViewById(R.id.piezaIzquierda);
@@ -262,7 +259,6 @@ public class Seccion5Practica2 extends MoverPiezaActivity implements TextToSpeec
         vectorPiezasBlancas.add(pieza);
         colocaPiezas();
         tvTituloEjercicio.setText("¡La pieza " + pieza.getTipo() + " está en " + coordenadaSolicitada + "!, realizá un movimiento válido");
-        speak(tvTituloEjercicio.getText().toString());
     }
     //endregion
 
@@ -276,8 +272,7 @@ public class Seccion5Practica2 extends MoverPiezaActivity implements TextToSpeec
         } while (filaAleatoria == 7 && piezaSeleccionada == Pieza.Tipo.PEON);
 
         Pieza pieza = new Pieza(piezaSeleccionada, Pieza.Color.BLANCO, coordenadaSolicitada);
-        tvTituloEjercicio.setText(pieza.getTipo() + " en " + coordenadaSolicitada + ", CAPTURA una pieza negra");
-        speak(tvTituloEjercicio.getText().toString());
+        tvTituloEjercicio.setText(String.format("%s en %s, CAPTURA una pieza negra", pieza.getTipo(), coordenadaSolicitada));
 
         vectorPiezasBlancas.add(pieza);
         colocaPiezas();
@@ -402,21 +397,6 @@ public class Seccion5Practica2 extends MoverPiezaActivity implements TextToSpeec
             (findViewById(R.id.include_tablero)).setVisibility(View.VISIBLE);
             (findViewById(R.id.include_valorpiezas)).setVisibility(View.GONE);
         }
-    }
-
-    private void speak(String str) {
-
-        textToSpeech.setPitch(0.0f);
-        textToSpeech.setSpeechRate(0.0f); // entre mas alto, mas lento
-
-        HashMap<String, String> myHashRender = new HashMap();
-        String destFileName = Environment.getExternalStorageDirectory().getAbsolutePath() + "/ejercicio.mp3";
-        myHashRender.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, str);
-        textToSpeech.synthesizeToFile(str, myHashRender, destFileName);
-
-        textToSpeech.speak(str, TextToSpeech.QUEUE_FLUSH, null);
-
-        avatar.habla(destFileName, null);
     }
 
     @Override

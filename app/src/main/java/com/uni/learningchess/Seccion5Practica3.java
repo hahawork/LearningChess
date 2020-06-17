@@ -344,7 +344,7 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
         if (view != null) {
             if (view.getTag() == "1") {
                 avatar.lanzaAnimacion(VistaAvatar.Animacion.EJERCICIO_SUPERADO);
-                avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.EJERCICIO_SUPERADO);
+                //avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.EJERCICIO_SUPERADO);
                 avatar.habla(R.raw.correcto, new VistaAvatar.OnAvatarHabla() {
                     @Override
                     public void onTerminaHabla() {
@@ -454,7 +454,7 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
                 avatar.mueveCejas(VistaAvatar.MovimientoCejas.ARQUEAR);
                 avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_CORRECTO);
                 avatar.lanzaAnimacion(VistaAvatar.Animacion.EJERCICIO_SUPERADO);
-                avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.EJERCICIO_SUPERADO);
+                //avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.EJERCICIO_SUPERADO);
                 avatar.habla(R.raw.excelente_completaste_ejercicios, new VistaAvatar.OnAvatarHabla() {
                     @Override
                     public void onTerminaHabla() {
@@ -502,7 +502,7 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
         if (tipoJuego == MODO.MOVERPIEZA) {
             if (salida) {
                 avatar.lanzaAnimacion(VistaAvatar.Animacion.EJERCICIO_SUPERADO);
-                avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.EJERCICIO_SUPERADO);
+                //avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.EJERCICIO_SUPERADO);
                 avatar.habla(R.raw.excelente_completaste_ejercicios, new VistaAvatar.OnAvatarHabla() {
                     @Override
                     public void onTerminaHabla() {
