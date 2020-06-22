@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Random;
 
@@ -150,9 +149,11 @@ public class Seccion5Practica1 extends EjercicioBaseActivity {
             String coordenadaPulsada = imageView.getTag().toString();
             if (coordenadaPulsada.equals(coordenadaSolicitada)) {
                 baseDatos.IncrementaAcierto(idUsuario, "1");
+
                 avatar.mueveCejas(VistaAvatar.MovimientoCejas.ARQUEAR);
                 avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_CORRECTO);
                 avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_CORRECTO);
+
                 int audio = random.nextInt(2);
                 switch (audio) {
                     case 0:
@@ -183,13 +184,18 @@ public class Seccion5Practica1 extends EjercicioBaseActivity {
                         break;
                 }
             } else {
+
                 avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_INCORRECTO);
                 avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_INCORRECTO);
                 avatar.mueveCejas(VistaAvatar.MovimientoCejas.FRUNCIR);
+                avatar.habla(R.raw.mal_intenta_otra_vez);
+
                 int colCoordenadaPulsada = coordenadaPulsada.charAt(0) - 'A';
                 int filaCoordenadaPulsada = coordenadaPulsada.charAt(1) - '1';
                 resaltarCasilla(colCoordenadaPulsada, filaCoordenadaPulsada, Movimiento.INCORRECTO);
+
                 preguntaCoordenada();
+
                 baseDatos.IncrementaEjercicioFalla(idUsuario, "1");
             }
         }
@@ -216,9 +222,9 @@ public class Seccion5Practica1 extends EjercicioBaseActivity {
 
         if (salida) {
 
-            avatar.mueveCejas(VistaAvatar.MovimientoCejas.ARQUEAR);
             avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_CORRECTO);
             avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_CORRECTO);
+            avatar.mueveCejas(VistaAvatar.MovimientoCejas.ARQUEAR);
             avatar.habla(R.raw.ok_has_acertado, new VistaAvatar.OnAvatarHabla() {
                 @Override
                 public void onTerminaHabla() {
@@ -229,6 +235,7 @@ public class Seccion5Practica1 extends EjercicioBaseActivity {
             });
 
         } else {
+
             int colCoordenadaSolicitada = coordenadaSolicitada.charAt(0) - 'A';
             int filaCoordenadaSolicitada = coordenadaSolicitada.charAt(1) - '1';
             resaltarCasilla(colCoordenadaSolicitada, filaCoordenadaSolicitada, Movimiento.CORRECTO);
@@ -236,6 +243,7 @@ public class Seccion5Practica1 extends EjercicioBaseActivity {
             avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_INCORRECTO);
             avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_INCORRECTO);
             avatar.mueveCejas(VistaAvatar.MovimientoCejas.FRUNCIR);
+            avatar.habla(R.raw.mal_intenta_otra_vez);
 
             resaltarCasilla(colDestino, filaDestino, Movimiento.INCORRECTO);
 

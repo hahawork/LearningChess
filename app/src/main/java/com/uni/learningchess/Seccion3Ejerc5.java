@@ -186,10 +186,11 @@ public class Seccion3Ejerc5 extends Seccion3BaseActivity {
                     });
                 }
             } else {
+
                 avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_INCORRECTO);
                 avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_INCORRECTO);
                 avatar.mueveCejas(VistaAvatar.MovimientoCejas.FRUNCIR);
-                avatar.habla(R.raw.incorrecto, new VistaAvatar.OnAvatarHabla() {
+                avatar.habla(R.raw.mal_intenta_otra_vez, new VistaAvatar.OnAvatarHabla() {
                     @Override
                     public void onTerminaHabla() {
                         avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.TIC_TAC);

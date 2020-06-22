@@ -2,7 +2,6 @@ package com.uni.learningchess;
 
 import android.os.Bundle;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.util.Random;
 import java.util.Vector;
@@ -140,9 +139,12 @@ public class SenalarCasillas extends EjercicioBaseActivity {
             avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_INCORRECTO);
             avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_INCORRECTO);
             avatar.mueveCejas(VistaAvatar.MovimientoCejas.FRUNCIR);
+           avatar.habla(R.raw.mal_intenta_otra_vez);
+
             int colCoordenadaPulsada = coordenadaPulsada.charAt(0) - 'A';
             int filaCoordenadaPulsada = coordenadaPulsada.charAt(1) - '1';
             resaltarCasilla(colCoordenadaPulsada, filaCoordenadaPulsada, Movimiento.INCORRECTO);
+
             preguntaCoordenada();
         }
         return true;
