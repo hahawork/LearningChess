@@ -463,7 +463,6 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
                         seleccionaTipoJuego();
                     }
                 });
-
             } else {
                 baseDatos.IncrementaEjercicioFalla(idUsuario, "3");
                 avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_INCORRECTO);
