@@ -345,7 +345,7 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
             if (view.getTag() == "1") {
                 avatar.lanzaAnimacion(VistaAvatar.Animacion.EJERCICIO_SUPERADO);
                 //avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.EJERCICIO_SUPERADO);
-                avatar.habla(R.raw.correcto, new VistaAvatar.OnAvatarHabla() {
+                avatar.habla(R.raw.ok_muy_bien, new VistaAvatar.OnAvatarHabla() {
                     @Override
                     public void onTerminaHabla() {
                         baseDatos.IncrementaAcierto(idUsuario, "3");
@@ -358,7 +358,7 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
                 avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_INCORRECTO);
                 avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_INCORRECTO);
                 avatar.mueveCejas(VistaAvatar.MovimientoCejas.FRUNCIR);
-                avatar.habla(R.raw.incorrecto, new VistaAvatar.OnAvatarHabla() {
+                avatar.habla(R.raw.mal_intenta_otra_vez, new VistaAvatar.OnAvatarHabla() {
                     @Override
                     public void onTerminaHabla() {
                         avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.TIC_TAC);
@@ -454,7 +454,7 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
                 avatar.mueveCejas(VistaAvatar.MovimientoCejas.ARQUEAR);
                 avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_CORRECTO);
                 avatar.lanzaAnimacion(VistaAvatar.Animacion.EJERCICIO_SUPERADO);
-                //avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.EJERCICIO_SUPERADO);
+                avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.EJERCICIO_SUPERADO);
                 avatar.habla(R.raw.excelente_completaste_ejercicios, new VistaAvatar.OnAvatarHabla() {
                     @Override
                     public void onTerminaHabla() {
@@ -518,25 +518,11 @@ public class Seccion5Practica3 extends MoverPiezaActivity {
                 });
 
             } else {
-                switch (pieza) {
-                    case 'P':
-                        avatar.habla(R.raw.colocar_piezas_mal_peon);
-
-                        resaltarCasilla(columnaAleatoria, filaAleatoria,
-                                new Validador() {
-                                    @Override
-                                    public boolean movimientoValido(int colOrigen, int filaOrigen, int colDestino, int filaDestino) {
-                                        return salida;
-                                        //return filaDestino == filaSeleccionada && colDestino == columnaSeleccionada;
-                                    }
-                                });
-                        break;
-                }
-
 
                 avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_INCORRECTO);
                 avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_INCORRECTO);
                 avatar.mueveCejas(VistaAvatar.MovimientoCejas.FRUNCIR);
+                avatar.habla(R.raw.mal_intenta_otra_vez);
 
                 baseDatos.IncrementaEjercicioFalla(idUsuario, "3");
             }

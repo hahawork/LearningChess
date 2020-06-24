@@ -101,20 +101,6 @@ public class Seccion3Ejerc4 extends EjercicioBaseActivity {
             });
 
         } else {
-            switch (pieza) {
-                case 'P':
-                    avatar.habla(R.raw.colocar_piezas_mal_peon);
-
-                    resaltarCasilla(columnaSeleccionada, filaSeleccionada,
-                            new Validador() {
-                                @Override
-                                public boolean movimientoValido(int colOrigen, int filaOrigen, int colDestino, int filaDestino) {
-                                    return filaDestino == filaSeleccionada && colDestino == columnaSeleccionada;
-                                }
-                            });
-                    break;
-            }
-
 
             avatar.lanzaAnimacion(VistaAvatar.Animacion.MOVIMIENTO_INCORRECTO);
             avatar.reproduceEfectoSonido(VistaAvatar.EfectoSonido.MOVIMIENTO_INCORRECTO);
