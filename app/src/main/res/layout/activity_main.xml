@@ -91,7 +91,8 @@
                     android:layout_weight="1"
                     android:elevation="1dp"
                     android:onClick="boton3"
-                    android:text="@string/seccion3" />
+                    android:text="@string/seccion3"
+                    android:visibility="gone" />
 
                 <Button
                     android:id="@+id/boton4"
@@ -100,7 +101,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="boton4"
-                    android:text="@string/seccion4" />
+                    android:text="@string/seccion4"
+                    android:visibility="gone" />
 
                 <Button
                     android:id="@+id/boton5"
@@ -109,7 +111,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="boton5"
-                    android:text="@string/seccion5" />
+                    android:text="@string/seccion5"
+                    android:visibility="gone" />
 
             </LinearLayout>
         </ScrollView>
@@ -135,6 +138,7 @@
                 android:scaleType="fitCenter"
                 android:scaleX="1.2"
                 android:scaleY="1.2"
+                android:visibility="gone"
                 app:srcCompat="@drawable/ic_ajustes" />
         </LinearLayout>
     </LinearLayout>

@@ -69,11 +69,12 @@
             <Button
                 android:id="@+id/botonMovimientos"
                 style="@style/boton.rojo"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:onClick="botonMovimientos"
-                android:textStyle="bold"
-                android:text="@string/movimientos" />
+                android:text="@string/movimientos"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/botonCaptura"
@@ -89,11 +90,12 @@
                 android:id="@+id/botonJugadasEspeciales"
                 style="@style/boton.azul"
                 android:layout_width="0dp"
-                android:textStyle="bold"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="botonJugadasEspeciales"
-                android:text="@string/jugadasEspeciales" />
+                android:text="@string/jugadasEspeciales"
+                android:textStyle="bold"
+                android:visibility="gone" />
         </LinearLayout>
 
         <TextView
