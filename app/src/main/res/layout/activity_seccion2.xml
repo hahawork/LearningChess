@@ -94,8 +94,7 @@
                 android:layout_weight="1"
                 android:onClick="botonJugadasEspeciales"
                 android:text="@string/jugadasEspeciales"
-                android:textStyle="bold"
-                android:visibility="gone" />
+                android:textStyle="bold" />
         </LinearLayout>
 
         <TextView

@@ -105,5 +105,8 @@
     <string name="idUsuario">Id</string>
     <string name="nombreUsuario">Nombre</string>
     <string name="fechaInicio">Fecha inicio</string>
+    <string name="main_botonaprender">Aprender</string>
+    <string name="main_botonpracticar">Practicar</string>
+    <string name="title_activity_splash">FullscreenActivity</string>
 
 </resources>

@@ -38,4 +38,6 @@
     <color name="tituloCapitulo2">#0C4F6F</color> <!--#0C4F6F-->
     <color name="movimientoIncorrecto">#ff7f7f</color>
     <color name="movimientoCorrecto">#33ff33</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>

@@ -14,9 +14,21 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.Vector;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
 import static com.uni.learningchess.Pieza.Color.BLANCO;
+import static com.uni.learningchess.interf_general.RESOURCE_SDCARD_PATH;
 
 public class MetodosGenerales {
 
@@ -254,4 +266,40 @@ public class MetodosGenerales {
                 .setMessage(mensaje)
                 .show();
     }
+
+    private void ParseXML() {
+
+        File yourFile = new File(RESOURCE_SDCARD_PATH, "preferences.xml");
+
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dBuilder;
+
+        try {
+
+            dBuilder = dbFactory.newDocumentBuilder();
+            Document doc = dBuilder.parse(yourFile);
+            doc.getDocumentElement().normalize();
+
+            Log.e("Root_element" , doc.getDocumentElement().getNodeName());
+            NodeList nodeList = doc.getElementsByTagName("OKV");
+
+            //modelArrayList = new ArrayList<Model>();
+
+
+            for (int i = 0; i < nodeList.getLength(); i++) {
+
+                Element element = (Element) nodeList.item(i);
+
+                for (int j = 0 ; j < element.getAttributes().getLength(); j++){
+
+                    Log.w("Nodo", element.getAttributes().item(j).getNodeName()  + ": " + element.getAttributes().item(j).getNodeValue());
+                }
+
+            }
+        } catch (SAXException | ParserConfigurationException | IOException e1) {
+            e1.printStackTrace();
+        }
+
+    }
+
 }
