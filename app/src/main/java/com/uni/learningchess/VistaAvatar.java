@@ -125,14 +125,16 @@ public class VistaAvatar extends FrameLayout {
     public VistaAvatar(Context context, AttributeSet attrs) {
         super(context, attrs);
         LayoutInflater.from(context).inflate(R.layout.avatar, this, true);
+        setting = PreferenceManager.getDefaultSharedPreferences(context);
+        String mDrawableName = setting.getString("setting_avatar", "avatar");
         imageViewCara = findViewById(R.id.imageViewCara);
+        imageViewCara.setImageResource(getResources().getIdentifier(mDrawableName, "drawable", getContext().getPackageName()));
         imageViewCejas = findViewById(R.id.imageViewCejas);
         imageViewOjos = findViewById(R.id.imageViewOjos);
         imageViewBoca = findViewById(R.id.imageViewBoca);
         mediaPlayerVoz = new MediaPlayer();
         random = new Random(System.currentTimeMillis());
 
-        setting = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
     public void reinicia() {

@@ -14,6 +14,11 @@
         android:title="Progreso" />
 
     <item
+        android:id="@+id/action_Pesonalizar"
+        android:icon="@drawable/ic_theme"
+        android:orderInCategory="102"
+        android:title="Personalización" />
+    <item
         android:id="@+id/action_Preferencias"
         android:icon="@android:drawable/ic_menu_preferences"
         android:orderInCategory="102"

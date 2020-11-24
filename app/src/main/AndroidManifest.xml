@@ -21,7 +21,11 @@
         android:supportsRtl="true"
         android:theme="@style/SplashTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Home"></activity>
+        <activity android:name=".Personalizacion"
+            android:theme="@style/DialogCustom" />
+        <activity
+            android:name=".Home"
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".Splash"
             android:configChanges="orientation|keyboardHidden|screenSize"

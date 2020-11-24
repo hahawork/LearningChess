@@ -6,13 +6,13 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 import android.media.MediaPlayer;
+import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.PopupMenu;
 import android.view.MenuInflater;
@@ -174,6 +174,7 @@ public class Home extends AppCompatActivity {
 
         showPopupMenu(v);
     }
+
     /**
      * Showing popup menu when tapping on menu boton
      */
@@ -223,6 +224,9 @@ public class Home extends AppCompatActivity {
                 case R.id.action_Sobre:
                     startActivity(new Intent(Home.this, AcercaDeActivity.class));
                     return true;
+                case R.id.action_Pesonalizar:
+                    startActivity(new Intent(Home.this, Personalizacion.class));
+                    return true;
                 case R.id.action_Preferencias:
                     startActivity(new Intent(Home.this, Preferencias.class));
                     return true;
@@ -234,7 +238,6 @@ public class Home extends AppCompatActivity {
             return false;
         }
     }
-
 
 
     void solicitarPermisoRecordAudio() {

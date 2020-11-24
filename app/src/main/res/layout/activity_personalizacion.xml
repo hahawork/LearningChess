@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:minWidth="600dp"
+    android:background="@drawable/fondo_preferences"
+    android:layout_height="match_parent"
+    tools:context=".Personalizacion">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tituloCreditosApp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Seleccione un Avatar"
+                android:textAllCaps="true"
+                android:textStyle="normal|bold|italic"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:textColor="@color/tituloCreditos"
+                android:gravity="center_horizontal" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:onClick="seleccionarAvatar"
+                    android:layout_width="150dp"
+                    android:layout_height="200dp"
+                    android:tag="avatar0"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/avataroriginal" />
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:onClick="seleccionarAvatar"
+                    android:layout_width="150dp"
+                    android:layout_height="200dp"
+                    android:scaleType="centerInside"
+                    android:tag="avatar"
+                    android:src="@drawable/avatar_queen_original" />
+
+                <ImageView
+                    android:onClick="seleccionarAvatar"
+                    android:id="@+id/imageView5"
+                    android:layout_width="150dp"
+                    android:layout_height="200dp"
+                    android:scaleType="centerInside"
+                    android:tag="avatar1"
+                    android:src="@drawable/avatar_king_original" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

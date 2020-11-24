@@ -79,7 +79,6 @@ public class VerVideo extends YouTubeBaseActivity implements YouTubePlayer.OnIni
 
         @Override
         public void onStopped() {
-
         }
 
         @Override
